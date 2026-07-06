@@ -1,0 +1,93 @@
+{
+    "result": "success",
+    "data": [
+        {
+            "id": 35142431,
+            "source": ".",
+            "type": "NS",
+            "ttl": 3600,
+            "target": "ns11.infomaniak.ch",
+            "updated_at": 1781296931
+        },
+        {
+            "id": 35142432,
+            "source": ".",
+            "type": "NS",
+            "ttl": 3600,
+            "target": "ns12.infomaniak.ch",
+            "updated_at": 1781296932
+        },
+        {
+            "id": 35142434,
+            "source": "_dmarc",
+            "type": "TXT",
+            "ttl": 3600,
+            "target": "\"v=DMARC1; p=reject;\"",
+            "updated_at": 1781296933
+        },
+        {
+            "id": 35142466,
+            "source": "_domainkey",
+            "type": "NS",
+            "ttl": 3600,
+            "target": "ns11.infomaniak.ch",
+            "updated_at": 1781297103
+        },
+        {
+            "id": 35142467,
+            "source": "_domainkey",
+            "type": "NS",
+            "ttl": 3600,
+            "target": "ns12.infomaniak.ch",
+            "updated_at": 1781297103
+        },
+        {
+            "id": 35142468,
+            "source": ".",
+            "type": "MX",
+            "ttl": 3600,
+            "target": "5 mta-gw.infomaniak.ch",
+            "updated_at": 1781297109
+        },
+        {
+            "id": 35142472,
+            "source": ".",
+            "type": "TXT",
+            "ttl": 3600,
+            "target": "\"v=spf1 include:spf.infomaniak.ch -all\"",
+            "updated_at": 1781297110
+        },
+        {
+            "id": 35142473,
+            "source": "autoconfig",
+            "type": "CNAME",
+            "ttl": 3600,
+            "target": "infomaniak.com",
+            "updated_at": 1781297111
+        },
+        {
+            "id": 35142474,
+            "source": "autodiscover",
+            "type": "CNAME",
+            "ttl": 3600,
+            "target": "infomaniak.com",
+            "updated_at": 1781297111
+        },
+        {
+            "id": 35142475,
+            "source": ".",
+            "type": "A",
+            "ttl": 300,
+            "target": "128.65.195.180",
+            "updated_at": 1781297114
+        },
+        {
+            "id": 35142477,
+            "source": "www",
+            "type": "A",
+            "ttl": 300,
+            "target": "128.65.195.180",
+            "updated_at": 1781297116
+        }
+    ]
+}
