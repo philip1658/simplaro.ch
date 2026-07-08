@@ -192,6 +192,25 @@
   #success .hero-card { text-align: center; }
   #success .hero-body { padding: 30px 28px 38px; }
   #success h1 { margin-top: 4px; }
+  .potential-box {
+    margin: 22px 0 6px;
+    background: var(--peach-soft);
+    border: 1.5px solid var(--peach);
+    border-radius: 20px;
+    padding: 20px 22px 22px;
+    text-align: center;
+  }
+  .potential-box .mono { color: var(--terra-dark); }
+  .potential-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(22px, 6vw, 30px);
+    font-weight: 600;
+    color: var(--terra-dark);
+    letter-spacing: -0.02em;
+    margin: 8px 0 6px;
+  }
+  .potential-box p { font-size: 14.5px; color: var(--ink-soft); }
+  .potential-note { font-size: 12.5px !important; color: var(--ink-faint) !important; margin-top: 10px; }
 
   footer {
     text-align: center; margin-top: 38px;
@@ -431,7 +450,14 @@
       <div class="hero-body">
         <span class="pill mono">✓ Angekommen</span>
         <h1 id="successTitle">Herzlichen Dank!</h1>
-        <p>Ihre Antworten sind bei uns eingetroffen. Wir schauen sie uns vor unserem Termin genau an — so können wir die gemeinsame Zeit voll für Ihre Themen nutzen.<br><br>Bis bald!<br><strong>Ihr Simplaro-Team</strong></p>
+        <p>Ihre Antworten sind bei uns eingetroffen. Wir schauen sie uns vor unserem Termin genau an — so können wir die gemeinsame Zeit voll für Ihre Themen nutzen.</p>
+        <div class="potential-box" id="potentialBox" style="display:none">
+          <span class="mono">💡 Ihre Ersteinschätzung</span>
+          <div class="potential-amount" id="potentialAmount"></div>
+          <p id="potentialText"></p>
+          <p class="potential-note">Grobe Schätzung auf Basis von Erfahrungswerten — was bei Ihnen wirklich drinliegt, schauen wir im Termin gemeinsam an.</p>
+        </div>
+        <p>Bis bald!<br><strong>Ihr Simplaro-Team</strong></p>
       </div>
     </div>
   </div>
@@ -502,6 +528,25 @@
     var firma = (data.get('Firma und Name') || '').toString().trim();
     data.append('_subject', 'Simplaro Erstanalyse: ' + (firma || 'Neue Antwort'));
 
+    // Ersteinschätzung Sparpotenzial: Bürostunden-Band × 46 Wochen × CHF 100/h,
+    // davon 30–40% erfahrungsgemäss automatisierbar (gleiche Logik wie Website-Rechner).
+    var potenzial = null;
+    var bands = {
+      'Weniger als 5': [2, 5],
+      '5–10': [5, 10],
+      '10–20': [10, 20],
+      'Mehr als 20': [20, 30]
+    };
+    var band = bands[data.get('Bürostunden pro Woche')];
+    if (band) {
+      var fmt = function (n) {
+        n = Math.round(n / 500) * 500;
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+      };
+      potenzial = 'CHF ' + fmt(band[0] * 46 * 100 * 0.30) + '–' + fmt(band[1] * 46 * 100 * 0.40) + ' pro Jahr';
+      data.append('Ersteinschätzung Sparpotenzial (auto-berechnet)', potenzial);
+    }
+
     sendBtn.disabled = true;
     sendBtn.textContent = 'Wird gesendet …';
 
@@ -514,6 +559,14 @@
       var vorname = firma.split(',').pop().trim().split(' ')[0];
       if (vorname && firma.indexOf(',') !== -1) {
         document.getElementById('successTitle').textContent = 'Herzlichen Dank, ' + vorname + '!';
+      }
+      if (potenzial) {
+        var aufgaben = data.getAll('Wiederkehrende Aufgaben').slice(0, 3);
+        document.getElementById('potentialAmount').textContent = potenzial;
+        document.getElementById('potentialText').textContent =
+          'So viel steckt bei Ihnen grob geschätzt an automatisierbarer Routinearbeit drin' +
+          (aufgaben.length ? ' — vor allem bei: ' + aufgaben.join(', ') + '.' : '.');
+        document.getElementById('potentialBox').style.display = 'block';
       }
       form.style.display = 'none';
       document.querySelector('header').style.display = 'none';
