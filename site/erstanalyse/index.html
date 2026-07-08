@@ -210,6 +210,13 @@
     margin: 8px 0 6px;
   }
   .potential-box p { font-size: 14.5px; color: var(--ink-soft); }
+  .potential-chf {
+    color: var(--ink-soft) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    font-size: 14px !important;
+    margin: -2px 0 10px;
+  }
   .potential-note { font-size: 12.5px !important; color: var(--ink-faint) !important; margin-top: 10px; }
 
   footer {
@@ -373,6 +380,38 @@
       </fieldset>
 
       <fieldset>
+        <legend>Wie viele Offerten schreiben Sie pro Monat?</legend>
+        <div class="chips">
+          <label><input type="radio" name="Offerten pro Monat" value="Keine / fast keine"><span>Keine / fast keine</span></label>
+          <label><input type="radio" name="Offerten pro Monat" value="1–5"><span>1–5</span></label>
+          <label><input type="radio" name="Offerten pro Monat" value="6–15"><span>6–15</span></label>
+          <label><input type="radio" name="Offerten pro Monat" value="16–40"><span>16–40</span></label>
+          <label><input type="radio" name="Offerten pro Monat" value="Mehr als 40"><span>Mehr als 40</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Wie lange brauchen Sie für eine typische Offerte?</legend>
+        <div class="chips">
+          <label><input type="radio" name="Dauer pro Offerte" value="Unter 30 Minuten"><span>Unter 30 Min.</span></label>
+          <label><input type="radio" name="Dauer pro Offerte" value="30–60 Minuten"><span>30–60 Min.</span></label>
+          <label><input type="radio" name="Dauer pro Offerte" value="1–2 Stunden"><span>1–2 Std.</span></label>
+          <label><input type="radio" name="Dauer pro Offerte" value="Mehr als 2 Stunden"><span>Mehr als 2 Std.</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Wie viele Rechnungen stellen Sie pro Monat?</legend>
+        <div class="chips">
+          <label><input type="radio" name="Rechnungen pro Monat" value="Keine / fast keine"><span>Keine / fast keine</span></label>
+          <label><input type="radio" name="Rechnungen pro Monat" value="1–10"><span>1–10</span></label>
+          <label><input type="radio" name="Rechnungen pro Monat" value="11–30"><span>11–30</span></label>
+          <label><input type="radio" name="Rechnungen pro Monat" value="31–100"><span>31–100</span></label>
+          <label><input type="radio" name="Rechnungen pro Monat" value="Mehr als 100"><span>Mehr als 100</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
         <label class="q-label" for="zeitfresser_top">Was ist Ihr grösster einzelner Zeitfresser? <span class="req">*</span></label>
         <p class="hint">Die eine Sache, bei der Sie denken: «Das kostet mich jede Woche viel zu viel Zeit.»</p>
         <textarea id="zeitfresser_top" name="Grösster Zeitfresser" required placeholder="In Ihren eigenen Worten — 1–2 Sätze genügen."></textarea>
@@ -454,8 +493,10 @@
         <div class="potential-box" id="potentialBox" style="display:none">
           <span class="mono">💡 Ihre Ersteinschätzung</span>
           <div class="potential-amount" id="potentialAmount"></div>
+          <div class="potential-chf mono" id="potentialChf"></div>
           <p id="potentialText"></p>
-          <p class="potential-note">Grobe Schätzung auf Basis von Erfahrungswerten — was bei Ihnen wirklich drinliegt, schauen wir im Termin gemeinsam an.</p>
+          <p id="potentialHebel" style="font-size:14px; color:var(--terra-dark); font-weight:600;"></p>
+          <p class="potential-note" id="potentialNote">Grobe Ersteinschätzung — was bei Ihnen wirklich drinliegt, schauen wir im Termin gemeinsam an.</p>
         </div>
         <p>Bis bald!<br><strong>Ihr Simplaro-Team</strong></p>
       </div>
@@ -472,6 +513,7 @@
 <script>
 (function () {
   var ENDPOINT = 'https://formspree.io/f/xvzjnjnv';
+  var WORKER_URL = 'https://simplaro-erstanalyse.philkrieger4.workers.dev';
 
   var form = document.getElementById('fragebogen');
   var bar = document.getElementById('progressBar');
@@ -528,51 +570,103 @@
     var firma = (data.get('Firma und Name') || '').toString().trim();
     data.append('_subject', 'Simplaro Erstanalyse: ' + (firma || 'Neue Antwort'));
 
-    // Ersteinschätzung Sparpotenzial: Bürostunden-Band × 46 Wochen × CHF 100/h,
-    // davon 30–40% erfahrungsgemäss automatisierbar (gleiche Logik wie Website-Rechner).
-    var potenzial = null;
-    var bands = {
-      'Weniger als 5': [2, 5],
-      '5–10': [5, 10],
-      '10–20': [10, 20],
-      'Mehr als 20': [20, 30]
-    };
-    var band = bands[data.get('Bürostunden pro Woche')];
-    if (band) {
-      var fmt = function (n) {
-        n = Math.round(n / 500) * 500;
-        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+    function fmtCHF(n) {
+      n = Math.round(n / 500) * 500;
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "'");
+    }
+    function fmtH(n) { return (Math.round(n * 2) / 2).toString().replace('.', ','); }
+
+    // Antworten als Objekt für die KI-Einschätzung
+    var antworten = {};
+    data.forEach(function (v, k) {
+      if (k === '_gotcha' || k === '_subject' || v === '') return;
+      antworten[k] = antworten[k] ? antworten[k] + ', ' + v : v;
+    });
+
+    // Fallback: konservative Formel (Routineanteil 40–55% × Automatisierungsgrad ~30–50% → netto 15–25%)
+    function fallbackAssessment() {
+      var bands = { 'Weniger als 5': [2, 5], '5–10': [5, 10], '10–20': [10, 20], 'Mehr als 20': [20, 30] };
+      var band = bands[data.get('Bürostunden pro Woche')];
+      if (!band) return null;
+      var aufgaben = data.getAll('Wiederkehrende Aufgaben').slice(0, 3);
+      return {
+        stunden_pro_woche_min: band[0] * 0.15,
+        stunden_pro_woche_max: band[1] * 0.25,
+        chf_pro_jahr_min: band[0] * 0.15 * 46 * 100,
+        chf_pro_jahr_max: band[1] * 0.25 * 46 * 100,
+        einschaetzung: 'So viel wiederkehrende Büroarbeit lässt sich bei Ihnen erfahrungsgemäss automatisieren' +
+          (aufgaben.length ? ' — vor allem bei: ' + aufgaben.join(', ') + '.' : '.'),
+        top_hebel: aufgaben,
+        vorbehalt: null
       };
-      potenzial = 'CHF ' + fmt(band[0] * 46 * 100 * 0.30) + '–' + fmt(band[1] * 46 * 100 * 0.40) + ' pro Jahr';
-      data.append('Ersteinschätzung Sparpotenzial (auto-berechnet)', potenzial);
+    }
+
+    // KI-Einschätzung vom Simplaro-Worker (Claude); bei Fehler/Timeout → Formel-Fallback
+    function getAssessment() {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, 35000);
+      return fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ antworten: antworten }),
+        signal: ctrl.signal
+      }).then(function (res) {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.json();
+      }).then(function (a) {
+        if (typeof a.stunden_pro_woche_min !== 'number' || typeof a.chf_pro_jahr_min !== 'number') throw new Error('bad shape');
+        return a;
+      }).catch(function () {
+        clearTimeout(timer);
+        return fallbackAssessment();
+      });
     }
 
     sendBtn.disabled = true;
-    sendBtn.textContent = 'Wird gesendet …';
+    sendBtn.textContent = 'Ihre Antworten werden ausgewertet …';
 
-    fetch(ENDPOINT, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(function (res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      var vorname = firma.split(',').pop().trim().split(' ')[0];
-      if (vorname && firma.indexOf(',') !== -1) {
-        document.getElementById('successTitle').textContent = 'Herzlichen Dank, ' + vorname + '!';
+    getAssessment().then(function (a) {
+      if (a) {
+        data.append('Ersteinschätzung Sparpotenzial (auto)',
+          'ca. ' + fmtH(a.stunden_pro_woche_min) + '–' + fmtH(a.stunden_pro_woche_max) + ' Std./Woche' +
+          ' ≈ CHF ' + fmtCHF(a.chf_pro_jahr_min) + '–' + fmtCHF(a.chf_pro_jahr_max) + ' pro Jahr | ' +
+          a.einschaetzung +
+          (a.top_hebel && a.top_hebel.length ? ' | Hebel: ' + a.top_hebel.join(', ') : '') +
+          (a.vorbehalt ? ' | Vorbehalt: ' + a.vorbehalt : ''));
       }
-      if (potenzial) {
-        var aufgaben = data.getAll('Wiederkehrende Aufgaben').slice(0, 3);
-        document.getElementById('potentialAmount').textContent = potenzial;
-        document.getElementById('potentialText').textContent =
-          'So viel steckt bei Ihnen grob geschätzt an automatisierbarer Routinearbeit drin' +
-          (aufgaben.length ? ' — vor allem bei: ' + aufgaben.join(', ') + '.' : '.');
-        document.getElementById('potentialBox').style.display = 'block';
-      }
-      form.style.display = 'none';
-      document.querySelector('header').style.display = 'none';
-      document.getElementById('success').style.display = 'block';
-      bar.style.width = '100%';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      sendBtn.textContent = 'Wird gesendet …';
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        var vorname = firma.split(',').pop().trim().split(' ')[0];
+        if (vorname && firma.indexOf(',') !== -1) {
+          document.getElementById('successTitle').textContent = 'Herzlichen Dank, ' + vorname + '!';
+        }
+        if (a) {
+          document.getElementById('potentialAmount').textContent =
+            'ca. ' + fmtH(a.stunden_pro_woche_min) + '–' + fmtH(a.stunden_pro_woche_max) + ' Std. pro Woche';
+          document.getElementById('potentialChf').textContent =
+            '≈ CHF ' + fmtCHF(a.chf_pro_jahr_min) + '–' + fmtCHF(a.chf_pro_jahr_max) + ' pro Jahr';
+          document.getElementById('potentialText').textContent = a.einschaetzung;
+          document.getElementById('potentialHebel').textContent =
+            (a.top_hebel && a.top_hebel.length) ? 'Ihre grössten Hebel: ' + a.top_hebel.join(' · ') : '';
+          if (a.vorbehalt) {
+            document.getElementById('potentialNote').textContent =
+              a.vorbehalt + ' Was bei Ihnen wirklich drinliegt, schauen wir im Termin gemeinsam an.';
+          }
+          document.getElementById('potentialBox').style.display = 'block';
+        }
+        form.style.display = 'none';
+        document.querySelector('header').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+        bar.style.width = '100%';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }).catch(function () {
       sendBtn.disabled = false;
       sendBtn.textContent = 'Antworten absenden →';
