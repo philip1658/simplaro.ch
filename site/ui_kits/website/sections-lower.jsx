@@ -46,7 +46,7 @@ function UeberUns() {
           <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--text-body)' }}>Simplaro ist ein Schweizer Unternehmen aus Zürich. Wir verbinden unternehmerische Praxis, menschliche Werte und moderne Technologie zu einem ganzheitlichen Ansatz – und begleiten KMU persönlich, vor Ort und auf Augenhöhe.</p>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(420px, 100%), 1fr))', gap: 22, alignItems: 'stretch' }}>
-          <TeamCard src="../../assets/andre-ulrich-team.png?v=20260720-andre-ulrich-new" alt="Porträt von André Ulrich" name="André Ulrich" role="Mitgründer · KMU-Experte" />
+          <TeamCard src="../../assets/andre-ulrich-team.png?v=20260720-andre-bg-clean" alt="Porträt von André Ulrich" name="André Ulrich" role="Mitgründer · KMU-Experte" />
           <TeamCard src="../../assets/philip-krieger-team.png" alt="Porträt von Philip Krieger" name="Philip Krieger" role="Mitgründer · Coach" />
           <QuoteCard
             logoSrc="../../assets/logo-mark-terra-symbol-white.png"
