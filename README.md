@@ -1,11 +1,9 @@
 # simplaro.ch
 
-Website der Simplaro GmbH – aus dem Claude-Design-Projekt «Simplaro Redesign» generiert.
+Website der Simplaro GmbH.
 
-- `source.dc.html` – Original-Export aus claude.ai/design (Projekt 6e135ecf…)
-- `build.py` – konvertiert den Design-Export in eine eigenständige Seite (`python3 build.py`)
-- `site/` – deploybarer Output (index.html, .htaccess, assets/)
+Der aktuelle deploybare Stand liegt im Ordner `site/`. Er wurde am 20. Juli 2026 aus der neuesten lokalen Version `simplaro-design-system` übernommen.
 
-Temporäre Preview: https://buero-bot.ch (bis simplaro.ch produktiv ist).
-
-Offene Platzhalter: Kundenstimme, Preise («ab CHF TBD»), Calendly-Link, Fotos André/Philip.
+- `site/` - aktuelle Website inklusive Assets, UI-Kit-Dateien und `.htaccess`
+- `source.dc.html` - historischer Claude-Design-Export
+- `build.py` - historisches Konvertierungsskript fur den fruheren Stand
