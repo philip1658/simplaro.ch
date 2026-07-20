@@ -1951,7 +1951,7 @@ function UeberUns() {
       alignItems: 'stretch'
     }
   }, /*#__PURE__*/React.createElement(TeamCard, {
-    src: "../../assets/andre-ulrich-team.png?v=20260718-andre-portrait",
+    src: "../../assets/andre-ulrich-team.png",
     alt: "Portr\xE4t von Andr\xE9 Ulrich",
     name: "Andr\xE9 Ulrich",
     role: "Mitgr\xFCnder \xB7 KMU-Experte"

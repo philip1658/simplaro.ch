@@ -9,7 +9,7 @@
 .chat-fab-short { display: none; }
 .hero-stamp-mobile { display: none; }
 
-/* DSG-Siegel: federnder Hover-Lift; bei sehr flachen Fenstern kollidiert es mit dem Chat-Button → im Hero ausblenden (bleibt in der Datenschutz-Karte) */
+/* DSGVO-Siegel: federnder Hover-Lift; bei sehr flachen Fenstern kollidiert es mit dem Chat-Button → im Hero ausblenden (bleibt in der Datenschutz-Karte) */
 .dsgvo-siegel { transition: transform 0.4s var(--ease-spring); }
 .dsgvo-siegel:hover { transform: translateY(-5px); }
 @media (max-height: 640px) {
