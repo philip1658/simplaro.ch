@@ -1,12 +1,12 @@
-/* DSGVO-Siegel: zertifikatartiger Sticker im Simplaro-Look.
-   Kreis mit Comic-Rand, umlaufender Schrift und ✓/DSGVO/KONFORM im Zentrum.
+/* nDSG-Siegel: zertifikatartiger Sticker im Simplaro-Look.
+   Kreis mit Comic-Rand, umlaufender Schrift und ✓/nDSG/KONFORM im Zentrum.
    Verlinkt aufs Datenschutzversprechen (#datenschutz). */
 function DsgvoSiegel({ size = 132, rotate = -8, href = '#datenschutz', className, style }) {
   const pid = React.useMemo(() => 'siegel-ring-' + Math.random().toString(36).slice(2, 8), []);
   return (
     <a
       href={href}
-      aria-label="DSGVO-konform — zu unserem Datenschutzversprechen"
+      aria-label="nDSG-konform — zu unserem Datenschutzversprechen"
       className={'dsgvo-siegel' + (className ? ' ' + className : '')}
       style={{ display: 'inline-flex', width: size, height: size, textDecoration: 'none', flex: 'none', alignSelf: 'flex-start', ...style }}
     >
@@ -20,7 +20,7 @@ function DsgvoSiegel({ size = 132, rotate = -8, href = '#datenschutz', className
           <textPath href={'#' + pid} startOffset="25%" textAnchor="middle">✦ SCHWEIZER DATENSCHUTZ ✦</textPath>
         </text>
         <text x="66" y="54" textAnchor="middle" fill="var(--terra-500)" style={{ fontFamily: 'var(--font-sans)', fontSize: '20px', fontWeight: 700 }}>✓</text>
-        <text x="66" y="77" textAnchor="middle" fill="var(--ink-900)" style={{ fontFamily: 'var(--font-sans)', fontSize: '19px', fontWeight: 700, letterSpacing: '0.5px' }}>DSGVO</text>
+        <text x="66" y="77" textAnchor="middle" fill="var(--ink-900)" style={{ fontFamily: 'var(--font-sans)', fontSize: '19px', fontWeight: 700, letterSpacing: '0.5px' }}>nDSG</text>
         <text x="65" y="92" textAnchor="middle" fill="var(--terra-600)" style={{ fontFamily: 'var(--font-sans)', fontSize: '10px', fontWeight: 700, letterSpacing: '3px' }}>KONFORM</text>
         <text x="66" y="113" textAnchor="middle" fill="var(--terra-500)" style={{ fontFamily: 'var(--font-sans)', fontSize: '10px' }}>✦</text>
       </svg>

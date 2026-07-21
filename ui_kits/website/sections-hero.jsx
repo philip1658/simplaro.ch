@@ -35,7 +35,7 @@ function Hero({ tweaks }) {
         </div>
       </div>
 
-      {/* DSGVO-Siegel — Desktop/Tablet im Hero, mobil in der Datenschutz-Karte */}
+      {/* nDSG-Siegel — Desktop/Tablet im Hero, mobil in der Datenschutz-Karte */}
       <DsgvoSiegel className="hero-siegel" style={{ position: 'absolute', zIndex: 36, right: '7vw', bottom: '12vh' }} />
 
       {/* Headline */}
