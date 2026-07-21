@@ -28,6 +28,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 1200px) {
   .header-desktop { display: none; }
   .header-mobile { display: block; }
+  .chat-root { display: none !important; }
 }
 
 /* ── ≤700px: Kern-Optimierung für Phones ─────────────────── */
