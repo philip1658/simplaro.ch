@@ -156,6 +156,16 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   #ablauf ol li:first-child p { order: 3; }
   #begleitung article { padding: 32px 24px !important; }
   #faq > div { gap: 32px !important; }
+  #faq > div > div:last-child {
+    width: 100% !important;
+    align-items: stretch !important;
+    justify-items: stretch !important;
+  }
+  #faq details,
+  #faq summary {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
 
   /* Statements & Kontakt: Headline-Grössen fürs Phone */
   #orientierung h2 { font-size: clamp(32px, 9.7vw, 52px) !important; }
