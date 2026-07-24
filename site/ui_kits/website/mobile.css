@@ -19,11 +19,11 @@ html { scroll-padding-top: 116px; }
 .chat-fab-short { display: none; }
 .hero-stamp-mobile { display: none; }
 
-/* nDSG-Siegel: federnder Hover-Lift; bei sehr flachen Fenstern kollidiert es mit dem Chat-Button → im Hero ausblenden (bleibt in der Datenschutz-Karte) */
+/* DSG-Siegel: federnder Hover-Lift; bei sehr flachen Fenstern etwas kompakter. */
 .dsgvo-siegel { transition: transform 0.4s var(--ease-spring); }
 .dsgvo-siegel:hover { transform: translateY(-5px); }
 @media (max-height: 640px) {
-  .hero-siegel { display: none !important; }
+  .hero-siegel { width: 92px !important; height: 92px !important; }
 }
 
 /* Touch: kein graues Tap-Highlight */
@@ -62,7 +62,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 
   /* Erstanalyse-Stempel: mobil im Headline-Stapel statt frei schwebend */
   .hero-stamp { display: none !important; }
-  .hero-siegel { display: none !important; }
+  .hero-siegel { display: inline-flex !important; width: 82px !important; height: 82px !important; right: 18px !important; bottom: calc(20px + env(safe-area-inset-bottom)) !important; transform: none !important; }
   .hero-stamp-mobile { display: inline-flex; align-items: baseline; justify-content: center; gap: 9px; pointer-events: auto; margin-top: 16px; background: rgba(255,244,236,0.12); border: 1px solid rgba(255,255,255,0.32); color: var(--cream-50); border-radius: 999px; padding: 8px 14px; font-size: clamp(10.5px, 3.3vw, 13px); font-weight: 700; letter-spacing: 0; line-height: 1.2; text-decoration: none; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
   .hero-stamp-mobile:hover { color: var(--cream-50); }
   .hero-stamp-mobile > span { color: var(--peach-200); }
@@ -120,6 +120,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .hero-stamp-mobile { margin-top: 12px; padding: 10px 16px; }
   .hero-robot { bottom: -4svh !important; }
   .hero-headline { top: 10vh !important; }
+  .hero-siegel { width: 72px !important; height: 72px !important; right: 14px !important; bottom: calc(14px + env(safe-area-inset-bottom)) !important; }
 }
 
 /* Menü-Overlay: sanfte Einblendung */
