@@ -141,6 +141,19 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 
   /* Karten: engeres Innen-Padding */
   #ablauf ol li { padding: 28px 22px !important; }
+  #ablauf ol li:first-child { gap: 10px !important; }
+  #ablauf ol li:first-child > div:first-child { display: contents !important; }
+  #ablauf ol li:first-child > div:first-child > span:first-child {
+    order: 0;
+    align-self: center !important;
+  }
+  #ablauf ol li:first-child h3 { order: 1; }
+  #ablauf ol li:first-child > div:first-child > span:nth-child(2) {
+    order: 2;
+    align-self: center !important;
+    margin-top: -2px;
+  }
+  #ablauf ol li:first-child p { order: 3; }
   #begleitung article { padding: 32px 24px !important; }
   #faq > div { gap: 32px !important; }
 
