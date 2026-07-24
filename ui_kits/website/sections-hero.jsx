@@ -12,13 +12,6 @@ function Hero({ tweaks }) {
     color: 'var(--cream-50)', textDecoration: 'none', fontSize: t.stampFontSize, fontWeight: 700, lineHeight: 1.2,
     boxSizing: 'border-box',
   };
-  const proofPointStyle = {
-    display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, whiteSpace: 'nowrap',
-    color: 'rgba(255,253,248,0.92)', lineHeight: 1.25,
-  };
-  const proofNumberStyle = {
-    color: 'var(--peach-200)', fontSize: '0.82em', fontWeight: 700, letterSpacing: '0.08em',
-  };
   return (
     <section id="top" data-screen-label="Hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden', background: 'var(--grad-terra-hero)' }}>
       {/* Licht von unten, Abdunklung oben */}
@@ -48,14 +41,10 @@ function Hero({ tweaks }) {
       {/* Headline */}
       <div className="hero-headline" style={{ position: 'absolute', zIndex: 30, left: 0, right: 0, top: `${t.headlineTop}vh`, pointerEvents: 'none', color: 'var(--cream-50)', textAlign: 'center' }}>
         <h1 style={{ margin: '0 auto', maxWidth: 'min(1040px, calc(100vw - 40px))', fontSize: 'clamp(32px, 4vw, 68px)', fontWeight: 600, letterSpacing: 0, lineHeight: 1.06 }}>
-          <span style={{ display: 'block' }}>Der Schweizer</span>
-          <span style={{ display: 'block', color: 'var(--peach-200)' }}>Transformationspartner für KMU</span>
+          <span style={{ display: 'block' }}>KI und Automatisierung</span>
+          <span style={{ display: 'block', color: 'var(--peach-200)' }}>für Schweizer KMU</span>
         </h1>
-        <div className="hero-proof-points" style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: 'clamp(18px, 2.6vw, 36px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.6vh, 30px)', padding: '0 20px', fontSize: 'clamp(12.5px, 1.05vw, 16.5px)', fontWeight: 700, letterSpacing: '0.04em' }}>
-          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>01</span><span>Standortbestimmung</span></span>
-          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>02</span><span>Implementierung</span></span>
-          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>03</span><span>Trainings und nachhaltige Begleitung</span></span>
-        </div>
+        <p className="hero-subline" style={{ margin: 'clamp(18px, 2.6vh, 30px) auto 0', maxWidth: 780, padding: '0 20px', fontSize: 18, fontWeight: 600, letterSpacing: 0, lineHeight: 1.55, color: 'rgba(255,253,248,0.9)' }}>Wir analysieren Abläufe, setzen digitale Lösungen um und begleiten Teams, bis sie im Alltag funktionieren.</p>
         <div className="hero-cta" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(10px, 1.4vw, 18px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.7vh, 32px)', pointerEvents: 'auto', padding: '0 20px' }}>
           <a className="hero-pill hero-cta-pill" href="#kontakt" style={stampButtonStyle}>
             <span>Erstgespräch</span>
