@@ -118,6 +118,7 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   #buerobot li,
   #datenschutz li {
     flex-direction: column !important;
+    align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
     max-width: 380px;
