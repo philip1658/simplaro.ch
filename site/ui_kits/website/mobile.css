@@ -5,6 +5,16 @@
    ============================================================ */
 
 /* Mobile-Header standardmässig aus (Desktop zeigt SiteHeader) */
+.site-header-shell {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 180;
+  width: 100%;
+}
+.site-header-spacer { height: 113px; }
+html { scroll-padding-top: 116px; }
 .header-mobile { display: none; }
 .chat-fab-short { display: none; }
 .hero-stamp-mobile { display: none; }
@@ -28,6 +38,8 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 @media (max-width: 1200px) {
   .header-desktop { display: none; }
   .header-mobile { display: block; }
+  .site-header-spacer { height: 65px; }
+  html { scroll-padding-top: 68px; }
   .chat-root { display: none !important; }
 }
 

@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div>
-      <div style={{ position: 'sticky', top: 0, zIndex: 60 }}>
+      <div className="site-header-shell">
         <div className="header-desktop">
           <SiteHeader
             logoSrc="../../assets/logo-lockup-terra-symbol-cream.png"
@@ -73,6 +73,7 @@ function App() {
           ctaLabel={null}
         />
       </div>
+      <div className="site-header-spacer" aria-hidden="true"></div>
       <Hero tweaks={tweaks} />
       <main>
         <Orientierung />
