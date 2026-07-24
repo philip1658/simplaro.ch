@@ -70,9 +70,74 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   main section > div { padding: 56px 20px !important; }
   main h2, main h3 { overflow-wrap: break-word; hyphens: auto; }
 
+  /* Mobile-Entwurf: Inhaltsbereiche konsequent zentrieren */
+  main section,
+  main section > div,
+  main section article,
+  main section h2,
+  main section h3,
+  main section p,
+  main section small,
+  main section summary {
+    text-align: center !important;
+  }
+  main section > div,
+  main section > div > div,
+  main section article,
+  main section article > div {
+    align-items: center !important;
+    justify-items: center !important;
+  }
+  main section p,
+  main section h2,
+  main section h3 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  main section ul,
+  main section ol {
+    justify-content: center !important;
+    justify-items: center !important;
+    align-items: center !important;
+  }
+
   /* Leistungen: schmale Nummern-Spalte, Pfeil weg */
-  #leistungen article { grid-template-columns: 30px 1fr !important; gap: 16px !important; padding: 22px 2px !important; }
+  #leistungen article { grid-template-columns: 1fr !important; gap: 12px !important; padding: 26px 4px !important; }
+  #leistungen article > span,
+  #leistungen article > div {
+    justify-self: center !important;
+  }
   #leistungen article > i { display: none !important; }
+
+  /* Listen und Karten: Icons bleiben ruhig, Texte stehen mittig */
+  #buerobot ul,
+  #datenschutz ul,
+  #begleitung article ul {
+    width: 100%;
+  }
+  #buerobot li,
+  #datenschutz li {
+    flex-direction: column !important;
+    justify-content: center !important;
+    text-align: center !important;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #datenschutz li > span:not([aria-hidden="true"]) {
+    align-items: center !important;
+  }
+  #begleitung article li {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  #ablauf ol li > div,
+  #faq summary {
+    justify-content: center !important;
+  }
+  #faq summary {
+    gap: 10px !important;
+  }
 
   /* Karten: engeres Innen-Padding */
   #ablauf ol li { padding: 28px 22px !important; }
@@ -103,6 +168,18 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
   .chat-panel { width: calc(100vw - 28px) !important; height: min(74svh, 560px) !important; }
   .chat-input { font-size: 16px !important; }
   .chat-send { min-width: 52px; }
+}
+
+@media (max-width: 1200px) {
+  .header-mobile nav a {
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 8px !important;
+  }
+  .header-mobile nav a span:last-child {
+    display: none !important;
+  }
 }
 
 /* ── ≤480px: schmale Phones (360–430px) ──────────────────── */
