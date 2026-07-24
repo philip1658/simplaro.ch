@@ -55,6 +55,11 @@ function Hero({ tweaks }) {
             <span aria-hidden="true" style={{ color: 'var(--peach-200)', fontWeight: 700 }}>→</span>
           </a>
         </div>
+        <div className="hero-mobile-values" aria-hidden="true">
+          <span>Vertrauen</span>
+          <span>Orientierung</span>
+          <span>Entwicklung</span>
+        </div>
       </div>
 
       {/* Markenzeilen unten */}
