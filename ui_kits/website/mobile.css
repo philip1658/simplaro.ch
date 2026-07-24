@@ -146,9 +146,11 @@ a, button, summary { -webkit-tap-highlight-color: transparent; }
 
   /* Statements & Kontakt: Headline-Grössen fürs Phone */
   #orientierung h2 { font-size: clamp(32px, 9.7vw, 52px) !important; }
-  #datenschutz .datenschutz-heading { hyphens: none !important; overflow-wrap: normal !important; word-break: keep-all; }
+  #datenschutz .datenschutz-heading { hyphens: none !important; overflow-wrap: normal !important; word-break: keep-all; line-height: 1.01 !important; }
   #datenschutz .datenschutz-heading-main,
-  #datenschutz .datenschutz-heading-verb { display: block; }
+  #datenschutz .datenschutz-heading-verb,
+  #datenschutz .datenschutz-heading-trust { display: block; }
+  #datenschutz .datenschutz-heading-break { display: none; }
   section[data-screen-label="Versprechen"] h2 { font-size: clamp(30px, 9vw, 44px) !important; }
   #kontakt h2 { font-size: clamp(30px, 8.6vw, 46px) !important; }
 

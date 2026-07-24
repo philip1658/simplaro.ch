@@ -139,7 +139,7 @@ function Datenschutz() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
           <Kicker tone="onTerra" number="05">Vertrauen</Kicker>
           <h2 className="datenschutz-heading" style={{ margin: 0, fontSize: 'var(--text-h2)', fontWeight: 600, letterSpacing: '-0.03em', lineHeight: 1.08, color: '#FFFFFF' }}>
-            <span className="datenschutz-heading-main">Ihre Daten <span className="datenschutz-heading-verb">verdienen</span></span><br /><span style={{ color: 'var(--peach-200)' }}>Vertrauen und Schutz.</span>
+            <span className="datenschutz-heading-main">Ihre Daten <span className="datenschutz-heading-verb">verdienen</span></span><br className="datenschutz-heading-break" /><span className="datenschutz-heading-trust" style={{ color: 'var(--peach-200)' }}>Vertrauen und Schutz.</span>
           </h2>
           <p style={{ margin: 0, fontSize: 16.5, lineHeight: 1.7, color: 'var(--text-on-terra-soft)', maxWidth: '54ch' }}>Wir verpflichten uns, Personendaten im Einklang mit dem geltenden Schweizer Datenschutzgesetz zu bearbeiten. Datenschutz berücksichtigen wir von der Planung bis zur Umsetzung jeder digitalen Lösung.</p>
           <ul style={{ display: 'flex', flexDirection: 'column', gap: 13, listStyle: 'none', margin: '2px 0 0', padding: 0 }}>
