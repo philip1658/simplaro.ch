@@ -12,6 +12,13 @@ function Hero({ tweaks }) {
     color: 'var(--cream-50)', textDecoration: 'none', fontSize: t.stampFontSize, fontWeight: 700, lineHeight: 1.2,
     boxSizing: 'border-box',
   };
+  const proofPointStyle = {
+    display: 'inline-flex', alignItems: 'baseline', justifyContent: 'center', gap: 8, whiteSpace: 'nowrap',
+    color: 'rgba(255,253,248,0.92)', lineHeight: 1.25,
+  };
+  const proofNumberStyle = {
+    color: 'var(--peach-200)', fontSize: '0.82em', fontWeight: 700, letterSpacing: '0.08em',
+  };
   return (
     <section id="top" data-screen-label="Hero" style={{ position: 'relative', height: '100vh', overflow: 'hidden', background: 'var(--grad-terra-hero)' }}>
       {/* Licht von unten, Abdunklung oben */}
@@ -44,10 +51,10 @@ function Hero({ tweaks }) {
           <span style={{ display: 'block' }}>Der Schweizer</span>
           <span style={{ display: 'block', color: 'var(--peach-200)' }}>Transformationspartner für KMU</span>
         </h1>
-        <div className="hero-pills" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(10px, 1.4vw, 18px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.6vh, 30px)', fontSize: 'clamp(12.5px, 1.05vw, 16.5px)', fontWeight: 600, letterSpacing: '0.06em' }}>
-          <span className="hero-pill" style={{ display: 'flex', alignItems: 'baseline', gap: 9, whiteSpace: 'nowrap', background: 'rgba(255,244,236,0.12)', border: '1px solid rgba(255,255,255,0.32)', borderRadius: 999, padding: '10px 20px', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}><span style={{ fontSize: '0.78em', color: 'var(--peach-200)' }}>01</span><span style={{ fontWeight: 700 }}>Standortbestimmung</span></span>
-          <span className="hero-pill" style={{ display: 'flex', alignItems: 'baseline', gap: 9, whiteSpace: 'nowrap', background: 'rgba(255,244,236,0.12)', border: '1px solid rgba(255,255,255,0.32)', borderRadius: 999, padding: '10px 20px', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}><span style={{ fontSize: '0.78em', color: 'var(--peach-200)' }}>02</span><span style={{ fontWeight: 700 }}>Implementierung</span></span>
-          <span className="hero-pill" style={{ display: 'flex', alignItems: 'baseline', gap: 9, whiteSpace: 'nowrap', background: 'rgba(255,244,236,0.12)', border: '1px solid rgba(255,255,255,0.32)', borderRadius: 999, padding: '10px 20px', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}><span style={{ fontSize: '0.78em', color: 'var(--peach-200)' }}>03</span><span style={{ fontWeight: 700 }}>Trainings &amp; nachhaltige Begleitung</span></span>
+        <div className="hero-proof-points" style={{ display: 'flex', justifyContent: 'center', alignItems: 'baseline', gap: 'clamp(18px, 2.6vw, 36px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.6vh, 30px)', padding: '0 20px', fontSize: 'clamp(12.5px, 1.05vw, 16.5px)', fontWeight: 700, letterSpacing: '0.04em' }}>
+          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>01</span><span>Standortbestimmung</span></span>
+          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>02</span><span>Implementierung</span></span>
+          <span className="hero-proof-point" style={proofPointStyle}><span style={proofNumberStyle}>03</span><span>Trainings und nachhaltige Begleitung</span></span>
         </div>
         <div className="hero-cta" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(10px, 1.4vw, 18px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.7vh, 32px)', pointerEvents: 'auto', padding: '0 20px' }}>
           <a className="hero-pill hero-cta-pill" href="#kontakt" style={stampButtonStyle}>
