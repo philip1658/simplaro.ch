@@ -108,11 +108,7 @@ function Hero() {
     <section id="top" className="mock-hero" aria-label="Start">
       <div className="mock-hero__content">
         <div className="mock-hero__text">
-          <h1>
-            <span>Wir befähigen</span>
-            <span>Schweizer KMU</span>
-            <span>im Zeitalter von KI</span>
-          </h1>
+          <h1>Wir helfen Schweizer KMU, mit KI täglich Zeit und Kosten zu sparen.</h1>
           <ul className="mock-hero__checks">
             <li>Simpel</li>
             <li>Klar</li>

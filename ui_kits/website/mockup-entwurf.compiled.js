@@ -124,7 +124,7 @@ function Hero() {
     className: "mock-hero__content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-hero__text"
-  }, /*#__PURE__*/React.createElement("h1", null, /*#__PURE__*/React.createElement("span", null, "Wir bef\xE4higen"), /*#__PURE__*/React.createElement("span", null, "Schweizer KMU"), /*#__PURE__*/React.createElement("span", null, "im Zeitalter von KI")), /*#__PURE__*/React.createElement("ul", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Wir helfen Schweizer KMU, mit KI t\xE4glich Zeit und Kosten zu sparen."), /*#__PURE__*/React.createElement("ul", {
     className: "mock-hero__checks"
   }, /*#__PURE__*/React.createElement("li", null, "Simpel"), /*#__PURE__*/React.createElement("li", null, "Klar"), /*#__PURE__*/React.createElement("li", null, "Pers\xF6nlich"))), /*#__PURE__*/React.createElement("div", {
     className: "mock-hero__actions"
