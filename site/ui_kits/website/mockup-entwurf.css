@@ -58,27 +58,42 @@ body {
 }
 
 .mock-header__nav a {
-  color: var(--text-strong);
+  color: #000000;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .mock-header__nav a:hover,
 .mock-header__nav a:focus-visible {
-  color: var(--terra-500);
+  color: #000000;
+}
+
+.mock-nav-product {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.mock-nav-brand {
+  color: #000000;
+  font-weight: 500;
+}
+
+.mock-nav-accent {
+  color: #bc480f;
+  font-weight: 800;
 }
 
 .mock-header__contact {
-  background: var(--terra-500);
-  color: #fff !important;
+  background: #bc480f;
+  color: #000000 !important;
   border-radius: 999px;
   padding: 11px 20px;
 }
 
 .mock-header__contact:hover,
 .mock-header__contact:focus-visible {
-  background: var(--terra-700);
-  color: #fff !important;
+  background: #bc480f;
+  color: #000000 !important;
 }
 
 .mock-hero {
