@@ -64,7 +64,7 @@ function Hero({ tweaks }) {
 
       {/* Markenzeilen unten */}
       <div className="hero-brand" style={{ position: 'absolute', zIndex: 40, left: '3.5vw', bottom: '4.6vh', fontSize: 11, letterSpacing: '0.16em', color: 'var(--cream-50)' }}>
-        VERTRAUEN&nbsp;&nbsp;·&nbsp;&nbsp;ORIENTIERUNG&nbsp;&nbsp;·&nbsp;&nbsp;ENTWICKLUNG
+        ORIENTIERUNG&nbsp;&nbsp;·&nbsp;&nbsp;ENTWICKLUNG&nbsp;&nbsp;·&nbsp;&nbsp;BEGLEITUNG
       </div>
       <a href="#kontakt" className="hero-brand-link" style={{ position: 'absolute', zIndex: 40, right: '3.5vw', bottom: '4.6vh', fontSize: 11, letterSpacing: '0.18em', color: 'var(--cream-50)', textDecoration: 'none' }}>
         SIMPLARO.CH
