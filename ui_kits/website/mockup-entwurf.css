@@ -787,7 +787,15 @@ body {
   }
 
   .mock-mobile-nav .mock-header__contact {
-    background: #bc480f;
+    background: transparent;
+    color: #000000 !important;
+    padding: 0;
+  }
+
+  .mock-mobile-nav .mock-header__contact:hover,
+  .mock-mobile-nav .mock-header__contact:focus-visible {
+    background: transparent;
+    color: #000000 !important;
   }
 
   .mock-hero {
