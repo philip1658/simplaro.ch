@@ -41,8 +41,8 @@ function Hero({ tweaks }) {
       {/* Headline */}
       <div className="hero-headline" style={{ position: 'absolute', zIndex: 30, left: 0, right: 0, top: `${t.headlineTop}vh`, pointerEvents: 'none', color: 'var(--cream-50)', textAlign: 'center' }}>
         <h1 style={{ margin: '0 auto', maxWidth: 'min(1040px, calc(100vw - 40px))', fontSize: 'clamp(32px, 4vw, 68px)', fontWeight: 600, letterSpacing: 0, lineHeight: 1.06 }}>
-          <span style={{ display: 'block' }}>KI und Automatisierung</span>
-          <span style={{ display: 'block', color: 'var(--peach-200)' }}>für Schweizer KMU</span>
+          <span style={{ display: 'block' }}>KI für KMU verständlich erklärt,</span>
+          <span style={{ display: 'block', color: 'var(--peach-200)' }}>zuverlässig umgesetzt</span>
         </h1>
         <p className="hero-subline" style={{ margin: 'clamp(18px, 2.6vh, 30px) auto 0', maxWidth: 780, padding: '0 20px', fontSize: 18, fontWeight: 600, letterSpacing: 0, lineHeight: 1.55, color: 'rgba(255,253,248,0.9)' }}>Wir analysieren Abläufe, setzen digitale Lösungen um und begleiten Teams, bis sie im Alltag funktionieren.</p>
         <div className="hero-cta" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 'clamp(10px, 1.4vw, 18px)', flexWrap: 'wrap', marginTop: 'clamp(18px, 2.7vh, 32px)', pointerEvents: 'auto', padding: '0 20px' }}>
