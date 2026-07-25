@@ -1,4 +1,9 @@
 const { Kicker, FaqItem, SiteFooter } = window.SimplaroDesignSystem_5f353f;
+const ASSET_BASE = window.SIMPLARO_ASSET_BASE || '../../assets/';
+
+function asset(path) {
+  return ASSET_BASE + path;
+}
 
 const NAV_LINKS = [
   { label: 'SimplaroLearning', href: '#learning', product: 'Learning' },
@@ -62,7 +67,7 @@ function Header() {
     <header className="mock-header">
       <div className="mock-header__inner">
         <a className="mock-header__logo" href="#top" aria-label="Simplaro Start">
-          <img src="../../assets/logo-lockup-terra.png" alt="Simplaro" />
+          <img src={asset('logo-lockup-terra.png')} alt="Simplaro" />
         </a>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
           {NAV_LINKS.map((link) => (
@@ -98,7 +103,7 @@ function Hero() {
         </div>
       </div>
       <div className="mock-hero__robot" aria-hidden="true">
-        <img src="../../assets/buerobot-poster-hand-sharp.jpg" alt="" />
+        <img src={asset('buerobot-poster-hand-sharp.jpg')} alt="" />
       </div>
     </section>
   );
@@ -120,7 +125,7 @@ function Learning() {
           </div>
         </div>
         <div className="mock-learning-visual">
-          <img className="mock-learning-image" src="../../assets/simplaro-robot-teacher.png" alt="SimplaroBot als Lehrer vor einem Whiteboard" />
+          <img className="mock-learning-image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
     </section>
@@ -135,7 +140,7 @@ function MockupBuerobotVideo() {
     let url = null;
     let cancelled = false;
 
-    fetch('../../assets/buerobot-dance.mp4')
+    fetch(asset('buerobot-dance.mp4'))
       .then((response) => {
         if (!response.ok) throw new Error('video ' + response.status);
         return response.blob();
@@ -162,7 +167,7 @@ function MockupBuerobotVideo() {
   }, []);
 
   if (failed) {
-    return <img className="mock-bot-image" src="../../assets/buerobot-phone.jpg" alt="Büro-Bot unterstützt bei Prozessen" />;
+    return <img className="mock-bot-image" src={asset('buerobot-phone.jpg')} alt="Büro-Bot unterstützt bei Prozessen" />;
   }
 
   return (
@@ -251,12 +256,12 @@ function UeberUns() {
         </div>
         <div className="mock-team-grid">
           <article className="mock-team-card">
-            <img src="../../assets/andre-ulrich-team.png?v=20260720-andre-bg-clean" alt="André Ulrich" />
+            <img src={asset('andre-ulrich-team.png?v=20260720-andre-bg-clean')} alt="André Ulrich" />
             <h3>André Ulrich</h3>
             <p>Mitgründer · KMU-Experte</p>
           </article>
           <article className="mock-team-card">
-            <img src="../../assets/philip-krieger-team.png" alt="Philip Krieger" />
+            <img src={asset('philip-krieger-team.png')} alt="Philip Krieger" />
             <h3>Philip Krieger</h3>
             <p>Mitgründer · Coach</p>
           </article>
@@ -273,7 +278,7 @@ function Faq() {
         <div className="mock-center">
           <Kicker number="05">FAQ</Kicker>
           <h2 className="mock-title">Die wichtigsten Fragen und Antworten zu Simplaro.</h2>
-          <img className="mock-faq-robot" src="../../assets/buerobot-faq-simplaro.png?v=20260725-17" alt="SimplaroBot beantwortet Fragen" />
+          <img className="mock-faq-robot" src={asset('buerobot-faq-simplaro.png?v=20260725-17')} alt="SimplaroBot beantwortet Fragen" />
         </div>
         <div>
           {FAQS.map(([question, answer], index) => (
@@ -317,7 +322,7 @@ function App() {
         <Faq />
         <Kontakt />
       </main>
-      <SiteFooter logoSrc="../../assets/logo-lockup-white.png" />
+      <SiteFooter logoSrc={asset('logo-lockup-white.png')} />
       <ChatWidget open={chatOpen} onOpen={() => setChatOpen(true)} onClose={() => setChatOpen(false)} />
     </div>
   );
