@@ -390,7 +390,11 @@ body {
 
 .mock-bot-image {
   width: min(520px, 100%);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
   border-radius: 8px;
+  background: rgba(28, 22, 19, 0.14);
   box-shadow: 0 34px 88px rgba(44, 13, 4, 0.36);
 }
 

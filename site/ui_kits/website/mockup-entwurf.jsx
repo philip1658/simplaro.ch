@@ -112,12 +112,63 @@ function Learning() {
   );
 }
 
+function MockupBuerobotVideo() {
+  const ref = React.useRef(null);
+  const [failed, setFailed] = React.useState(false);
+
+  React.useEffect(() => {
+    let url = null;
+    let cancelled = false;
+
+    fetch('../../assets/buerobot-dance.mp4')
+      .then((response) => {
+        if (!response.ok) throw new Error('video ' + response.status);
+        return response.blob();
+      })
+      .then((blob) => {
+        if (cancelled) return;
+        url = URL.createObjectURL(blob);
+        const video = ref.current;
+        if (!video) return;
+        video.muted = true;
+        video.defaultMuted = true;
+        video.volume = 0;
+        video.src = url;
+        video.play().catch(() => {});
+      })
+      .catch(() => {
+        if (!cancelled) setFailed(true);
+      });
+
+    return () => {
+      cancelled = true;
+      if (url) URL.revokeObjectURL(url);
+    };
+  }, []);
+
+  if (failed) {
+    return <img className="mock-bot-image" src="../../assets/buerobot-phone.jpg" alt="Büro-Bot unterstützt bei Prozessen" />;
+  }
+
+  return (
+    <video
+      className="mock-bot-image"
+      ref={ref}
+      autoPlay
+      muted
+      loop
+      playsInline
+      aria-label="Büro-Bot in Bewegung"
+    ></video>
+  );
+}
+
 function Bot() {
   return (
     <section id="bot" className="mock-section mock-section--terra">
       <div className="mock-wrap mock-grid">
         <div>
-          <img className="mock-bot-image" src="../../assets/buerobot-phone.jpg" alt="Büro-Bot unterstützt bei Prozessen" />
+          <MockupBuerobotVideo />
         </div>
         <div className="mock-copy">
           <Kicker tone="onTerra" number="02">Automatisieren</Kicker>
