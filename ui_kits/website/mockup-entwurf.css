@@ -75,7 +75,7 @@ body {
 
 .mock-nav-brand {
   color: #000000;
-  font-weight: 500;
+  font-weight: inherit;
 }
 
 .mock-nav-accent {
