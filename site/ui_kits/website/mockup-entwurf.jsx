@@ -104,8 +104,8 @@ function Learning() {
             <a className="mock-button mock-button--sand" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
           </div>
         </div>
-        <div className="mock-robot-card" aria-hidden="true">
-          <img className="mock-question-robot" src="../../assets/buerobot-question.png" alt="" />
+        <div className="mock-learning-visual">
+          <img className="mock-learning-image" src="../../assets/simplaro-robot-teacher.png" alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
     </section>

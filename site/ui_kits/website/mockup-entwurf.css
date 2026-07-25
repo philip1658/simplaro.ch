@@ -317,6 +317,22 @@ body {
   justify-content: center;
 }
 
+.mock-learning-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mock-learning-image {
+  width: min(640px, 100%);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 34px 88px rgba(64, 31, 8, 0.22);
+}
+
 .mock-question-robot {
   width: min(420px, 86vw);
   filter: drop-shadow(0 24px 38px rgba(64, 31, 8, 0.22));
@@ -660,6 +676,10 @@ body {
 
   .mock-robot-card {
     min-height: 260px;
+  }
+
+  .mock-learning-image {
+    width: min(100%, 340px);
   }
 
   .mock-question-robot,
