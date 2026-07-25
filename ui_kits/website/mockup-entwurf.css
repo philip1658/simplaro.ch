@@ -702,7 +702,7 @@ body {
 
   .mock-hero {
     height: 100svh;
-    min-height: 720px;
+    min-height: 760px;
     padding: 108px 20px 36px;
   }
 
@@ -737,11 +737,11 @@ body {
   }
 
   .mock-hero__robot {
-    --robot-top: clamp(506px, 60svh, 532px);
+    --robot-top: clamp(430px, 55svh, 488px);
     top: var(--robot-top);
     bottom: auto;
     width: auto;
-    height: min(300px, 63vw, calc(100svh - var(--robot-top) - 8px));
+    height: min(390px, 94vw, calc(100% - var(--robot-top) - 8px));
   }
 
   .mock-wrap {
