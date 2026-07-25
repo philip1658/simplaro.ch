@@ -113,7 +113,7 @@ body {
 .mock-hero__content {
   position: relative;
   z-index: 5;
-  width: min(100%, 980px);
+  width: min(100%, 1240px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -178,6 +178,19 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 14px;
+}
+
+.mock-hero__actions {
+  align-self: stretch;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: clamp(8px, 1.2vw, 18px);
+  padding: 0 clamp(8px, 2vw, 24px);
+  box-sizing: border-box;
+}
+
+.mock-hero__actions .mock-button {
+  min-width: min(270px, 34vw);
 }
 
 .mock-button {
@@ -249,7 +262,7 @@ body {
   position: absolute;
   z-index: 2;
   left: 50%;
-  bottom: -74px;
+  bottom: -112px;
   width: min(720px, 58vw);
   transform: translateX(-50%);
   pointer-events: none;
@@ -672,13 +685,20 @@ body {
     width: 100%;
   }
 
+  .mock-hero__actions {
+    align-self: center;
+    justify-content: center;
+    margin-top: 2px;
+    padding: 0;
+  }
+
   .mock-button {
     width: min(100%, 340px);
   }
 
   .mock-hero__robot {
     width: min(600px, 120vw);
-    bottom: -52px;
+    bottom: -76px;
   }
 
   .mock-hero__seal {
