@@ -211,9 +211,9 @@ function ServiceCard({ title, badge, features }) {
     <article className="mock-service-card">
       <div className="mock-service-card__head">
         <h3>{title}</h3>
-        {badge ? <span className="mock-service-badge">{badge}</span> : null}
       </div>
       <div className="mock-service-card__body">
+        {badge ? <span className="mock-service-badge">{badge}</span> : null}
         <ul>
           {features.map((feature) => <li key={feature}>{feature}</li>)}
         </ul>
