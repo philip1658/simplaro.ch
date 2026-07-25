@@ -252,7 +252,7 @@ function UeberUns() {
         <div className="mock-center">
           <Kicker number="04">Über uns</Kicker>
           <h2 className="mock-title">Unternehmerische Praxis, menschliche Werte und moderne Technologie.</h2>
-          <p className="mock-lead" style={{ maxWidth: 980 }}>André Ulrich und Philip Krieger sind zwei Jungunternehmer aus Zürich. Sie haben Simplaro gegründet, um Schweizer KMU in das Zeitalter von KI zu begleiten und sie zu befähigen, KI für ihr Unternehmen einzusetzen. Wir verbinden unternehmerische Praxis, menschliche Werte und moderne Technologie zu einem ganzheitlichen Ansatz und begleiten KMU persönlich, vor Ort und auf Augenhöhe.</p>
+          <p className="mock-lead" style={{ maxWidth: 980 }}>André Ulrich und Philip Krieger sind zwei Unternehmer aus Zürich. Sie haben Simplaro gegründet, um Schweizer KMU in das Zeitalter von KI zu begleiten und sie zu befähigen, KI für ihr Unternehmen einzusetzen. Wir verbinden unternehmerische Praxis, menschliche Werte und moderne Technologie zu einem ganzheitlichen Ansatz und begleiten KMU persönlich, vor Ort und auf Augenhöhe.</p>
         </div>
         <div className="mock-team-grid">
           <article className="mock-team-card">
