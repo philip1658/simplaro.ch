@@ -676,6 +676,31 @@ body {
   padding-top: 64px;
 }
 
+.mock-page > footer > div {
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 34px 24px !important;
+  text-align: center !important;
+}
+
+.mock-page > footer > div > a {
+  justify-content: center !important;
+}
+
+.mock-page > footer > div > p {
+  text-align: center !important;
+}
+
+.mock-page > footer > div > div {
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 10px 20px !important;
+  text-align: center !important;
+}
+
 @media (max-width: 1080px) {
   .mock-header__inner {
     min-height: 74px;
