@@ -38,14 +38,13 @@ function ChatWidget({ open, onOpen, onClose }) {
   };
 
   return (
-    <div data-screen-label="Chatbot" className="chat-root" style={{ position: 'fixed', right: 22, bottom: 22, zIndex: 90, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+    <div data-screen-label="Chatbot" className="chat-root" style={{ position: 'fixed', right: 0, bottom: 0, zIndex: 90, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
       {!open && (
         <Button variant="light" size="sm" onClick={onOpen} style={chatFabStyle}>
           <span style={{ width: 24, height: 24, borderRadius: 10, background: 'var(--cream-100)', border: '1px solid rgba(28,22,19,0.18)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 24px' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--terra-500)', display: 'block' }}></span>
           </span>
           <span className="chat-fab-long">Fragen an den SimplaroBot?</span>
-          <span className="chat-fab-short">Fragen an den SimplaroBot?</span>
         </Button>
       )}
       {open && (
