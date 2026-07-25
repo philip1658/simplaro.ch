@@ -1,9 +1,9 @@
 const { Kicker, FaqItem, SiteFooter } = window.SimplaroDesignSystem_5f353f;
 
 const NAV_LINKS = [
-  { label: 'SimplaroLearning', href: '#learning' },
-  { label: 'SimplaroBot', href: '#bot' },
-  { label: 'SimplaroService', href: '#service' },
+  { label: 'SimplaroLearning', href: '#learning', product: 'Learning' },
+  { label: 'SimplaroBot', href: '#bot', product: 'Bot' },
+  { label: 'SimplaroService', href: '#service', product: 'Service' },
   { label: 'Über uns', href: '#ueber-uns' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt', contact: true },
@@ -47,6 +47,16 @@ function ProductName({ name, className = '' }) {
   );
 }
 
+function NavLabel({ link }) {
+  if (!link.product) return link.label;
+  return (
+    <span className="mock-nav-product">
+      <span className="mock-nav-brand">Simplaro</span>
+      <span className="mock-nav-accent">{link.product}</span>
+    </span>
+  );
+}
+
 function Header() {
   return (
     <header className="mock-header">
@@ -56,7 +66,9 @@ function Header() {
         </a>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href}>{link.label}</a>
+            <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
+              <NavLabel link={link} />
+            </a>
           ))}
         </nav>
       </div>
