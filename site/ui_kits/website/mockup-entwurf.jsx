@@ -63,12 +63,27 @@ function NavLabel({ link }) {
 }
 
 function Header() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="mock-header">
       <div className="mock-header__inner">
         <a className="mock-header__logo" href="#top" aria-label="Simplaro Start">
           <img src={asset('logo-lockup-terra.png')} alt="Simplaro" />
         </a>
+        <button
+          className="mock-menu-toggle"
+          type="button"
+          aria-label={menuOpen ? 'Menü schliessen' : 'Menü öffnen'}
+          aria-controls="mock-mobile-menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
           {NAV_LINKS.map((link) => (
             <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
@@ -77,6 +92,13 @@ function Header() {
           ))}
         </nav>
       </div>
+      <nav id="mock-mobile-menu" className={`mock-mobile-nav${menuOpen ? ' is-open' : ''}`} aria-label="Mobile Navigation">
+        {NAV_LINKS.map((link) => (
+          <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
+            <NavLabel link={link} />
+          </a>
+        ))}
+      </nav>
     </header>
   );
 }
