@@ -850,6 +850,34 @@ body {
     padding-bottom: 40px;
   }
 
+  #faq summary {
+    display: grid !important;
+    grid-template-columns: 24px 1fr 24px;
+    align-items: center !important;
+    gap: 8px !important;
+    text-align: center !important;
+  }
+
+  #faq summary::before {
+    content: "";
+    width: 24px;
+  }
+
+  #faq .mock-faq-question-text {
+    grid-column: 2;
+    justify-self: center;
+    text-align: center;
+  }
+
+  #faq summary > span[aria-hidden="true"] {
+    grid-column: 3;
+    justify-self: center;
+  }
+
+  #faq details > p {
+    text-align: center !important;
+  }
+
   .mock-contact .mock-wrap {
     padding-top: 52px;
   }

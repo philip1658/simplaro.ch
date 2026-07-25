@@ -17,7 +17,7 @@ const NAV_LINKS = [
 const FAQS = [
   ['Was macht Simplaro?', 'Simplaro befähigt Schweizer KMU, KI verständlich, persönlich und wirksam im Unternehmen einzusetzen. Wir verbinden Lernen, Automatisierung und langfristige Begleitung.'],
   ['Ist Simplaro eine klassische KI-Agentur?', 'Nein. KI ist für uns ein Werkzeug. Im Zentrum stehen verständliche Einführung, konkrete Abläufe und eine Umsetzung, die im Alltag funktioniert.'],
-  ['Was ist SimplaroLearning?', 'SimplaroLearning bündelt Online-Lernprogramme, Firmenzugänge und persönliche Coachings, damit Unternehmer und Teams KI sicher anwenden können.'],
+  ['Was ist SimplaroLearning?', 'SimplaroLearning bündelt Online-Lernprogramme, Bibliotheken und persönliche Coachings, damit Unternehmer und Teams KI sicher anwenden können.'],
   ['Was ist SimplaroBot?', 'SimplaroBot ist der Ansatz für wiederkehrende Büro- und Administrationsprozesse: Wir analysieren Abläufe, priorisieren Hebel und setzen passende Automatisierungen um.'],
   ['Was ist SimplaroService?', 'SimplaroService begleitet bestehende Automatisierungen im Betrieb. Dazu gehören Pflege, Updates, Kontrolle und Weiterentwicklung nach Bedarf.'],
   ['Brauche ich technisches Vorwissen?', 'Nein. Die Inhalte und die Umsetzung werden so erklärt, dass Unternehmer und Mitarbeitende ohne technisches Vorwissen mitkommen.'],
@@ -304,7 +304,7 @@ function Faq() {
         </div>
         <div>
           {FAQS.map(([question, answer], index) => (
-            <FaqItem key={question} question={question} last={index === FAQS.length - 1}>{answer}</FaqItem>
+            <FaqItem key={question} question={<span className="mock-faq-question-text">{question}</span>} last={index === FAQS.length - 1}>{answer}</FaqItem>
           ))}
         </div>
       </div>
