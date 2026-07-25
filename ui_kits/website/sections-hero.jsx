@@ -56,9 +56,9 @@ function Hero({ tweaks }) {
           </a>
         </div>
         <div className="hero-mobile-values" aria-hidden="true">
-          <span>Vertrauen</span>
           <span>Orientierung</span>
           <span>Entwicklung</span>
+          <span>Begleitung</span>
         </div>
       </div>
 
