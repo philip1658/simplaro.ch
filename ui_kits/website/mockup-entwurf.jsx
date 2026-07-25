@@ -117,7 +117,7 @@ function Learning() {
           <p className="mock-lead">Für Unternehmer, Führungskräfte und Teams bieten wir ergänzend <strong>SimplaroCoaching</strong>: persönliche Coachings oder kleine Workshops bei Ihnen in der Firma.</p>
           <div className="mock-actions">
             <a className="mock-button mock-button--terra" href="#kontakt">Zur SimplaroAcademy <Arrow /></a>
-            <a className="mock-button mock-button--sand" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
+            <a className="mock-button mock-button--terra" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
           </div>
         </div>
         <div className="mock-learning-visual">
