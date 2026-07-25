@@ -3,7 +3,7 @@ const { Button, ChatMessage } = window.SimplaroDesignSystem_5f353f;
 /* Fixes Chat-Widget unten rechts. Antworten sind Fake-Demo (keine API). */
 function ChatWidget({ open, onOpen, onClose }) {
   const [msgs, setMsgs] = React.useState([
-    { role: 'bot', text: 'Grüezi! Ich beantworte gern Ihre Fragen zu Simplaro, unseren Paketen oder dem Büro-Bot. Womit kann ich helfen?' },
+    { role: 'bot', text: 'Grüezi! Ich beantworte gern Ihre Fragen zu Simplaro, unseren Paketen oder dem SimplaroBot. Womit kann ich helfen?' },
   ]);
   const [input, setInput] = React.useState('');
   const [busy, setBusy] = React.useState(false);
@@ -44,8 +44,8 @@ function ChatWidget({ open, onOpen, onClose }) {
           <span style={{ width: 24, height: 24, borderRadius: 10, background: 'var(--cream-100)', border: '1px solid rgba(28,22,19,0.18)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 24px' }}>
             <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--terra-500)', display: 'block' }}></span>
           </span>
-          <span className="chat-fab-long">Fragen an unseren Büro-bot?</span>
-          <span className="chat-fab-short">Fragen?</span>
+          <span className="chat-fab-long">Fragen an den SimplaroBot?</span>
+          <span className="chat-fab-short">Fragen an den SimplaroBot?</span>
         </Button>
       )}
       {open && (
@@ -53,7 +53,7 @@ function ChatWidget({ open, onOpen, onClose }) {
           <div style={{ background: 'var(--terra-700)', color: 'var(--cream-50)', padding: '14px 18px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
               <strong style={{ fontSize: 16, fontWeight: 700 }}>Simplaro Assistent</strong>
-              <span style={{ fontSize: 12.5, opacity: 0.85 }}>beantwortet Fragen zu Angebot &amp; Büro-Bot</span>
+              <span style={{ fontSize: 12.5, opacity: 0.85 }}>beantwortet Fragen zu Angebot &amp; SimplaroBot</span>
             </div>
             <button onClick={onClose} aria-label="Chat schliessen" style={{ background: 'none', border: 'none', color: 'var(--cream-50)', fontSize: 24, cursor: 'pointer', lineHeight: 1, padding: '4px 6px' }}>×</button>
           </div>
