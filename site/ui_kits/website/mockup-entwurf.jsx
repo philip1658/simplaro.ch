@@ -82,7 +82,11 @@ function Hero() {
       <div className="mock-hero__content">
         <div className="mock-hero__text">
           <p className="mock-hero__intro">KI für KMU verständlich erklärt, zuverlässig umgesetzt</p>
-          <h1>Wir befähigen Schweizer KMU im Zeitalter von KI</h1>
+          <h1>
+            <span>Wir befähigen</span>
+            <span>Schweizer KMU</span>
+            <span>im Zeitalter von KI</span>
+          </h1>
           <ul className="mock-hero__checks">
             <li>Simpel</li>
             <li>Klar</li>
@@ -97,7 +101,6 @@ function Hero() {
       <div className="mock-hero__robot" aria-hidden="true">
         <img src="../../assets/buerobot-poster-hand-sharp.jpg" alt="" />
       </div>
-      <DsgvoSiegel className="mock-hero__seal" href="#faq" />
     </section>
   );
 }

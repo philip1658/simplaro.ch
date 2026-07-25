@@ -163,11 +163,16 @@ body {
 .mock-hero h1 {
   margin: 0;
   color: var(--cream-50);
-  font-size: clamp(42px, 6vw, 78px);
+  font-size: clamp(38px, 4.8vw, 66px);
   line-height: 1.04;
   letter-spacing: 0;
   font-weight: 700;
-  max-width: 18ch;
+  max-width: none;
+}
+
+.mock-hero h1 span {
+  display: block;
+  white-space: nowrap;
 }
 
 .mock-hero__checks {
@@ -202,16 +207,17 @@ body {
 }
 
 .mock-hero__actions {
-  align-self: stretch;
+  align-self: center;
+  width: min(100%, 760px);
   justify-content: space-between;
-  gap: 24px;
-  margin-top: clamp(8px, 1.2vw, 18px);
-  padding: 0 clamp(8px, 2vw, 24px);
+  gap: 18px;
+  margin-top: clamp(16px, 2.4vh, 28px);
+  padding: 0;
   box-sizing: border-box;
 }
 
 .mock-hero__actions .mock-button {
-  min-width: min(270px, 34vw);
+  min-width: min(270px, 42vw);
 }
 
 .mock-button {
@@ -307,13 +313,6 @@ body {
     linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 8%, #000 91%, rgba(0,0,0,0) 100%);
   -webkit-mask-composite: destination-in;
   mask-composite: intersect;
-}
-
-.mock-hero__seal {
-  position: absolute;
-  z-index: 8;
-  right: 6vw;
-  bottom: 76px;
 }
 
 .mock-section {
@@ -701,7 +700,7 @@ body {
   }
 
   .mock-hero h1 {
-    font-size: clamp(34px, 11vw, 48px);
+    font-size: clamp(28px, 8vw, 36px);
   }
 
   .mock-hero__intro {
@@ -737,13 +736,6 @@ body {
     bottom: auto;
     width: auto;
     height: min(300px, 63vw, calc(100svh - var(--robot-top) - 8px));
-  }
-
-  .mock-hero__seal {
-    right: 18px;
-    bottom: 24px;
-    transform: scale(0.78);
-    transform-origin: bottom right;
   }
 
   .mock-wrap {
