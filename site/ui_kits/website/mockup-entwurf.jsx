@@ -81,7 +81,6 @@ function Hero() {
     <section id="top" className="mock-hero" aria-label="Start">
       <div className="mock-hero__content">
         <div className="mock-hero__text">
-          <p className="mock-hero__intro">KI für KMU verständlich erklärt, zuverlässig umgesetzt</p>
           <h1>
             <span>Wir befähigen</span>
             <span>Schweizer KMU</span>
@@ -210,9 +209,9 @@ function Bot() {
 function ServiceCard({ title, badge, features }) {
   return (
     <article className="mock-service-card">
-      {badge ? <span className="mock-service-badge">{badge}</span> : null}
       <div className="mock-service-card__head">
         <h3>{title}</h3>
+        {badge ? <span className="mock-service-badge">{badge}</span> : null}
       </div>
       <div className="mock-service-card__body">
         <ul>
@@ -274,7 +273,7 @@ function Faq() {
         <div className="mock-center">
           <Kicker number="05">FAQ</Kicker>
           <h2 className="mock-title">Die wichtigsten Fragen und Antworten zu Simplaro.</h2>
-          <img className="mock-faq-robot" src="../../assets/buerobot-question.png" alt="Fragender Büro-Bot" />
+          <img className="mock-faq-robot" src="../../assets/buerobot-faq-simplaro.png?v=20260725-17" alt="SimplaroBot beantwortet Fragen" />
         </div>
         <div>
           {FAQS.map(([question, answer], index) => (

@@ -53,7 +53,7 @@ body {
   align-items: center;
   justify-content: flex-end;
   gap: clamp(16px, 2.2vw, 32px);
-  font-size: 15px;
+  font-size: clamp(16px, 1.15vw, 18px);
   font-weight: 700;
 }
 
@@ -87,7 +87,7 @@ body {
   background: #bc480f;
   color: #000000 !important;
   border-radius: 999px;
-  padding: 11px 20px;
+  padding: 12px 22px;
 }
 
 .mock-header__contact:hover,
@@ -147,17 +147,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
   text-shadow: 0 2px 18px rgba(62, 20, 4, 0.32);
-}
-
-.mock-hero__intro {
-  margin: 0;
-  color: rgba(255, 244, 236, 0.92);
-  font-size: clamp(17px, 1.8vw, 22px);
-  line-height: 1.45;
-  font-weight: 800;
-  letter-spacing: 0;
 }
 
 .mock-hero h1 {
@@ -515,9 +506,13 @@ body {
 }
 
 .mock-service-card__head {
-  padding: 19px 20px;
+  padding: 18px 20px 16px;
   background: var(--terra-500);
   color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
 }
 
 .mock-service-card__head h3 {
@@ -568,16 +563,19 @@ body {
 }
 
 .mock-service-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
   border-radius: 999px;
-  background: var(--peach-200);
-  color: var(--terra-700);
-  padding: 6px 10px;
-  font-size: 11px;
-  font-weight: 900;
+  border: 1px solid rgba(255, 244, 236, 0.36);
+  background: rgba(255, 244, 236, 0.18);
+  color: #fff4ec;
+  padding: 4px 8px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
   text-transform: uppercase;
 }
 
@@ -624,7 +622,7 @@ body {
 }
 
 .mock-faq-robot {
-  width: min(390px, 90%);
+  width: min(360px, 88%);
   display: block;
   margin: 24px auto 0;
   filter: drop-shadow(0 24px 40px rgba(64, 31, 8, 0.18));
@@ -701,11 +699,6 @@ body {
 
   .mock-hero h1 {
     font-size: clamp(28px, 8vw, 36px);
-  }
-
-  .mock-hero__intro {
-    max-width: 300px;
-    font-size: 15.5px;
   }
 
   .mock-hero__checks {
