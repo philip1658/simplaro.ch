@@ -137,11 +137,20 @@ function Learning() {
     name: "Learning"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead"
-  }, "Wie sattelfest sind Sie in der Anwendung von KI? Mit ", /*#__PURE__*/React.createElement("strong", null, "SimplaroLearning"), " bef\xE4higen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI. Sie entscheiden, ob Sie selbst\xE4ndig lernen oder lieber pers\xF6nliche Unterst\xFCtzung in Anspruch nehmen m\xF6chten."), /*#__PURE__*/React.createElement("p", {
+  }, "Wie sattelfest sind Sie in der Anwendung von KI? Mit ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Learning",
+    className: "mock-inline-product"
+  }), " bef\xE4higen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI. Sie entscheiden, ob Sie selbst\xE4ndig lernen oder lieber pers\xF6nliche Unterst\xFCtzung in Anspruch nehmen m\xF6chten."), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead"
-  }, "In der ", /*#__PURE__*/React.createElement("strong", null, "SimplaroAcademy"), " finden Sie Online-Lernprogramme, die Schritt f\xFCr Schritt in k\xFCnstliche Intelligenz einf\xFChren. Mit einem Firmenkonto k\xF6nnen Sie Lernprogramme auch Ihren Mitarbeitenden zug\xE4nglich machen."), /*#__PURE__*/React.createElement("p", {
+  }, "In der ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Academy",
+    className: "mock-inline-product"
+  }), " finden Sie Online-Lernprogramme, die Schritt f\xFCr Schritt in k\xFCnstliche Intelligenz einf\xFChren. Mit einem Firmenkonto k\xF6nnen Sie Lernprogramme auch Ihren Mitarbeitenden zug\xE4nglich machen."), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead"
-  }, "F\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams bieten wir erg\xE4nzend ", /*#__PURE__*/React.createElement("strong", null, "SimplaroCoaching"), ": pers\xF6nliche Coachings oder kleine Workshops bei Ihnen in der Firma."), /*#__PURE__*/React.createElement("div", {
+  }, "F\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams bieten wir erg\xE4nzend ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Coaching",
+    className: "mock-inline-product"
+  }), ": pers\xF6nliche Coachings oder kleine Workshops bei Ihnen in der Firma."), /*#__PURE__*/React.createElement("div", {
     className: "mock-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "mock-button mock-button--terra",

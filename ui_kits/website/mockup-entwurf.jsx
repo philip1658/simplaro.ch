@@ -116,9 +116,9 @@ function Learning() {
         <div className="mock-copy">
           <Kicker number="01">Lernen und befähigen</Kicker>
           <h2 className="mock-title"><ProductName name="Learning" /></h2>
-          <p className="mock-lead">Wie sattelfest sind Sie in der Anwendung von KI? Mit <strong>SimplaroLearning</strong> befähigen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI. Sie entscheiden, ob Sie selbständig lernen oder lieber persönliche Unterstützung in Anspruch nehmen möchten.</p>
-          <p className="mock-lead">In der <strong>SimplaroAcademy</strong> finden Sie Online-Lernprogramme, die Schritt für Schritt in künstliche Intelligenz einführen. Mit einem Firmenkonto können Sie Lernprogramme auch Ihren Mitarbeitenden zugänglich machen.</p>
-          <p className="mock-lead">Für Unternehmer, Führungskräfte und Teams bieten wir ergänzend <strong>SimplaroCoaching</strong>: persönliche Coachings oder kleine Workshops bei Ihnen in der Firma.</p>
+          <p className="mock-lead">Wie sattelfest sind Sie in der Anwendung von KI? Mit <ProductName name="Learning" className="mock-inline-product" /> befähigen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI. Sie entscheiden, ob Sie selbständig lernen oder lieber persönliche Unterstützung in Anspruch nehmen möchten.</p>
+          <p className="mock-lead">In der <ProductName name="Academy" className="mock-inline-product" /> finden Sie Online-Lernprogramme, die Schritt für Schritt in künstliche Intelligenz einführen. Mit einem Firmenkonto können Sie Lernprogramme auch Ihren Mitarbeitenden zugänglich machen.</p>
+          <p className="mock-lead">Für Unternehmer, Führungskräfte und Teams bieten wir ergänzend <ProductName name="Coaching" className="mock-inline-product" />: persönliche Coachings oder kleine Workshops bei Ihnen in der Firma.</p>
           <div className="mock-actions">
             <a className="mock-button mock-button--terra" href="#kontakt">Zur SimplaroAcademy <Arrow /></a>
             <a className="mock-button mock-button--terra" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
