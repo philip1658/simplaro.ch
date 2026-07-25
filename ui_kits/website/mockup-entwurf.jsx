@@ -80,7 +80,8 @@ function Hero() {
   return (
     <section id="top" className="mock-hero" aria-label="Start">
       <div className="mock-hero__content">
-        <div className="mock-hero__panel">
+        <div className="mock-hero__text">
+          <p className="mock-hero__intro">KI für KMU verständlich erklärt, zuverlässig umgesetzt</p>
           <h1>Wir befähigen Schweizer KMU im Zeitalter von KI</h1>
           <ul className="mock-hero__checks">
             <li>Simpel</li>
