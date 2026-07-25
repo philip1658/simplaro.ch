@@ -71,6 +71,8 @@ function NavLabel({
   }, link.product));
 }
 function Header() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const closeMenu = () => setMenuOpen(false);
   return /*#__PURE__*/React.createElement("header", {
     className: "mock-header"
   }, /*#__PURE__*/React.createElement("div", {
@@ -82,7 +84,14 @@ function Header() {
   }, /*#__PURE__*/React.createElement("img", {
     src: asset('logo-lockup-terra.png'),
     alt: "Simplaro"
-  })), /*#__PURE__*/React.createElement("nav", {
+  })), /*#__PURE__*/React.createElement("button", {
+    className: "mock-menu-toggle",
+    type: "button",
+    "aria-label": menuOpen ? 'Menü schliessen' : 'Menü öffnen',
+    "aria-controls": "mock-mobile-menu",
+    "aria-expanded": menuOpen,
+    onClick: () => setMenuOpen(open => !open)
+  }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("nav", {
     className: "mock-header__nav",
     "aria-label": "Hauptnavigation"
   }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
@@ -92,7 +101,19 @@ function Header() {
     "aria-label": link.label
   }, /*#__PURE__*/React.createElement(NavLabel, {
     link: link
-  }))))));
+  }))))), /*#__PURE__*/React.createElement("nav", {
+    id: "mock-mobile-menu",
+    className: `mock-mobile-nav${menuOpen ? ' is-open' : ''}`,
+    "aria-label": "Mobile Navigation"
+  }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+    key: link.href,
+    className: link.contact ? 'mock-header__contact' : '',
+    href: link.href,
+    "aria-label": link.label,
+    onClick: closeMenu
+  }, /*#__PURE__*/React.createElement(NavLabel, {
+    link: link
+  })))));
 }
 function Hero() {
   return /*#__PURE__*/React.createElement("section", {
