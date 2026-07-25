@@ -928,7 +928,7 @@ try { (() => {
 function SiteFooter({
   logoSrc = 'assets/logo-lockup-white.png',
   logoHeight = 24,
-  address = 'Simplaro GmbH · Lehenstrasse 74, 8037 Zürich',
+  address = 'Simplaro GmbH · Lehenstrasse 74\n8037 Zürich',
   email = 'hallo@simplaro.ch',
   copyright = '© 2026 Simplaro GmbH',
   onTop,
@@ -974,6 +974,7 @@ function SiteFooter({
       margin: 0,
       fontSize: '14px',
       lineHeight: 1.6,
+      whiteSpace: 'pre-line',
       color: 'rgba(255, 255, 255, 0.6)'
     }
   }, address, " \xB7 ", /*#__PURE__*/React.createElement("a", {
