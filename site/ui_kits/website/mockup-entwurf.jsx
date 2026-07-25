@@ -257,7 +257,7 @@ function Service() {
         <div className="mock-center">
           <Kicker number="03">Betrieb und Weiterentwicklung</Kicker>
           <h2 className="mock-title"><ProductName name="Service" /></h2>
-          <p className="mock-lead" style={{ maxWidth: 860 }}>Der SimplaroBot braucht Pflege und regelmässige Updates. Mit <strong>SimplaroService</strong> müssen Sie sich um den laufenden Betrieb nicht allein kümmern: Wir prüfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.</p>
+          <p className="mock-lead" style={{ maxWidth: 860 }}>Der SimplaroBot braucht Pflege und regelmässige Updates. Mit <ProductName name="Service" className="mock-inline-product" /> müssen Sie sich um den laufenden Betrieb nicht allein kümmern: Wir prüfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.</p>
         </div>
         <div className="mock-service-grid">
           {SERVICE_PLANS.map((plan) => <ServiceCard key={plan.title} {...plan} />)}

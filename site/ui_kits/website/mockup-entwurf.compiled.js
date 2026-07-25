@@ -297,7 +297,10 @@ function Service() {
     style: {
       maxWidth: 860
     }
-  }, "Der SimplaroBot braucht Pflege und regelm\xE4ssige Updates. Mit ", /*#__PURE__*/React.createElement("strong", null, "SimplaroService"), " m\xFCssen Sie sich um den laufenden Betrieb nicht allein k\xFCmmern: Wir pr\xFCfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.")), /*#__PURE__*/React.createElement("div", {
+  }, "Der SimplaroBot braucht Pflege und regelm\xE4ssige Updates. Mit ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Service",
+    className: "mock-inline-product"
+  }), " m\xFCssen Sie sich um den laufenden Betrieb nicht allein k\xFCmmern: Wir pr\xFCfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.")), /*#__PURE__*/React.createElement("div", {
     className: "mock-service-grid"
   }, SERVICE_PLANS.map(plan => /*#__PURE__*/React.createElement(ServiceCard, _extends({
     key: plan.title
