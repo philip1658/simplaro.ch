@@ -20,10 +20,8 @@ body {
   position: fixed;
   inset: 0 0 auto;
   z-index: 180;
-  background: rgba(245, 237, 222, 0.94);
-  border-bottom: 1px solid rgba(28, 22, 19, 0.16);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: #f4ede1;
+  border-bottom: 0;
 }
 
 .mock-header__inner {
@@ -93,9 +91,8 @@ body {
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(58% 44% at 50% 84%, rgba(244, 158, 96, 0.62) 0%, rgba(244, 158, 96, 0) 68%),
-    radial-gradient(80% 58% at 50% -10%, rgba(70, 26, 6, 0.42) 0%, rgba(70, 26, 6, 0) 60%),
-    var(--grad-terra-hero);
+    radial-gradient(44% 36% at 52% 70%, #d26022 0%, #c25117 38%, rgba(194, 81, 23, 0) 72%),
+    linear-gradient(180deg, #832903 0%, #872b04 22%, #af3e08 58%, #963205 100%);
 }
 
 .mock-hero__content {
@@ -113,9 +110,9 @@ body {
   width: min(100%, 880px);
   padding: clamp(28px, 4vw, 48px);
   box-sizing: border-box;
-  background: rgba(133, 42, 8, 0.34);
-  border: 1px solid rgba(255, 244, 236, 0.18);
-  box-shadow: 0 30px 80px rgba(60, 18, 4, 0.24);
+  background: linear-gradient(180deg, #b4410a 0%, #b4410a 58%, #bc480f 58%, #bc480f 100%);
+  border: 0;
+  box-shadow: none;
 }
 
 .mock-hero h1 {
@@ -183,6 +180,20 @@ body {
   transform: translateY(-2px);
   color: var(--cream-50);
   background: rgba(255, 244, 236, 0.24);
+}
+
+.mock-hero .mock-button {
+  background: #e29b74;
+  border-color: rgba(255, 244, 236, 0.35);
+  color: #130701;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.mock-hero .mock-button:hover,
+.mock-hero .mock-button:focus-visible {
+  background: #eea074;
+  color: #130701;
 }
 
 .mock-button--terra {
