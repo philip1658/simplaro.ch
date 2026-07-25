@@ -7,12 +7,49 @@ function ChatWidget({ open, onOpen, onClose }) {
   ]);
   const [input, setInput] = React.useState('');
   const [busy, setBusy] = React.useState(false);
+  const [bottomOffset, setBottomOffset] = React.useState(0);
   const listRef = React.useRef(null);
 
   React.useEffect(() => {
     const el = listRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [msgs, busy, open]);
+
+  React.useEffect(() => {
+    let frame = 0;
+
+    const updateOffset = () => {
+      frame = 0;
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        setBottomOffset(0);
+        return;
+      }
+
+      const footer = document.querySelector('footer');
+      if (!footer) {
+        setBottomOffset(0);
+        return;
+      }
+
+      const footerTop = footer.getBoundingClientRect().top;
+      const overlap = Math.max(0, window.innerHeight - footerTop);
+      setBottomOffset(overlap > 0 ? Math.ceil(overlap + 18) : 0);
+    };
+
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateOffset);
+    };
+
+    updateOffset();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate);
+
+    return () => {
+      if (frame) window.cancelAnimationFrame(frame);
+      window.removeEventListener('scroll', scheduleUpdate);
+      window.removeEventListener('resize', scheduleUpdate);
+    };
+  }, []);
 
   const send = () => {
     const q = input.trim();
@@ -38,7 +75,7 @@ function ChatWidget({ open, onOpen, onClose }) {
   };
 
   return (
-    <div data-screen-label="Chatbot" className="chat-root" style={{ position: 'fixed', right: 0, bottom: 0, zIndex: 90, display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+    <div data-screen-label="Chatbot" className="chat-root" style={{ position: 'fixed', right: 0, bottom: bottomOffset, zIndex: 90, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', transition: 'bottom 0.18s ease' }}>
       {!open && (
         <Button variant="light" size="sm" onClick={onOpen} style={chatFabStyle}>
           <span style={{ width: 24, height: 24, borderRadius: 10, background: 'var(--cream-100)', border: '1px solid rgba(28,22,19,0.18)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: '0 0 24px' }}>
