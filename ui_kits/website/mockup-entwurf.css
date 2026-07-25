@@ -625,6 +625,10 @@ body {
   align-items: center;
 }
 
+#faq .mock-wrap {
+  padding-bottom: 48px;
+}
+
 .mock-faq-layout .mock-center {
   gap: 16px;
 }
@@ -654,6 +658,7 @@ body {
 .mock-contact .mock-wrap {
   position: relative;
   z-index: 1;
+  padding-top: 64px;
 }
 
 @media (max-width: 1080px) {
@@ -741,6 +746,14 @@ body {
 
   .mock-wrap {
     padding: 64px 20px;
+  }
+
+  #faq .mock-wrap {
+    padding-bottom: 40px;
+  }
+
+  .mock-contact .mock-wrap {
+    padding-top: 52px;
   }
 
   .mock-grid,
