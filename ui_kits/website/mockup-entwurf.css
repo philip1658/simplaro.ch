@@ -107,8 +107,8 @@ body {
   justify-content: center;
   overflow: hidden;
   background:
-    radial-gradient(44% 36% at 52% 70%, #d26022 0%, #c25117 38%, rgba(194, 81, 23, 0) 72%),
-    linear-gradient(180deg, #832903 0%, #872b04 22%, #af3e08 58%, #963205 100%);
+    radial-gradient(58% 42% at 52% 74%, rgba(236, 126, 48, 0.72) 0%, rgba(211, 92, 23, 0.58) 48%, rgba(151, 48, 5, 0) 78%),
+    linear-gradient(180deg, #873004 0%, #9c3706 22%, #b94d12 58%, #d97830 100%);
 }
 
 .mock-hero::before,
@@ -122,8 +122,8 @@ body {
 .mock-hero::before {
   z-index: 1;
   background:
-    radial-gradient(62% 46% at 55% 102%, rgba(244, 158, 96, 0.46) 0%, rgba(244, 158, 96, 0) 70%),
-    radial-gradient(90% 60% at 50% -8%, rgba(70, 26, 6, 0.34) 0%, rgba(70, 26, 6, 0) 60%);
+    radial-gradient(68% 48% at 50% 102%, rgba(248, 154, 87, 0.42) 0%, rgba(248, 154, 87, 0) 72%),
+    radial-gradient(100% 64% at 50% -12%, rgba(67, 22, 4, 0.24) 0%, rgba(67, 22, 4, 0) 62%);
 }
 
 .mock-hero::after {
@@ -280,26 +280,33 @@ body {
 }
 
 .mock-hero__robot {
-  --robot-top: clamp(510px, 58vh, 550px);
+  --robot-top: clamp(472px, 52vh, 498px);
   position: absolute;
   z-index: 3;
   left: 50%;
   top: var(--robot-top);
   bottom: auto;
-  width: min(700px, calc(100vw - 56px));
-  height: min(390px, calc(100vh - var(--robot-top) - 12px));
+  width: auto;
+  height: min(430px, 52vw, calc(100vh - var(--robot-top) - 8px));
   transform: translateX(-50%);
   pointer-events: none;
 }
 
 .mock-hero__robot img {
-  width: 100%;
+  width: auto;
   height: 100%;
   object-fit: contain;
   object-position: center bottom;
   display: block;
-  -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,0) 3%, #000 18%, #000 82%, rgba(0,0,0,0) 97%);
-  mask-image: linear-gradient(90deg, rgba(0,0,0,0) 3%, #000 18%, #000 82%, rgba(0,0,0,0) 97%);
+  filter: drop-shadow(0 28px 44px rgba(59, 18, 4, 0.3));
+  -webkit-mask-image:
+    linear-gradient(90deg, rgba(0,0,0,0) 1%, #000 18%, #000 82%, rgba(0,0,0,0) 99%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 8%, #000 91%, rgba(0,0,0,0) 100%);
+  mask-image:
+    linear-gradient(90deg, rgba(0,0,0,0) 1%, #000 18%, #000 82%, rgba(0,0,0,0) 99%),
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, #000 8%, #000 91%, rgba(0,0,0,0) 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
 }
 
 .mock-hero__seal {
@@ -725,11 +732,11 @@ body {
   }
 
   .mock-hero__robot {
-    --robot-top: clamp(500px, 60svh, 530px);
+    --robot-top: clamp(506px, 60svh, 532px);
     top: var(--robot-top);
     bottom: auto;
-    width: min(430px, 96vw);
-    height: min(240px, calc(100svh - var(--robot-top) - 8px));
+    width: auto;
+    height: min(300px, 63vw, calc(100svh - var(--robot-top) - 8px));
   }
 
   .mock-hero__seal {
