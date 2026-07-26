@@ -838,8 +838,9 @@ body {
   }
 
   .mock-hero__checks {
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px 12px;
   }
 
   .mock-hero__actions,
