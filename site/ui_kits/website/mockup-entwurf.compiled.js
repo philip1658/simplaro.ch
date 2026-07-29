@@ -165,25 +165,27 @@ function Learning() {
   }, "Wie sattelfest sind Sie in der Anwendung von KI? Mit ", /*#__PURE__*/React.createElement(ProductName, {
     name: "Learning",
     className: "mock-inline-product"
-  }), " bef\xE4higen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI. Sie entscheiden, ob Sie selbst\xE4ndig lernen oder lieber pers\xF6nliche Unterst\xFCtzung in Anspruch nehmen m\xF6chten."), /*#__PURE__*/React.createElement("p", {
-    className: "mock-lead"
-  }, "In der ", /*#__PURE__*/React.createElement(ProductName, {
-    name: "Academy",
-    className: "mock-inline-product"
-  }), " finden Sie Online-Lernprogramme, die Schritt f\xFCr Schritt in k\xFCnstliche Intelligenz einf\xFChren. Mit einem Firmenkonto k\xF6nnen Sie Lernprogramme auch Ihren Mitarbeitenden zug\xE4nglich machen."), /*#__PURE__*/React.createElement("p", {
-    className: "mock-lead"
-  }, "F\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams bieten wir erg\xE4nzend ", /*#__PURE__*/React.createElement(ProductName, {
-    name: "Coaching",
-    className: "mock-inline-product"
-  }), ": pers\xF6nliche Coachings oder kleine Workshops bei Ihnen in der Firma."), /*#__PURE__*/React.createElement("div", {
-    className: "mock-actions"
-  }, /*#__PURE__*/React.createElement("a", {
+  }), " bef\xE4higen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI — auf zwei Wegen, die sich erg\xE4nzen: selbst\xE4ndig online oder pers\xF6nlich begleitet."), /*#__PURE__*/React.createElement("div", {
+    className: "mock-learning-tracks"
+  }, /*#__PURE__*/React.createElement("article", {
+    className: "mock-learning-track"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-learning-track__label"
+  }, "Online \xB7 im eigenen Tempo"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Academy"
+  })), /*#__PURE__*/React.createElement("p", null, "Elf Lernpl\xE4ne mit 55 kurzen Lektionen — Sie lernen an Ihren eigenen Unterlagen, wann es Ihnen passt. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat."), /*#__PURE__*/React.createElement("a", {
     className: "mock-button mock-button--terra",
     href: "academy/"
-  }, "Zur SimplaroAcademy ", /*#__PURE__*/React.createElement(Arrow, null)), /*#__PURE__*/React.createElement("a", {
+  }, "Zur SimplaroAcademy ", /*#__PURE__*/React.createElement(Arrow, null))), /*#__PURE__*/React.createElement("article", {
+    className: "mock-learning-track"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-learning-track__label"
+  }, "Pers\xF6nlich \xB7 bei Ihnen vor Ort"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Coaching"
+  })), /*#__PURE__*/React.createElement("p", null, "Coachings und Workshops in Ihrer Firma — f\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams, zugeschnitten auf Ihre Abl\xE4ufe und Fragen."), /*#__PURE__*/React.createElement("a", {
     className: "mock-button mock-button--terra",
     href: "#kontakt"
-  }, "SimplaroCoaching anfragen ", /*#__PURE__*/React.createElement(Arrow, null)))), /*#__PURE__*/React.createElement("div", {
+  }, "SimplaroCoaching anfragen ", /*#__PURE__*/React.createElement(Arrow, null))))), /*#__PURE__*/React.createElement("div", {
     className: "mock-learning-visual"
   }, /*#__PURE__*/React.createElement("img", {
     className: "mock-learning-image",
