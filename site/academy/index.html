@@ -199,136 +199,12 @@
     </div>
   </section>
 
-  <!-- ═══ 01 · LEARNING JOURNEY / VIDEO ═══ -->
-  <section id="journey" style="position:relative; overflow:hidden; background:var(--ink-950); padding:96px 32px 104px">
-    <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Twinkle" left="8%" top="14%" size="{{ 11 }}" delay="{{ 1.2 }}" hint-size="11px,11px"></x-import>
-    <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Twinkle" right="11%" bottom="18%" size="{{ 10 }}" delay="{{ 2.8 }}" hint-size="10px,10px"></x-import>
-    <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:44px">
-
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.9fr); gap:56px; align-items:end">
-        <div style="display:flex; flex-direction:column; gap:20px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="03" tone="onDark" hint-size="auto,20px">DIE LEARNING JOURNEY</x-import>
-          <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; color:#FFFDF8; max-width:20ch; text-wrap:pretty">Ein Weg. Kein Kurskatalog.</h2>
-        </div>
-        <p style="margin:0; font-size:17.5px; line-height:1.7; color:rgba(255,240,230,0.82); max-width:48ch; text-wrap:pretty">In drei Minuten zeigen wir, wie eine Lektion abläuft, was Sie mitnehmen und wie weit Sie in vier Wochen kommen. Danach wissen Sie, ob es für Ihren Betrieb passt.</p>
-      </div>
-
-      <figure style="margin:0; display:flex; flex-direction:column; gap:18px">
-        <button type="button" onClick="{{ toggleVideo }}" style="all:unset; cursor:pointer; display:block; position:relative; width:100%; aspect-ratio:16/9; border-radius:24px; overflow:hidden; border:2px solid rgba(255,240,230,0.34); background:#2A1A12">
-          <img src="assets/buerobot-poster.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.42">
-          <span style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(23,18,16,0.35) 0%, rgba(23,18,16,0.78) 100%)"></span>
-          <span style="position:absolute; left:26px; top:24px; display:inline-flex; align-items:center; gap:10px; padding:9px 16px; border-radius:999px; background:rgba(255,244,236,0.12); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.3); font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:#FFF3E8">Platzhalter · Video folgt</span>
-          <span style="position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; gap:18px">
-            <span style="width:96px; height:96px; border-radius:999px; background:#FFFDF8; border:2px solid var(--border-ink); box-shadow:6px 6px 0 rgba(28,22,19,0.85); display:flex; align-items:center; justify-content:center; font-size:32px; color:var(--ink-900); padding-left:6px">▶</span>
-            <span style="font-size:19px; font-weight:600; letter-spacing:-0.015em; color:#FFFDF8">«So läuft Ihre Learning Journey»</span>
-          </span>
-          <span style="position:absolute; left:26px; bottom:22px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,240,230,0.8)">LEARNING-JOURNEY.MP4 · 03:04 · 1080P</span>
-          <span style="position:absolute; right:26px; bottom:22px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,240,230,0.55)">00:00.0</span>
-        </button>
-
-        <sc-if value="{{ videoNote }}" hint-placeholder-val="{{ false }}">
-          <div style="border:1px dashed rgba(255,240,230,0.42); border-radius:18px; padding:22px 26px; display:flex; flex-direction:column; gap:10px; background:rgba(255,244,236,0.06)">
-            <strong style="font-size:15px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--orange-300)">Produktionsnotiz</strong>
-            <p style="margin:0; font-size:16.5px; line-height:1.65; color:rgba(255,240,230,0.86); max-width:78ch">Hier läuft später das Erklärvideo. Was wir dafür brauchen: ein Drehbuch nach den vier Kapiteln unten, Screencasts aus der Academy, eine kurze SimplaroBot-Sequenz und eine Sprecherstimme. Bis dahin bleibt dieser Rahmen als Platzhalter stehen.</p>
-          </div>
-        </sc-if>
-
-        <figcaption style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:rgba(255,240,230,0.2); border:1px solid rgba(255,240,230,0.2); border-radius:14px; overflow:hidden">
-          <span style="background:var(--ink-950); padding:20px 22px; display:flex; flex-direction:column; gap:7px">
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--orange-300)">00:00</span>
-            <span style="font-size:15px; font-weight:600; color:#FFFDF8">Warum überhaupt KI im Betrieb</span>
-          </span>
-          <span style="background:var(--ink-950); padding:20px 22px; display:flex; flex-direction:column; gap:7px">
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--orange-300)">00:41</span>
-            <span style="font-size:15px; font-weight:600; color:#FFFDF8">Alle Lernpläne im Überblick</span>
-          </span>
-          <span style="background:var(--ink-950); padding:20px 22px; display:flex; flex-direction:column; gap:7px">
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--orange-300)">01:28</span>
-            <span style="font-size:15px; font-weight:600; color:#FFFDF8">Eine Lektion von innen</span>
-          </span>
-          <span style="background:var(--ink-950); padding:20px 22px; display:flex; flex-direction:column; gap:7px">
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; color:var(--orange-300)">02:12</span>
-            <span style="font-size:15px; font-weight:600; color:#FFFDF8">Wie weit Sie in vier Wochen kommen</span>
-          </span>
-        </figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ═══ 02 · PRAXISVERSPRECHEN ═══ -->
-  <section id="praxis" style="background:var(--cream-100); padding:96px 32px">
-    <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:52px">
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
-        <div style="display:flex; flex-direction:column; gap:20px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="04" hint-size="auto,20px">WIE WIR UNTERRICHTEN</x-import>
-          <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:22ch; text-wrap:pretty">Praxisnah heisst: an Ihren Unterlagen.</h2>
-        </div>
-        <p style="margin:0; font-size:17.5px; line-height:1.7; color:var(--text-body); max-width:48ch; text-wrap:pretty">Keine Theorie über neuronale Netze. Sie bringen eine Offerte, eine Mailflut, einen Belegstapel — und gehen mit einer fertigen Vorlage raus.</p>
-      </div>
-
-      <div style="display:flex; flex-direction:column">
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.ServiceRow" number="01" title="Eine Lektion, ein Resultat" hint-size="100%,120px">Jede Lektion endet mit etwas Fertigem: einer Vorlage, einer Prompt-Karte, einem eingerichteten Ablauf. Nichts bleibt «zum späteren Ausprobieren» liegen.</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.ServiceRow" number="02" title="15 bis 25 Minuten, nicht drei Tage" hint-size="100%,120px">Zugeschnitten auf Betriebe ohne Weiterbildungsbudget an Zeit. Kurzvideo, Werkstatt zum Mitmachen, Kontroll-Check — fertig.</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.ServiceRow" number="03" title="Schweizer Beispiele, Schweizer Recht" hint-size="100%,120px">Treuhand-Übergabe, revDSG, Mehrsprachigkeit im Kundenkontakt. Wir rechnen in Franken und schreiben mit «ss».</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.ServiceRow" number="04" title="Ein Mensch, wenn Sie stecken bleiben" last="{{ true }}" hint-size="100%,120px">Zu jeder Lektion gibt es die Frage-Ecke — und in den Team-Zugängen eine monatliche Sprechstunde mit André oder Philip.</x-import>
-      </div>
-
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr)); gap:22px">
-        <div style="background:var(--sand-200); border:1px solid var(--border-strong); border-radius:22px; padding:28px 26px; display:flex; flex-direction:column; gap:12px">
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra-500)">In jeder Lektion</span>
-          <strong style="font-size:19px; font-weight:600; letter-spacing:-0.015em">Kurzvideo</strong>
-          <p style="margin:0; font-size:15px; line-height:1.6; color:var(--text-body)">4–8 Minuten, am Bildschirm mitverfolgt statt vorgetragen.</p>
-        </div>
-        <div style="background:var(--sand-200); border:1px solid var(--border-strong); border-radius:22px; padding:28px 26px; display:flex; flex-direction:column; gap:12px">
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra-500)">In jeder Lektion</span>
-          <strong style="font-size:19px; font-weight:600; letter-spacing:-0.015em">Werkstatt</strong>
-          <p style="margin:0; font-size:15px; line-height:1.6; color:var(--text-body)">Sie machen es an Ihrem eigenen Dokument nach — Schritt für Schritt.</p>
-        </div>
-        <div style="background:var(--sand-200); border:1px solid var(--border-strong); border-radius:22px; padding:28px 26px; display:flex; flex-direction:column; gap:12px">
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra-500)">In jeder Lektion</span>
-          <strong style="font-size:19px; font-weight:600; letter-spacing:-0.015em">Vorlage</strong>
-          <p style="margin:0; font-size:15px; line-height:1.6; color:var(--text-body)">Prompt-Karte, Checkliste oder Dokument — bleibt in Ihrem Betrieb.</p>
-        </div>
-        <div style="background:var(--sand-200); border:1px solid var(--border-strong); border-radius:22px; padding:28px 26px; display:flex; flex-direction:column; gap:12px">
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra-500)">In jeder Lektion</span>
-          <strong style="font-size:19px; font-weight:600; letter-spacing:-0.015em">Kontroll-Check</strong>
-          <p style="margin:0; font-size:15px; line-height:1.6; color:var(--text-body)">Drei Fragen, mit denen Sie das Resultat prüfen, bevor es rausgeht.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 03 · DER AUFBAU ═══ -->
-  <section id="aufbau" style="background:var(--sand-200); padding:96px 32px">
-    <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:48px">
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
-        <div style="display:flex; flex-direction:column; gap:20px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="05" hint-size="auto,20px">DER AUFBAU</x-import>
-          <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:20ch; text-wrap:pretty">Vier Stufen. Ein Weg.</h2>
-        </div>
-        <p style="margin:0; font-size:17.5px; line-height:1.7; color:var(--text-body); max-width:48ch; text-wrap:pretty">Sie müssen nicht alles lernen. Sie müssen wissen, wo Sie stehen und was als Nächstes dran ist — dafür sortieren wir die Lernpläne in vier Stufen.</p>
-      </div>
-
-      <ol style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:22px; list-style:none; margin:0; padding:0">
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.StepCard" number="01" title="Standort bestimmen" badge="KOSTENLOS & UNVERBINDLICH" hint-size="100%,240px">Die Erstanalyse zeigt in fünf Minuten, wo im Betrieb die Stunden verloren gehen. Daraus ergibt sich, mit welchem Lernplan Sie starten.</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.StepCard" number="02" title="Grundlagen sichern" hint-size="100%,240px">Lernplan 01 — die erste Woche. Danach führen Sie ein Gespräch mit einem Assistenten, ohne zu raten, und wissen, was nie eingegeben wird.</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.StepCard" number="03" title="Im eigenen Betrieb umsetzen" hint-size="100%,240px">Der Lernplan, der Ihrem grössten Zeitfresser entspricht. Sie bauen Vorlagen an echten Unterlagen — nicht an Beispieldaten.</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.StepCard" number="04" title="Im Team verankern" hint-size="100%,240px">Richtlinie, Rollen, Schulungsplan. Damit es nicht bei einer Person hängen bleibt, sondern zum Arbeitsablauf wird.</x-import>
-      </ol>
-
-      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; background:var(--cream-card); border:1px solid var(--border-strong); border-radius:22px; padding:26px 30px">
-        <p style="margin:0; font-size:16.5px; line-height:1.65; color:var(--text-body); max-width:62ch">Sie wissen noch nicht, wo Sie stehen? Die Erstanalyse ist der Einstieg — und bleibt kostenlos.</p>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="↗" href="../erstanalyse.html" hint-size="auto,52px">Erstanalyse starten</x-import>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 06 · ZUGANG ═══ -->
+  <!-- ═══ 03 · ZUGANG ═══ -->
   <section id="zugang" style="background:var(--cream-100); padding:96px 32px">
     <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:46px">
       <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
         <div style="display:flex; flex-direction:column; gap:20px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="06" hint-size="auto,20px">ZUGANG</x-import>
+          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="03" hint-size="auto,20px">ZUGANG</x-import>
           <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:22ch; text-wrap:pretty">Gratis starten. Vertiefen, wenn es passt.</h2>
         </div>
         <p style="margin:0; font-size:17.5px; line-height:1.7; color:var(--text-body); max-width:48ch; text-wrap:pretty">Kein Jahresabo, keine Mindestlaufzeit. Wer Begleitung will, bekommt sie von uns persönlich — nicht von einem Chatfenster allein.</p>
@@ -343,7 +219,6 @@
           </div>
           <ul style="display:flex; flex-direction:column; gap:12px; list-style:none; margin:4px 0; padding:0">
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">{{ freeTierLine }}</x-import>
-            <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Erklärvideo zur Learning Journey</x-import>
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Erstanalyse für Ihren Betrieb</x-import>
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Merkblatt Datenschutz (revDSG)</x-import>
           </ul>
@@ -362,28 +237,11 @@
     </div>
   </section>
 
-  <!-- ═══ 07 · KOMPASS ═══ -->
-  <section style="background:var(--sand-200); padding:96px 32px">
-    <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:40px">
-      <div style="display:flex; flex-direction:column; gap:20px; max-width:44ch">
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="07" hint-size="auto,20px">DER KOMPASS</x-import>
-        <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; text-wrap:pretty">Ist die Academy richtig für Sie?</h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr)); gap:22px">
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.KompassTile" number="01" hint-size="100%,190px">Ist es richtig für Ihren Betrieb — spüren Sie den Nutzen im Alltag, nicht nur in der Theorie?</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.KompassTile" number="02" hint-size="100%,190px">Ist es richtig für Ihr Team — lernen die Leute mit, die es später anwenden?</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.KompassTile" number="03" hint-size="100%,190px">Ist es richtig für Ihre Kundinnen und Kunden — bleibt der Kontakt persönlich?</x-import>
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.KompassTile" number="04" hint-size="100%,190px">Ist es richtig für Ihre Daten — wissen Sie, was rein darf und was nicht?</x-import>
-      </div>
-      <p style="margin:0; font-size:21px; font-weight:600; letter-spacing:-0.015em; color:var(--terra-500)">4 × Ja — dann sehen wir uns in Lektion 01.</p>
-    </div>
-  </section>
-
-  <!-- ═══ 08 · FAQ ═══ -->
+  <!-- ═══ 04 · FAQ ═══ -->
   <section id="faq" style="background:var(--cream-100); padding:96px 32px">
     <div style="max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0,0.75fr) minmax(0,1.25fr); gap:56px; align-items:start">
       <div style="display:flex; flex-direction:column; gap:20px">
-        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="08" hint-size="auto,20px">KURZ GEFRAGT</x-import>
+        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="04" hint-size="auto,20px">KURZ GEFRAGT</x-import>
         <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; text-wrap:pretty">Kurz gefragt. Klar beantwortet.</h2>
         <p style="margin:0; font-size:16.5px; line-height:1.7; color:var(--text-body); max-width:40ch">Etwas Offenes? Schreiben Sie an <a href="mailto:hallo@simplaro.ch">hallo@simplaro.ch</a> — wir antworten selbst.</p>
       </div>
