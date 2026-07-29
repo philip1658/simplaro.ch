@@ -21,7 +21,7 @@ export function Button({ variant = 'cta', size = 'md', arrow, href, target, onCl
   const css = {
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '11px',
     fontFamily: 'var(--font-sans)', fontWeight: 700, lineHeight: 1.2, textDecoration: 'none',
-    border: 'none', borderRadius: 'var(--radius-pill)', cursor: disabled ? 'default' : 'pointer',
+    border: '1px solid transparent', borderRadius: 'var(--radius-pill)', cursor: disabled ? 'default' : 'pointer',
     opacity: disabled ? 0.55 : 1, whiteSpace: 'nowrap', boxSizing: 'border-box',
     transition: 'background 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-spring), box-shadow 0.3s ease',
     ...s, ...v.base, ...(hover && !disabled ? v.hover : null), ...style,

@@ -4,7 +4,7 @@ import React from 'react';
 export function SiteFooter({
   logoSrc = 'assets/logo-lockup-white.png',
   logoHeight = 24,
-  address = 'Simplaro GmbH · Lehenstrasse 74\n8037 Zürich',
+  address = 'Simplaro GmbH · Lehenstrasse 74, 8037 Zürich',
   email = 'hallo@simplaro.ch',
   copyright = '© 2026 Simplaro GmbH',
   onTop,
@@ -20,7 +20,7 @@ export function SiteFooter({
         <a href="#top" onClick={onTop} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <img src={logoSrc} alt="Simplaro" style={{ height: `${logoHeight}px`, width: 'auto', display: 'block', opacity: 0.95 }} />
         </a>
-        <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.6, whiteSpace: 'pre-line', color: 'rgba(255, 255, 255, 0.6)' }}>
+        <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.6, color: 'rgba(255, 255, 255, 0.6)' }}>
           {address} · <a href={`mailto:${email}`} style={{ color: '#FFFFFF', fontWeight: 500, textDecoration: 'none' }}>{email}</a>
         </p>
         <div style={{

@@ -8,14 +8,15 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/fonts.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/colors.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/typography.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/spacing.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/effects.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/base.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/styles.css">
-  <script src="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="../tokens/fonts.css">
+  <link rel="stylesheet" href="../tokens/colors.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/spacing.css">
+  <link rel="stylesheet" href="../tokens/effects.css">
+  <link rel="stylesheet" href="../tokens/base.css">
+  <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="mobile.css?v=20260729-mobile-86">
+  <script src="../_ds_bundle.js?v=20260729-mobile-86"></script>
   <script src="./academy-daten.js"></script>
   <script src="./image-slot.js"></script>
   <style>
@@ -37,8 +38,9 @@
         </a>
         <nav aria-label="Hauptnavigation" style="display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; font-size:17px; font-weight:600">
           <a href="#lernplaene" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Lernpläne</a>
-          <a href="#vorschau" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Vorschau</a>
+          <a href="#vor-ort" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Vor Ort</a>
           <a href="#zugang" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Zugang</a>
+          <a href="../index.html" style-hover="color:var(--terra-500)" style="display:inline-flex; align-items:center; gap:7px; color:var(--brown-400); text-decoration:none; transition:color 0.3s ease">← Simplaro</a>
           <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="#zugang" hint-size="auto,48px">Gratis starten</x-import>
         </nav>
       </div>
@@ -49,15 +51,11 @@
   <section id="lernplaene" style="position:relative; overflow:hidden; background:var(--sand-200); padding:62px 32px 92px">
     <div style="position:absolute; inset:0; background:var(--glow-peach); pointer-events:none"></div>
     <div style="position:relative; max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:32px">
-      <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:26px">
-        <div style="display:flex; flex-direction:column; gap:16px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="01" hint-size="auto,20px">DIE LERNPLÄNE</x-import>
-          <h1 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:24ch; text-wrap:pretty">KI im Alltag. Für Schweizer KMU.</h1>
-        </div>
-        <div style="display:flex; flex-direction:column; gap:8px; max-width:38ch">
-          <span style="font-size:16px; line-height:1.6; color:var(--text-body)">Elf Lernpläne, 55 Lektionen. Jeder Lernplan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</span>
-          <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--brown-400)">Kachel anklicken für alle Lektionen</span>
-        </div>
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="01" hint-size="auto,20px">DIE LERNPLÄNE</x-import>
+        <h1 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:24ch; text-wrap:pretty">KI im Alltag. Für Schweizer KMU.</h1>
+        <p style="margin:0; max-width:56ch; font-size:17px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Elf Lernpläne, 55 Lektionen. Jeder Lernplan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
+        <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--brown-400)">Kachel anklicken für alle Lektionen</span>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:24px">
@@ -87,113 +85,71 @@
       </div>
 
       <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:22px; background:var(--cream-card); border:1px solid var(--border-strong); border-radius:22px; padding:24px 28px">
-        <p style="margin:0; font-size:16px; line-height:1.65; color:var(--text-body); max-width:64ch">Alle Lernpläne sind im Pro-Zugang enthalten — auch die Lektionen, die später dazukommen. Die ersten Lektionen jedes Plans bleiben offen.</p>
+        <p style="margin:0; font-size:16px; line-height:1.65; color:var(--text-body)">Alle Lernpläne im Pro-Zugang — die ersten Lektionen bleiben offen.</p>
         <div style="display:flex; flex-wrap:wrap; gap:12px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="#vorschau" hint-size="auto,52px">Lektion probeweise ansehen</x-import>
+          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="#vor-ort" hint-size="auto,52px">SimplaroLearning vor Ort</x-import>
           <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" variant="dark" arrow="{{ true }}" href="#zugang" hint-size="auto,52px">Zugang wählen</x-import>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ 05 · VORSCHAU & PAYWALL ═══ -->
-  <section id="vorschau" style="background:var(--cream-100); padding:96px 32px">
+  <!-- ═══ 05 · SIMPLAROLEARNING VOR ORT ═══ -->
+  <section id="vor-ort" style="background:var(--sand-200); padding:96px 32px">
     <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:46px">
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
+      <div data-m="split" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
         <div style="display:flex; flex-direction:column; gap:20px">
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="02" hint-size="auto,20px">SO FÜHLT SICH EINE LEKTION AN</x-import>
-          <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:20ch; text-wrap:pretty">Reinschauen, bevor Sie zahlen.</h2>
+          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="02" hint-size="auto,20px">PERSÖNLICH VOR ORT</x-import>
+          <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:22ch; text-wrap:pretty">Lieber gemeinsam im Raum? Das ist SimplaroLearning.</h2>
         </div>
-        <p style="margin:0; font-size:17.5px; line-height:1.7; color:var(--text-body); max-width:48ch; text-wrap:pretty">Der Anfang jeder Lektion ist offen — Sie sehen die Aufgabe, den Ablauf und die ersten Schritte. Ab dem Punkt, wo es an Ihre eigenen Zahlen geht, braucht es den Pro-Zugang.</p>
+        <p style="margin:0; font-size:17.5px; line-height:1.7; color:var(--text-body); max-width:48ch; text-wrap:pretty">Die Academy ist zum Selberlernen. Wenn ein ganzes Team mitkommen soll oder Fragen im Gespräch schneller geklärt sind, kommen wir zu Ihnen in den Betrieb — mit Trainings, Workshops und Coachings.</p>
       </div>
-
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.6fr); gap:32px; align-items:start">
-        <article style="background:var(--cream-card); border:1px solid var(--border-strong); border-radius:26px; overflow:hidden">
-          <header style="padding:24px 32px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px; border-bottom:1px solid var(--border-strong)">
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--terra-500)">Lernplan 04 · Lektion 01</span>
-            <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--brown-400)">Werkstatt · 22 Min</span>
-          </header>
-
-          <div style="padding:32px 32px 8px; display:flex; flex-direction:column; gap:18px">
-            <h3 style="margin:0; font-size:30px; font-weight:600; letter-spacing:-0.02em; line-height:1.15">Offerten aus Stichworten.</h3>
-            <p style="margin:0; font-size:16.5px; line-height:1.7; color:var(--text-body); max-width:60ch; text-wrap:pretty">Sie diktieren fünf Stichworte — der Assistent baut die Offerte in Ihrer Struktur, mit Ihren Positionen und Ihrem Ton. Am Ende steht ein Gerüst, das Sie nur noch prüfen.</p>
-            <div style="display:flex; flex-direction:column; gap:0; margin-top:6px">
-              <div style="display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; padding:18px 0; border-top:1px solid rgba(28,22,19,0.14)">
-                <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--terra-500)">01</span>
-                <span style="display:flex; flex-direction:column; gap:6px">
-                  <strong style="font-size:17px; font-weight:600; letter-spacing:-0.015em">Ihre letzte gute Offerte hochladen</strong>
-                  <span style="font-size:15px; line-height:1.6; color:var(--text-body)">Ohne Kundennamen und Preise — nur die Struktur zählt.</span>
-                </span>
-              </div>
-              <div style="display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; padding:18px 0; border-top:1px solid rgba(28,22,19,0.14)">
-                <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--terra-500)">02</span>
-                <span style="display:flex; flex-direction:column; gap:6px">
-                  <strong style="font-size:17px; font-weight:600; letter-spacing:-0.015em">Das Gerüst benennen lassen</strong>
-                  <span style="font-size:15px; line-height:1.6; color:var(--text-body)">Titel, Leistungsblöcke, Bedingungen, Schlusssatz — in Ihrer Reihenfolge.</span>
-                </span>
-              </div>
-            </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr)); gap:20px">
+        <article style-hover="transform:translateY(-4px)" style="background:var(--cream-card); border:1px solid var(--border-strong); border-radius:24px; padding:30px; display:flex; flex-direction:column; gap:14px; transition:transform 0.4s var(--ease-spring)">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+            <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:0.08em; color:var(--terra-500)">01</span>
+            <span style="padding:5px 12px; border-radius:999px; background:var(--peach-150); border:1px solid rgba(28,22,19,0.14); font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--terra-600); white-space:nowrap">HALB- ODER GANZTAGS</span>
           </div>
-
-          <div style="position:relative">
-            <div style="padding:0 32px 30px; filter:{{ lockBlur }}; opacity:{{ lockOpacity }}; transition:filter 0.5s ease, opacity 0.5s ease">
-              <div style="display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; padding:18px 0; border-top:1px solid rgba(28,22,19,0.14)">
-                <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--brown-400)">03</span>
-                <span style="display:flex; flex-direction:column; gap:6px">
-                  <strong style="font-size:17px; font-weight:600; letter-spacing:-0.015em; color:var(--brown-600)">Ihre Preislogik hinterlegen</strong>
-                  <span style="font-size:15px; line-height:1.6; color:var(--text-body)">Stundensätze, Pauschalen, Rabattregeln — einmal sauber beschrieben, danach wiederverwendbar.</span>
-                </span>
-              </div>
-              <div style="display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; padding:18px 0; border-top:1px solid rgba(28,22,19,0.14)">
-                <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--brown-400)">04</span>
-                <span style="display:flex; flex-direction:column; gap:6px">
-                  <strong style="font-size:17px; font-weight:600; letter-spacing:-0.015em; color:var(--brown-600)">Die Stichwort-Vorlage aufsetzen</strong>
-                  <span style="font-size:15px; line-height:1.6; color:var(--text-body)">Fünf Zeilen genügen künftig: Kunde, Aufgabe, Umfang, Termin, Besonderheit.</span>
-                </span>
-              </div>
-              <div style="display:grid; grid-template-columns:44px minmax(0,1fr); gap:18px; padding:18px 0; border-top:1px solid rgba(28,22,19,0.14)">
-                <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--brown-400)">05</span>
-                <span style="display:flex; flex-direction:column; gap:6px">
-                  <strong style="font-size:17px; font-weight:600; letter-spacing:-0.015em; color:var(--brown-600)">Der Kontroll-Check vor dem Senden</strong>
-                  <span style="font-size:15px; line-height:1.6; color:var(--text-body)">Drei Fragen, die verhindern, dass eine falsche Zahl beim Kunden landet.</span>
-                </span>
-              </div>
-            </div>
-
-            <sc-if value="{{ gateClosed }}" hint-placeholder-val="{{ true }}">
-              <div style="position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:center; background:linear-gradient(180deg, rgba(255,253,248,0) 0%, rgba(255,253,248,0.86) 42%, #FFFDF8 78%); padding:0 26px 26px">
-                <div style="width:100%; background:var(--sand-200); border:1.5px solid var(--border-ink); border-radius:20px; box-shadow:6px 6px 0 rgba(28,22,19,0.85); padding:26px 28px; display:flex; flex-direction:column; gap:16px">
-                  <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.LabelBadge" hint-size="auto,26px">ACADEMY PRO</x-import>
-                  <strong style="font-size:22px; font-weight:600; letter-spacing:-0.02em">Ab hier wird's konkret.</strong>
-                  <p style="margin:0; font-size:16px; line-height:1.65; color:var(--text-body); max-width:52ch">Die restlichen drei Schritte, die Stichwort-Vorlage und der Kontroll-Check gehören zum Pro-Zugang. Die ersten Lektionen jedes Lernplans bleiben offen.</p>
-                  <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:2px">
-                    <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="#zugang" hint-size="auto,52px">Academy Pro freischalten</x-import>
-                    <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" variant="dark" arrow="↗" onClick="{{ toggleGate }}" hint-size="auto,52px">{{ gateLabel }}</x-import>
-                  </div>
-                </div>
-              </div>
-            </sc-if>
+          <h3 style="margin:0; font-size:25px; font-weight:600; letter-spacing:-0.02em; line-height:1.15">Trainings</h3>
+          <p style="margin:0; font-size:15.5px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Grundlagen und sichere Anwendung für vier bis zwölf Personen. Nach dem gemeinsamen Teil arbeitet jede Person an einer eigenen Aufgabe aus ihrem Alltag.</p>
+          <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(28,22,19,0.14); display:flex; flex-direction:column; gap:6px">
+            <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terra-500)">Passend wenn</span>
+            <span style="font-size:15px; font-weight:600; line-height:1.55; color:var(--text-strong); text-wrap:pretty">Das ganze Team auf denselben Stand kommen soll.</span>
           </div>
-
-          <sc-if value="{{ gateOpen }}" hint-placeholder-val="{{ false }}">
-            <footer style="padding:22px 32px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; background:var(--ink-950)">
-              <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--orange-300)">Pro-Vorschau · nur zur Demonstration</span>
-              <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" size="sm" variant="glass" arrow="{{ true }}" onClick="{{ toggleGate }}" hint-size="auto,44px">{{ gateLabel }}</x-import>
-            </footer>
-          </sc-if>
         </article>
-
-        <div style="display:flex; flex-direction:column; gap:22px">
-          <div style="background:var(--cream-card); border:1px solid var(--border-strong); border-radius:22px; padding:28px 28px; display:flex; flex-direction:column; gap:16px">
-            <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" hint-size="auto,20px">WIE DIE SPERRE GEDACHT IST</x-import>
-            <ul style="display:flex; flex-direction:column; gap:13px; list-style:none; margin:0; padding:0">
-              <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Die ersten Lektionen jedes Lernplans sind offen — man soll den Nutzen spüren, bevor man zahlt.</x-import>
-              <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Was gesperrt ist, ist immer sichtbar: Titel, Dauer, Inhalt. Keine leeren Kacheln.</x-import>
-              <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Vorlagen und Checklisten hängen am Pro-Zugang, nicht am Video.</x-import>
-              <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Datenschutz- und Rechts-Lektionen bleiben grundsätzlich frei.</x-import>
-            </ul>
+        <article style-hover="transform:translateY(-4px)" style="background:var(--cream-card); border:1px solid var(--border-strong); border-radius:24px; padding:30px; display:flex; flex-direction:column; gap:14px; transition:transform 0.4s var(--ease-spring)">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+            <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:0.08em; color:var(--terra-500)">02</span>
+            <span style="padding:5px 12px; border-radius:999px; background:var(--peach-150); border:1px solid rgba(28,22,19,0.14); font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--terra-600); white-space:nowrap">EIN HALBER TAG</span>
           </div>
-          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.QuoteCard" logo-src="assets/logo-mark-white.png" quote="KI ist für uns nicht das Produkt, sondern das Werkzeug." attribution="Eine unserer Grundüberzeugungen" hint-size="100%,300px"></x-import>
+          <h3 style="margin:0; font-size:25px; font-weight:600; letter-spacing:-0.02em; line-height:1.15">Workshops</h3>
+          <p style="margin:0; font-size:15.5px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Wir nehmen einen konkreten Ablauf — Offerten, Rapporte, Kundenmails — und bauen ihn im Raum gemeinsam mit KI um, bis er sitzt.</p>
+          <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(28,22,19,0.14); display:flex; flex-direction:column; gap:6px">
+            <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terra-500)">Passend wenn</span>
+            <span style="font-size:15px; font-weight:600; line-height:1.55; color:var(--text-strong); text-wrap:pretty">Sie mit einer einsatzfertigen Vorlage aus dem Termin gehen wollen.</span>
+          </div>
+        </article>
+        <article style-hover="transform:translateY(-4px)" style="background:var(--cream-card); border:1px solid var(--border-strong); border-radius:24px; padding:30px; display:flex; flex-direction:column; gap:14px; transition:transform 0.4s var(--ease-spring)">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+            <span style="font-family:var(--font-mono); font-size:13px; font-weight:600; letter-spacing:0.08em; color:var(--terra-500)">03</span>
+            <span style="padding:5px 12px; border-radius:999px; background:var(--peach-150); border:1px solid rgba(28,22,19,0.14); font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--terra-600); white-space:nowrap">60–90 MIN · EINZELN</span>
+          </div>
+          <h3 style="margin:0; font-size:25px; font-weight:600; letter-spacing:-0.02em; line-height:1.15">Coachings</h3>
+          <p style="margin:0; font-size:15.5px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Regelmässige Sessions für Unternehmer und Führungskräfte: was KI im Betrieb darf, wo sie Zeit spart und wie Sie es Ihrem Team erklären.</p>
+          <div style="margin-top:auto; padding-top:16px; border-top:1px solid rgba(28,22,19,0.14); display:flex; flex-direction:column; gap:6px">
+            <span style="font-family:var(--font-mono); font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:var(--terra-500)">Passend wenn</span>
+            <span style="font-size:15px; font-weight:600; line-height:1.55; color:var(--text-strong); text-wrap:pretty">Sie entscheiden müssen, statt Werkzeuge auszuprobieren.</span>
+          </div>
+        </article>
+      </div>
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:24px; background:var(--cream-card); border:1px solid var(--border-strong); border-radius:26px; padding:30px 34px">
+        <div style="display:flex; flex-direction:column; gap:9px; max-width:56ch">
+          <span style="font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--brown-400)">In der ganzen Deutschschweiz</span>
+          <strong style="font-size:21px; font-weight:600; letter-spacing:-0.02em; line-height:1.3; text-wrap:pretty">Wir kommen in Ihren Betrieb — oder online, wenn es schneller gehen muss.</strong>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:12px">
+          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="../index.html#kontakt" hint-size="auto,52px">Termin anfragen</x-import>
+          <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" variant="dark" arrow="{{ true }}" href="../index.html#learning" hint-size="auto,52px">Mehr zu SimplaroLearning</x-import>
         </div>
       </div>
     </div>
@@ -202,7 +158,7 @@
   <!-- ═══ 03 · ZUGANG ═══ -->
   <section id="zugang" style="background:var(--cream-100); padding:96px 32px">
     <div style="max-width:1160px; margin:0 auto; display:flex; flex-direction:column; gap:46px">
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
+      <div data-m="split" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.85fr); gap:56px; align-items:end">
         <div style="display:flex; flex-direction:column; gap:20px">
           <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="03" hint-size="auto,20px">ZUGANG</x-import>
           <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:22ch; text-wrap:pretty">Gratis starten. Vertiefen, wenn es passt.</h2>
@@ -239,7 +195,7 @@
 
   <!-- ═══ 04 · FAQ ═══ -->
   <section id="faq" style="background:var(--cream-100); padding:96px 32px">
-    <div style="max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0,0.75fr) minmax(0,1.25fr); gap:56px; align-items:start">
+    <div data-m="split" style="max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0,0.75fr) minmax(0,1.25fr); gap:56px; align-items:start">
       <div style="display:flex; flex-direction:column; gap:20px">
         <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="04" hint-size="auto,20px">KURZ GEFRAGT</x-import>
         <h2 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; text-wrap:pretty">Kurz gefragt. Klar beantwortet.</h2>
@@ -321,13 +277,6 @@ class Component extends DCLogic {
         href: 'lernplan.html#plan=' + pl.n,
         meta: pl.lessons.length + ' LEKTIONEN · ' + pl.hours + (free > 0 ? ' · ' + Math.min(free, pl.lessons.length) + ' GRATIS' : ''),
       })),
-
-      gateOpen: this.state.gateOpen,
-      gateClosed: !this.state.gateOpen,
-      toggleGate: () => this.setState((s) => ({ gateOpen: !s.gateOpen })),
-      gateLabel: this.state.gateOpen ? 'Sperre wieder zeigen' : 'Sperre kurz aufheben',
-      lockBlur: this.state.gateOpen ? 'none' : 'blur(5.5px)',
-      lockOpacity: this.state.gateOpen ? '1' : '0.5',
 
       freeTierLine: free === 0 ? 'Keine Gratis-Lektionen' : 'Lektion 01–' + String(free).padStart(2, '0') + ' in jedem Lernplan',
       proFeatures: [

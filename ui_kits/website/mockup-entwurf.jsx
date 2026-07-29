@@ -1,4 +1,4 @@
-const { Kicker, FaqItem, SiteFooter } = window.SimplaroDesignSystem_5f353f;
+const { Kicker, FaqItem, SiteFooter, Button: DsButton, ServiceRow, LabelBadge, Twinkle } = window.SimplaroDesignSystem_5f353f;
 const ASSET_BASE = window.SIMPLARO_ASSET_BASE || '../../assets/';
 
 function asset(path) {
@@ -6,10 +6,11 @@ function asset(path) {
 }
 
 const NAV_LINKS = [
+  { label: 'SimplaroBot', href: '#service', product: 'Bot' },
+  { label: 'SimplaroAcademy', href: '#academy', product: 'Academy' },
   { label: 'SimplaroLearning', href: '#learning', product: 'Learning' },
-  { label: 'SimplaroBot', href: '#bot', product: 'Bot' },
-  { label: 'SimplaroService', href: '#service', product: 'Service' },
-  { label: 'Über uns', href: '#ueber-uns' },
+  { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
+  { label: 'Über uns', href: 'ueber-uns.html' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt', contact: true },
 ];
@@ -17,28 +18,22 @@ const NAV_LINKS = [
 const FAQS = [
   ['Was macht Simplaro?', 'Simplaro befähigt Schweizer KMU, KI verständlich, persönlich und wirksam im Unternehmen einzusetzen. Wir verbinden Lernen, Automatisierung und langfristige Begleitung.'],
   ['Ist Simplaro eine klassische KI-Agentur?', 'Nein. KI ist für uns ein Werkzeug. Im Zentrum stehen verständliche Einführung, konkrete Abläufe und eine Umsetzung, die im Alltag funktioniert.'],
+  ['Was ist SimplaroAcademy?', 'Die SimplaroAcademy ist unsere Selbstlern-Plattform: elf Lernpläne mit 55 kurzen Lektionen zu KI im KMU-Alltag. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.'],
   ['Was ist SimplaroLearning?', 'SimplaroLearning bündelt Online-Lernprogramme, Bibliotheken und persönliche Coachings, damit Unternehmer und Teams KI sicher anwenden können.'],
   ['Was ist SimplaroBot?', 'SimplaroBot ist der Ansatz für wiederkehrende Büro- und Administrationsprozesse: Wir analysieren Abläufe, priorisieren Hebel und setzen passende Automatisierungen um.'],
   ['Was ist SimplaroService?', 'SimplaroService begleitet bestehende Automatisierungen im Betrieb. Dazu gehören Pflege, Updates, Kontrolle und Weiterentwicklung nach Bedarf.'],
   ['Brauche ich technisches Vorwissen?', 'Nein. Die Inhalte und die Umsetzung werden so erklärt, dass Unternehmer und Mitarbeitende ohne technisches Vorwissen mitkommen.'],
+  ['Was kostet eine Automation?', 'Eine Automation beginnt bei CHF 600. Den Fixpreis nennen wir nach der Erstanalyse — Sie wissen vor der Umsetzung, woran Sie sind.'],
+  ['Was passiert mit unseren Daten?', 'Wir arbeiten nach dem revDSG. Vor der Umsetzung klären wir mit Ihnen, welche Daten ein Werkzeug überhaupt sehen darf, und halten Kundendaten dort heraus, wo sie nicht hingehören.'],
   ['Wie beginnt eine Zusammenarbeit?', 'Am Anfang steht ein unverbindliches Gespräch. Danach klären wir, ob Learning, Bot, Service oder eine Kombination davon sinnvoll ist.'],
 ];
 
 const SERVICE_PLANS = [
-  {
-    title: 'SimplaroService BASIC',
-    features: ['Regelmässige Funktionsprüfung', 'Kleine Anpassungen nach Bedarf', 'E-Mail-Support', 'Kurze Standortmeldung'],
-  },
-  {
-    title: 'SimplaroService STANDARD',
-    badge: 'Meist gewählt',
-    features: ['Laufende Pflege und Updates', 'Optimierung bestehender Abläufe', 'Support für Mitarbeitende', 'Periodischer Review-Termin', 'Empfehlungen für nächste Hebel'],
-  },
-  {
-    title: 'SimplaroService PREMIUM',
-    features: ['Proaktive Weiterentwicklung', 'Priorisierte Betreuung', 'Erweiterungen und Integrationen', 'Qualitäts- und Datenschutz-Review', 'Begleitung bei neuen Prozessen'],
-  },
+  { number: '01', title: 'SimplaroService BASIC', text: 'Regelmässige Funktionsprüfung, kleine Anpassungen und E-Mail-Support.', price: 'ab CHF 90 / Monat' },
+  { number: '02', title: 'SimplaroService STANDARD', text: 'Laufende Pflege und Updates, Optimierung bestehender Abläufe, Support für Ihr Team und ein periodischer Review-Termin.', price: 'ab CHF 190 / Monat' },
+  { number: '03', title: 'SimplaroService PREMIUM', text: 'Proaktive Weiterentwicklung, priorisierte Betreuung, Erweiterungen und Integrationen.', price: 'ab CHF 390 / Monat' },
 ];
+
 
 function Arrow() {
   return <span aria-hidden="true">→</span>;
@@ -64,13 +59,21 @@ function NavLabel({ link }) {
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [solid, setSolid] = React.useState(false);
   const closeMenu = () => setMenuOpen(false);
 
+  React.useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="mock-header">
+    <header className={`mock-header${solid || menuOpen ? ' is-solid' : ''}`}>
       <div className="mock-header__inner">
         <a className="mock-header__logo" href="#top" aria-label="Simplaro Start">
-          <img src={asset('logo-lockup-terra.png')} alt="Simplaro" />
+          <img src={asset(solid || menuOpen ? 'logo-lockup-terra.png' : 'logo-lockup-white.png')} alt="Simplaro" />
         </a>
         <button
           className="mock-menu-toggle"
@@ -86,7 +89,7 @@ function Header() {
         </button>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
           {NAV_LINKS.map((link) => (
-            <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
+            <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
               <NavLabel link={link} />
             </a>
           ))}
@@ -94,7 +97,7 @@ function Header() {
       </div>
       <nav id="mock-mobile-menu" className={`mock-mobile-nav${menuOpen ? ' is-open' : ''}`} aria-label="Mobile Navigation">
         {NAV_LINKS.map((link) => (
-          <a key={link.href} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
+          <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
             <NavLabel link={link} />
           </a>
         ))}
@@ -106,24 +109,35 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="mock-hero" aria-label="Start">
+      <Twinkle top="17%" left="11%" size={13} duration={6.5} />
+      <Twinkle top="28%" right="14%" size={10} delay={1.2} duration={5.5} />
+      <Twinkle bottom="24%" left="21%" size={9} delay={2.4} duration={6} />
       <div className="mock-hero__content">
         <div className="mock-hero__text">
-          <h1>Wir helfen Schweizer KMU, mit KI täglich Zeit und Kosten zu sparen.</h1>
-          <ul className="mock-hero__checks">
-            <li>Simpel</li>
-            <li>Klar</li>
-            <li>Persönlich</li>
-          </ul>
+          <h1>Mit KI einfacher arbeiten, Zeit sparen und Kosten senken <span>– für Schweizer KMU.</span></h1>
         </div>
-        <div className="mock-hero__actions">
-          <a className="mock-button" href="#learning">SimplaroLearning starten <Arrow /></a>
-          <a className="mock-button" href="#bot">SimplaroBot kennenlernen <Arrow /></a>
-          <a className="mock-button" href="erstanalyse.html" aria-label="Kostenlose Online-Erstanalyse öffnen">Kostenlose Erstanalyse <Arrow /></a>
+        <div className="mock-hero__doors">
+          <a className="mock-hero__door" href="#service">
+            <span className="mock-hero__door-title"><ProductName name="Bot" /></span>
+            <span className="mock-hero__door-text">Automationen für Ihren Betrieb <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
+          </a>
+          <a className="mock-hero__door" href="#academy">
+            <span className="mock-hero__door-title"><ProductName name="Academy" /></span>
+            <span className="mock-hero__door-text">E-Learnings zu KI für KMU <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
+          </a>
+          <a className="mock-hero__door" href="#learning">
+            <span className="mock-hero__door-title"><ProductName name="Learning" /></span>
+            <span className="mock-hero__door-text">Trainings, Coachings, Workshops <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
+          </a>
         </div>
       </div>
       <div className="mock-hero__robot" aria-hidden="true">
         <img src={asset('buerobot-poster-hand-sharp.jpg')} alt="" />
       </div>
+      <a className="mock-stamp" href="erstanalyse.html">
+        <span className="mock-stamp__over">Kostenlos &amp; unverbindlich</span>
+        <span className="mock-stamp__label">Jetzt Erstanalyse starten →</span>
+      </a>
     </section>
   );
 }
@@ -133,125 +147,30 @@ function Learning() {
     <section id="learning" className="mock-section mock-section--alt">
       <div className="mock-wrap mock-grid">
         <div className="mock-copy">
-          <Kicker number="01">Lernen und befähigen</Kicker>
-          <h2 className="mock-title"><ProductName name="Learning" /></h2>
-          <p className="mock-lead">Wie sattelfest sind Sie in der Anwendung von KI? Mit <ProductName name="Learning" className="mock-inline-product" /> befähigen wir Sie und Ihre Mitarbeitenden im Zeitalter von KI — auf zwei Wegen, die sich ergänzen: selbständig online oder persönlich begleitet.</p>
+          <Kicker number="02">Lernen und befähigen</Kicker>
+          <h2 className="mock-title"><span className="mock-accent">Lernen</span> mit Simplaro</h2>
+          <p className="mock-lead">Wie sattelfest sind Sie in der Anwendung von KI? Wir befähigen Sie und Ihre Mitarbeitenden im Zeitalter von KI — auf zwei Wegen, die sich ergänzen: selbständig online oder persönlich begleitet.</p>
           <div className="mock-learning-tracks">
             <article className="mock-learning-track">
               <span className="mock-learning-track__label">Online · im eigenen Tempo</span>
               <h3><ProductName name="Academy" /></h3>
-              <p>Elf Lernpläne mit 55 kurzen Lektionen — Sie lernen an Ihren eigenen Unterlagen, wann es Ihnen passt. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.</p>
-              <a className="mock-button mock-button--terra" href="academy/">Zur SimplaroAcademy <Arrow /></a>
+              <p>Unsere Selbstlern-Plattform: E-Learnings zu KI für KMU — elf Lernpläne mit 55 kurzen Lektionen, im eigenen Tempo. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.</p>
+              <DsButton variant="cta" size="sm" arrow href="#academy" style={{ marginTop: 'auto', minHeight: 44 }}>Zu den E-Learnings</DsButton>
             </article>
             <article className="mock-learning-track">
               <span className="mock-learning-track__label">Persönlich · bei Ihnen vor Ort</span>
-              <h3><ProductName name="Coaching" /></h3>
-              <p>Coachings und Workshops in Ihrer Firma — für Unternehmer, Führungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen.</p>
-              <a className="mock-button mock-button--terra" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
+              <h3><ProductName name="Learning" /></h3>
+              <p>Trainings, Coachings und Workshops in Ihrer Firma — für Unternehmer, Führungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen.</p>
+              <DsButton variant="cta" size="sm" arrow href="#kontakt" style={{ marginTop: 'auto', minHeight: 44 }}>SimplaroLearning anfragen</DsButton>
             </article>
           </div>
         </div>
         <div className="mock-learning-visual">
-          <img className="mock-learning-image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
+          <img className="mock-learning-image" src={asset('simplaro-academy-desk.png')} alt="SimplaroBot am Schreibtisch beim Erstellen eines Lernmoduls" />
+          <img className="mock-learning-image mock-learning-image--bot" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
     </section>
-  );
-}
-
-function MockupBuerobotVideo() {
-  const ref = React.useRef(null);
-  const [failed, setFailed] = React.useState(false);
-
-  React.useEffect(() => {
-    let url = null;
-    let cancelled = false;
-
-    fetch(asset('buerobot-dance.mp4'))
-      .then((response) => {
-        if (!response.ok) throw new Error('video ' + response.status);
-        return response.blob();
-      })
-      .then((blob) => {
-        if (cancelled) return;
-        url = URL.createObjectURL(blob);
-        const video = ref.current;
-        if (!video) return;
-        video.muted = true;
-        video.defaultMuted = true;
-        video.volume = 0;
-        video.src = url;
-        video.play().catch(() => {});
-      })
-      .catch(() => {
-        if (!cancelled) setFailed(true);
-      });
-
-    return () => {
-      cancelled = true;
-      if (url) URL.revokeObjectURL(url);
-    };
-  }, []);
-
-  if (failed) {
-    return <img className="mock-bot-image" src={asset('buerobot-phone.jpg')} alt="Büro-Bot unterstützt bei Prozessen" />;
-  }
-
-  return (
-    <video
-      className="mock-bot-image"
-      ref={ref}
-      autoPlay
-      muted
-      loop
-      playsInline
-      aria-label="Büro-Bot in Bewegung"
-    ></video>
-  );
-}
-
-function Bot() {
-  return (
-    <section id="bot" className="mock-section mock-section--terra">
-      <div className="mock-wrap mock-grid">
-        <div>
-          <MockupBuerobotVideo />
-        </div>
-        <div className="mock-copy">
-          <Kicker tone="onTerra" number="02">Automatisieren</Kicker>
-          <h2 className="mock-title"><ProductName name="Bot" /></h2>
-          <p className="mock-lead">Mit dem <strong>SimplaroBot</strong> automatisieren wir Prozesse, die regelmässig Zeit in Anspruch nehmen. In einem unverbindlichen Gespräch analysieren wir gemeinsam Ihre Abläufe, identifizieren Herausforderungen und machen eine Standortbestimmung.</p>
-          <p className="mock-lead">Nach der Bestandesaufnahme schlagen wir vor, welche Prozesse mit Automatisierung optimiert werden können. Sie entscheiden, ob Sie die Umsetzung mit Simplaro starten möchten.</p>
-          <ol className="mock-steps">
-            <li><span><strong>Empfehlung:</strong> Wir zeigen Prozesse mit hohem Entlastungspotenzial und erstellen eine persönliche Offerte.</span></li>
-            <li><span><strong>Priorisierung:</strong> Gemeinsam entscheiden wir, welche Abläufe zuerst optimiert werden.</span></li>
-            <li><span><strong>Planung:</strong> Wir bereiten die Umsetzung verständlich und Schritt für Schritt vor.</span></li>
-            <li><span><strong>Umsetzung:</strong> Wir implementieren die Prozessautomatisierung und befähigen Ihr Team.</span></li>
-            <li><span><strong>Kontrolle:</strong> Mit SimplaroService prüfen wir regelmässig, ob alles funktioniert.</span></li>
-          </ol>
-          <div className="mock-actions">
-            <a className="mock-button" href="#kontakt">Jetzt unverbindliches Gespräch buchen <Arrow /></a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ServiceCard({ title, badge, features }) {
-  return (
-    <article className="mock-service-card">
-      <div className="mock-service-card__head">
-        <h3>{title}</h3>
-      </div>
-      <div className="mock-service-card__body">
-        {badge ? <span className="mock-service-badge">{badge}</span> : null}
-        <ul>
-          {features.map((feature) => <li key={feature}>{feature}</li>)}
-        </ul>
-        <div className="mock-service-card__price">Preis auf Anfrage</div>
-      </div>
-    </article>
   );
 }
 
@@ -260,50 +179,103 @@ function Service() {
     <section id="service" className="mock-section">
       <div className="mock-wrap">
         <div className="mock-center">
-          <Kicker number="03">Begleitung und Betrieb</Kicker>
-          <h2 className="mock-title">Wir begleiten Sie vor Ort.</h2>
-          <p className="mock-lead" style={{ maxWidth: 860 }}>Der <ProductName name="Bot" className="mock-inline-product" /> ist unsere Begleitung bei Ihnen im Betrieb: Wir setzen die Automatisierung gemeinsam mit Ihnen um — persönlich und auf Augenhöhe. Für den laufenden Betrieb wählen Sie danach bei Bedarf ein <ProductName name="Service" className="mock-inline-product" />-Paket als Zusatzprodukt.</p>
+          <Kicker number="01">Automatisieren</Kicker>
+          <h2 className="mock-title">Wir automatisieren Ihren Betrieb.</h2>
+          <p className="mock-lead" style={{ maxWidth: 720 }}>Wir übernehmen, was regelmässig Zeit kostet — Schritt für Schritt, bei Ihnen im Betrieb.</p>
         </div>
         <article className="mock-bot-tile">
-          <div className="mock-bot-tile__copy">
-            <h3><ProductName name="Bot" /> — Begleitung vor Ort</h3>
-            <p>Wir kommen zu Ihnen, richten Ihre Automatisierungen ein und befähigen Ihr Team direkt im Betrieb. Sie zahlen nur die Stunden, die wir bei Ihnen im Einsatz sind.</p>
-            <a className="mock-button" href="#kontakt">Gespräch buchen <Arrow /></a>
+          <div className="mock-bot-tile__head">
+            <div className="mock-bot-tile__intro">
+              <LabelBadge tone="onTerra">Hauptprodukt</LabelBadge>
+              <h3><ProductName name="Bot" /></h3>
+              <p className="mock-bot-tile__sub">Wir richten Ihre Automationen bei Ihnen im Betrieb ein und befähigen Ihr Team — persönlich und auf Augenhöhe.</p>
+            </div>
+            <div className="mock-bot-tile__offer">
+              <p className="mock-bot-tile__price-line">
+                <span className="mock-bot-tile__amount">ab CHF 600</span>
+                <span className="mock-bot-tile__unit">pro Automation</span>
+              </p>
+              <span className="mock-bot-tile__note">Fixpreis nach der Erstanalyse · meist in wenigen Wochen zurückverdient</span>
+              <DsButton variant="light" size="sm" arrow href="#kontakt">Gespräch buchen</DsButton>
+            </div>
           </div>
-          <div className="mock-bot-tile__price">
-            <span className="mock-bot-tile__amount">CHF 190</span>
-            <span className="mock-bot-tile__unit">pro Stunde</span>
-          </div>
+          <ol className="mock-bot-tile__steps">
+            <li>
+              <span className="mock-bot-tile__step-no">01</span>
+              <strong>Empfehlung</strong>
+              <span className="mock-bot-tile__step-text">Prozesse mit dem grössten Entlastungspotenzial, mit Offerte</span>
+            </li>
+            <li>
+              <span className="mock-bot-tile__step-no">02</span>
+              <strong>Priorisierung</strong>
+              <span className="mock-bot-tile__step-text">gemeinsam festlegen, was zuerst optimiert wird</span>
+            </li>
+            <li>
+              <span className="mock-bot-tile__step-no">03</span>
+              <strong>Planung</strong>
+              <span className="mock-bot-tile__step-text">Umsetzung Schritt für Schritt vorbereitet</span>
+            </li>
+            <li>
+              <span className="mock-bot-tile__step-no">04</span>
+              <strong>Umsetzung</strong>
+              <span className="mock-bot-tile__step-text">Automationen eingerichtet, Team befähigt</span>
+            </li>
+            <li>
+              <span className="mock-bot-tile__step-no">05</span>
+              <strong>Kontrolle</strong>
+              <span className="mock-bot-tile__step-text">regelmässige Prüfung mit SimplaroService</span>
+            </li>
+          </ol>
         </article>
-        <p className="mock-service-note">Zusatzprodukt nach Wahl: <ProductName name="Service" className="mock-inline-product" /> für Pflege und Weiterentwicklung.</p>
-        <div className="mock-service-grid">
-          {SERVICE_PLANS.map((plan) => <ServiceCard key={plan.title} {...plan} />)}
+        <div className="mock-addons" id="service-pakete">
+          <p className="mock-addons__note">
+            <span className="mock-addons__label">Zusatzprodukte</span>
+            <span>Pflege und Weiterentwicklung im Abo — optional zum <ProductName name="Bot" className="mock-inline-product" />.</span>
+          </p>
+          <div className="mock-service-rows">
+            {SERVICE_PLANS.map((plan, i) => (
+              <ServiceRow key={plan.title} number={plan.number} title={plan.title} last={i === SERVICE_PLANS.length - 1}>
+                {plan.text} <span className="mock-service-price">{plan.price}</span>
+              </ServiceRow>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function UeberUns() {
+const ACADEMY_TEASER = [
+  ['01', 'Grundlagen: KI einordnen', 'Einstieg · 1 Std 05', 'Der Einstieg ohne Fachchinesisch — was die Werkzeuge können und wie Sie sie ansprechen.'],
+  ['02', 'Datenschutz & Sicherheit', 'Grundlage · 1 Std 15', 'Was rein darf und was nie: revDSG, Anonymisieren, Cloud-Standort.'],
+  ['03', 'Korrespondenz & E-Mail', 'Praxis · 1 Std 22', 'Der Posteingang zuerst — Antworten, die nach Ihnen klingen.'],
+  ['04', 'Offerten & Aufträge', 'Praxis · 1 Std 28', 'Aus fünf Stichworten eine Offerte in Ihrer Struktur.'],
+  ['05', 'Buchhaltung & Belege', 'Praxis · 1 Std 23', 'Belegstapel, Spesen, Mahnwesen — bis zur Übergabe ans Treuhandbüro.'],
+  ['09', 'Abläufe automatisieren', 'Fortgeschritten · 2 Std 03', 'Vom einzelnen Handgriff zum verlässlichen Ablauf.'],
+];
+
+function Academy() {
   return (
-    <section id="ueber-uns" className="mock-section mock-section--alt">
+    <section id="academy" className="mock-section">
       <div className="mock-wrap">
         <div className="mock-center">
-          <Kicker number="04">Über uns</Kicker>
-          <h2 className="mock-title">Unternehmerische Praxis, menschliche Werte und moderne Technologie.</h2>
-          <p className="mock-lead" style={{ maxWidth: 980 }}>André Ulrich und Philip Krieger sind zwei Unternehmer aus Zürich. Sie haben Simplaro gegründet, um Schweizer KMU in das Zeitalter von KI zu begleiten und sie zu befähigen, KI für ihr Unternehmen einzusetzen. Wir verbinden unternehmerische Praxis, menschliche Werte und moderne Technologie zu einem ganzheitlichen Ansatz und begleiten KMU persönlich, vor Ort und auf Augenhöhe.</p>
+          <Kicker number="03">E-Learnings</Kicker>
+          <h2 className="mock-title">Mehr als ein Chatbot: Lernen Sie, Ihre Büroarbeit mit KI zu automatisieren.</h2>
+          <p className="mock-lead" style={{ maxWidth: 760 }}>Die <ProductName name="Academy" /> ist unsere Selbstlern-Plattform: 55 kurze Lektionen in elf Lernplänen. Jeder Plan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
         </div>
-        <div className="mock-team-grid">
-          <article className="mock-team-card">
-            <img src={asset('andre-ulrich-team.png?v=20260720-andre-bg-clean')} alt="André Ulrich" />
-            <h3>André Ulrich</h3>
-            <p>Mitgründer · KMU-Experte</p>
-          </article>
-          <article className="mock-team-card">
-            <img src={asset('philip-krieger-team.png')} alt="Philip Krieger" />
-            <h3>Philip Krieger</h3>
-            <p>Mitgründer · Coach</p>
-          </article>
+        <ul className="mock-academy-grid">
+          {ACADEMY_TEASER.map(([no, title, meta, text]) => (
+            <li className="mock-academy-plan" key={no}>
+              <span className="mock-academy-plan__no">{no}</span>
+              <h3>{title}</h3>
+              <span className="mock-academy-plan__meta">{meta}</span>
+              <p>{text}</p>
+            </li>
+          ))}
+        </ul>
+        <div className="mock-academy-foot">
+          <p className="mock-academy-foot__note">Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat — jederzeit kündbar.</p>
+          <DsButton variant="cta" size="md" arrow href="academy/index.html">Zur SimplaroAcademy</DsButton>
         </div>
       </div>
     </section>
@@ -315,7 +287,7 @@ function Faq() {
     <section id="faq" className="mock-section">
       <div className="mock-wrap mock-faq-layout">
         <div className="mock-center">
-          <Kicker number="05">FAQ</Kicker>
+          <Kicker number="04">FAQ</Kicker>
           <h2 className="mock-title">Die wichtigsten Fragen und Antworten zu Simplaro.</h2>
           <img className="mock-faq-robot" src={asset('buerobot-faq-simplaro.png?v=20260725-17')} alt="SimplaroBot beantwortet Fragen" />
         </div>
@@ -333,12 +305,12 @@ function Kontakt() {
   return (
     <section id="kontakt" className="mock-contact">
       <div className="mock-wrap mock-center">
-        <Kicker tone="onTerra" number="06">Kontakt</Kicker>
+        <Kicker tone="onTerra" number="05">Kontakt</Kicker>
         <h2 className="mock-title" style={{ color: '#fff', maxWidth: 840 }}>Welche Simplaro-Lösung passt zu Ihrem Unternehmen?</h2>
         <p className="mock-lead" style={{ maxWidth: 720 }}>Im unverbindlichen Gespräch klären wir, ob für Sie Learning, Bot, Service oder eine Kombination der richtige nächste Schritt ist.</p>
         <div className="mock-actions">
-          <a className="mock-button" href="https://calendly.com/simplaro" target="_blank" rel="noopener">Termin direkt buchen <Arrow /></a>
-          <a className="mock-button" href="mailto:hallo@simplaro.ch">hallo@simplaro.ch <Arrow /></a>
+          <DsButton variant="light" arrow href="https://calendly.com/simplaro" target="_blank">Termin direkt buchen</DsButton>
+          <DsButton variant="glass" arrow href="mailto:hallo@simplaro.ch">hallo@simplaro.ch</DsButton>
         </div>
         <small style={{ fontSize: 15, fontWeight: 700, color: 'rgba(255,236,222,0.9)' }}>Simpel · Klar · Persönlich</small>
       </div>
@@ -354,10 +326,9 @@ function App() {
       <Header />
       <Hero />
       <main>
-        <Learning />
-        <Bot />
         <Service />
-        <UeberUns />
+        <Learning />
+        <Academy />
         <Faq />
         <Kontakt />
       </main>
