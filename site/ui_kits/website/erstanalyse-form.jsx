@@ -1,5 +1,5 @@
 const { Button: EaButton, Kicker: EaKicker, CheckPill: EaCheckPill, SiteFooter: EaSiteFooter } = window.SimplaroDesignSystem_5f353f;
-const { WORKER_URL, FORMSPREE_URL, PROD_HOSTS, SECTIONS, ALL_FIELDS, fmtCHF, fmtHours, fallbackAssessment } = window.ErstanalyseData;
+const { WORKER_URL, FORMSPREE_URL, PROD_HOSTS, SECTIONS, ALL_FIELDS, fmtCHF, fmtHours, fallbackAssessment, progressOf, blockComplete } = window.ErstanalyseData;
 
 const DRAFT_KEY = 'simplaro-erstanalyse-draft';
 const REQUIRED = ALL_FIELDS.filter((f) => f.required).map((f) => f.name);
@@ -123,6 +123,21 @@ function EaField({ field, value, error, onChange }) {
   );
 }
 
+function EaProgress({ answers }) {
+  const p = progressOf(answers);
+  return (
+    <div className="ea-progress">
+      <div className="ea-progress-inner">
+        <span className="ea-progress-label">{p.blocksDone} von {p.blocks} Blöcken</span>
+        <div className="ea-progress-track" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={p.percent} aria-label="Fortschritt Erstanalyse">
+          <div className="ea-progress-fill" style={{ width: p.percent + '%' }} />
+        </div>
+        <span className="ea-progress-label">{p.percent} %</span>
+      </div>
+    </div>
+  );
+}
+
 /* ---- Erfolgs-Screen ---- */
 function EaSuccess({ answers, result }) {
   const vorname = vornameOf(answers['Firma und Name']);
@@ -132,7 +147,7 @@ function EaSuccess({ answers, result }) {
       <h1 className="ea-h1">{vorname ? 'Herzlichen Dank, ' + vorname + '!' : 'Herzlichen Dank!'}</h1>
       <p className="ea-lead">Ihre Angaben sind bei uns angekommen. Wir schauen sie persönlich an und melden uns bei Ihnen — ohne Fachchinesisch und ohne Verkaufsdruck.</p>
       <div className="ea-result">
-        <EaKicker>💡 Ihre Ersteinschätzung</EaKicker>
+        <EaKicker>Ihre Ersteinschätzung</EaKicker>
         <p className="ea-result-big">ca. {fmtHours(result.stunden_pro_woche_min)}–{fmtHours(result.stunden_pro_woche_max)} Std. pro Woche</p>
         <p className="ea-result-chf">≈ CHF {fmtCHF(result.chf_pro_jahr_min)}–{fmtCHF(result.chf_pro_jahr_max)} pro Jahr</p>
         <p className="ea-result-text">{result.einschaetzung}</p>
@@ -145,6 +160,7 @@ function EaSuccess({ answers, result }) {
           </div>
         ) : null}
         {result.vorbehalt ? <p className="ea-result-vorbehalt">{result.vorbehalt}</p> : null}
+        <p className="ea-result-vorbehalt">Bewusst konservativ gerechnet — wir versprechen lieber zu wenig als zu viel. Welche Lösungswege dahinter stecken und was sie kosten, zeigen wir Ihnen im kostenlosen Erstgespräch.</p>
       </div>
       <div className="ea-success-ctas">
         <EaButton variant="cta" arrow="↗" href="https://calendly.com/simplaro" target="_blank">termin direkt buchen</EaButton>
@@ -205,6 +221,8 @@ function ErstanalyseApp() {
         </div>
       </header>
 
+      {result ? null : <EaProgress answers={answers} />}
+
       <main className="ea-wrap">
         {result ? (
           <EaSuccess answers={answers} result={result} />
@@ -213,12 +231,20 @@ function ErstanalyseApp() {
             <div className="ea-intro">
               <EaKicker>Kostenlos &amp; unverbindlich</EaKicker>
               <h1 className="ea-h1">Kostenlose Erstanalyse.</h1>
-              <p className="ea-lead">Zeigen Sie uns in rund zehn Minuten, wie Ihr Büroalltag aussieht. Sie erhalten direkt eine erste Einschätzung, wie viel Zeit und Geld in Ihrer Administration steckt.</p>
+              <p className="ea-lead">Acht kurze Blöcke, rund fünf Minuten — fast alles zum Ankreuzen. Direkt nach dem Absenden sehen Sie, wie viel Zeit und Geld in Ihrer Administration steckt.</p>
+            </div>
+
+            <div className="ea-note">
+              <p className="ea-note-title">Was Sie sofort erhalten</p>
+              <p className="ea-note-text">Stunden pro Woche, Franken pro Jahr und Ihre grössten Hebel — konservativ gerechnet. Die konkreten Lösungswege besprechen wir im kostenlosen Erstgespräch, gemeinsam und ohne Verkaufsdruck.</p>
             </div>
 
             {SECTIONS.map((s) => (
               <section key={s.number} className="ea-card">
-                <EaKicker number={s.number}>{s.kicker}</EaKicker>
+                <div className="ea-card-head">
+                  <EaKicker number={s.number}>{s.kicker}</EaKicker>
+                  {blockComplete(s, answers) ? <span className="ea-card-done">✓ vollständig</span> : null}
+                </div>
                 {s.fields.map((f) => (
                   <EaField key={f.name} field={f} value={answers[f.name]} error={errors.includes(f.name)} onChange={(v) => setValue(f.name, v)} />
                 ))}

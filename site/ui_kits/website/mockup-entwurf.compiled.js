@@ -134,7 +134,11 @@ function Hero() {
   }, "SimplaroLearning starten ", /*#__PURE__*/React.createElement(Arrow, null)), /*#__PURE__*/React.createElement("a", {
     className: "mock-button",
     href: "#bot"
-  }, "SimplaroBot kennenlernen ", /*#__PURE__*/React.createElement(Arrow, null)))), /*#__PURE__*/React.createElement("div", {
+  }, "SimplaroBot kennenlernen ", /*#__PURE__*/React.createElement(Arrow, null)), /*#__PURE__*/React.createElement("a", {
+    className: "mock-button",
+    href: "erstanalyse.html",
+    "aria-label": "Kostenlose Online-Erstanalyse öffnen"
+  }, "Kostenlose Erstanalyse ", /*#__PURE__*/React.createElement(Arrow, null)))), /*#__PURE__*/React.createElement("div", {
     className: "mock-hero__robot",
     "aria-hidden": "true"
   }, /*#__PURE__*/React.createElement("img", {

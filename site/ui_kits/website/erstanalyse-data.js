@@ -1,5 +1,6 @@
 /* Erstanalyse — Felddefinitionen, Fallback-Formel, Formatierung.
-   Feldnamen sind EXAKT die Mail-Labels (identisch mit buero-bot.ch/erstanalyse). */
+   Feldnamen sind EXAKT die Mail-Labels (identisch mit buero-bot.ch/erstanalyse).
+   Gliederung: 8 Blöcke gemäss Konzept — Feldnamen unverändert, nur neu gruppiert. */
 window.ErstanalyseData = (function () {
   const WORKER_URL = 'https://simplaro-erstanalyse.philkrieger4.workers.dev';
   const FORMSPREE_URL = 'https://formspree.io/f/xvzjnjnv';
@@ -8,41 +9,46 @@ window.ErstanalyseData = (function () {
   const SECTIONS = [
     {
       number: '01',
-      kicker: 'Über Ihr Unternehmen',
+      kicker: 'Firmenprofil',
       fields: [
         { name: 'Firma und Name', type: 'text', required: true, placeholder: 'Muster AG, Hans Meier', hint: 'Firma, dann Ihr Name — z.B. «Muster AG, Hans Meier»' },
         { name: 'Branche und Tätigkeit', type: 'text', required: true, placeholder: 'z.B. Sanitär, Kleinbetrieb mit Notfalldienst' },
         { name: 'Mitarbeitende', type: 'radio', options: ['Nur ich', '2–5', '6–15', '16–50', 'Mehr als 50'] },
-        { name: 'Büroarbeit erledigt', type: 'check', hint: 'Wer kümmert sich heute darum? Mehrfachauswahl möglich.', options: ['Ich selbst', 'Partner:in / Familie', 'Mitarbeiter:in', 'Extern (z.B. Treuhänder)'] },
       ],
     },
     {
       number: '02',
-      kicker: 'Ihre Werkzeuge heute',
+      kicker: 'Team & Rollen',
       fields: [
-        { name: 'Tools E-Mail und Office', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Microsoft 365 / Outlook', 'Google (Gmail/Workspace)', 'Bluewin / GMX / Hostpoint o.ä.', 'Word/Excel lokal installiert', 'Weiss nicht genau'] },
-        { name: 'Tools Offerten und Rechnungen', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Word-/Excel-Vorlage', 'Bexio', 'Klara', 'Branchensoftware', 'Von Hand / Papier', 'Macht jemand anderes für mich'] },
-        { name: 'Tools Buchhaltung', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Treuhänder macht alles', 'Bexio', 'Banana', 'Abacus', 'Excel', 'Belege sammeln, Rest extern'] },
-        { name: 'Tools Termine und Planung', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Papieragenda', 'Outlook-/Google-Kalender', 'WhatsApp / Telefon', 'Planungstool / Software'] },
-        { name: 'Tools Ablage', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Papierordner', 'Ordner auf dem PC', 'Firmenserver / NAS', 'Cloud (Dropbox, OneDrive, Google Drive …)'] },
-        { name: 'Branchensoftware', type: 'text', placeholder: 'Falls vorhanden: Name Ihrer Branchensoftware' },
+        { name: 'Büroarbeit erledigt', type: 'check', hint: 'Wer kümmert sich heute darum? Mehrfachauswahl möglich.', options: ['Ich selbst', 'Partner:in / Familie', 'Mitarbeiter:in', 'Extern (z.B. Treuhänder)'] },
+        { name: 'Team-Haltung', type: 'radio', hint: 'Wie steht Ihr Team Veränderungen und neuen Tools gegenüber?', options: ['Offen und neugierig', 'Gemischt', 'Eher zurückhaltend', 'Schwer zu sagen'] },
+        { name: 'KI-Schulung für', type: 'radio', hint: 'Wer soll bei Ihnen den Umgang mit KI lernen?', options: ['Das ganze Team', 'Einzelne Schlüsselpersonen', 'Erst einmal nur ich', 'Noch unklar'] },
+        { name: 'Coaching-Interesse', type: 'radio', hint: 'Wünschen Sie sich neben der Technik auch Begleitung für sich und Ihr Team — Führung, Veränderung, Entlastung?', options: ['Ja, das interessiert mich', 'Vielleicht, erzählen Sie mehr', 'Nein, im Moment nur Technik'] },
       ],
     },
     {
       number: '03',
-      kicker: 'Ihre Büroarbeit',
+      kicker: 'Administration & Ablage',
       fields: [
-        { name: 'Wiederkehrende Aufgaben', type: 'check', hint: 'Was kommt bei Ihnen regelmässig vor? Mehrfachauswahl möglich.', options: ['Offerten schreiben', 'Rechnungen und Mahnungen', 'E-Mails beantworten', 'Terminkoordination', 'Dokumente suchen und ablegen', 'Rapporte und Arbeitszeiten erfassen', 'Belege für die Buchhaltung', 'Social Media und Werbung', 'Lohnadministration', 'Texte und Briefe formulieren'] },
-        { name: 'Offerten pro Monat', type: 'radio', options: ['Keine / fast keine', '1–5', '6–15', '16–40', 'Mehr als 40'] },
-        { name: 'Dauer pro Offerte', type: 'radio', options: ['Unter 30 Minuten', '30–60 Minuten', '1–2 Stunden', 'Mehr als 2 Stunden'] },
-        { name: 'Rechnungen pro Monat', type: 'radio', options: ['Keine / fast keine', '1–10', '11–30', '31–100', 'Mehr als 100'] },
-        { name: 'Grösster Zeitfresser', type: 'textarea', required: true, placeholder: 'Was frisst in Ihrem Büroalltag am meisten Zeit?' },
-        { name: 'Bürostunden pro Woche', type: 'radio', options: ['Weniger als 5', '5–10', '10–20', 'Mehr als 20'] },
+        { name: 'Tools Ablage', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Papierordner', 'Ordner auf dem PC', 'Firmenserver / NAS', 'Cloud (Dropbox, OneDrive, Google Drive …)'] },
+        { name: 'Papier oder digital', type: 'radio', options: ['Fast alles auf Papier', 'Gemischt, eher Papier', 'Gemischt, eher digital', 'Fast alles digital'] },
+        { name: 'Tools Termine und Planung', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Papieragenda', 'Outlook-/Google-Kalender', 'WhatsApp / Telefon', 'Planungstool / Software'] },
       ],
     },
     {
       number: '04',
-      kicker: 'Ihre Kunden & Ihr Auftritt',
+      kicker: 'Buchhaltung & Rechnungen',
+      fields: [
+        { name: 'Tools Offerten und Rechnungen', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Word-/Excel-Vorlage', 'Bexio', 'Klara', 'Branchensoftware', 'Von Hand / Papier', 'Macht jemand anderes für mich'] },
+        { name: 'Tools Buchhaltung', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Treuhänder macht alles', 'Bexio', 'Banana', 'Abacus', 'Excel', 'Belege sammeln, Rest extern'] },
+        { name: 'Offerten pro Monat', type: 'radio', options: ['Keine / fast keine', '1–5', '6–15', '16–40', 'Mehr als 40'] },
+        { name: 'Dauer pro Offerte', type: 'radio', options: ['Unter 30 Minuten', '30–60 Minuten', '1–2 Stunden', 'Mehr als 2 Stunden'] },
+        { name: 'Rechnungen pro Monat', type: 'radio', options: ['Keine / fast keine', '1–10', '11–30', '31–100', 'Mehr als 100'] },
+      ],
+    },
+    {
+      number: '05',
+      kicker: 'Kommunikation & Anfragen',
       fields: [
         { name: 'Anfragekanäle', type: 'check', hint: 'Wie kommen Kundenanfragen bei Ihnen an? Mehrfachauswahl möglich.', options: ['Telefon', 'WhatsApp / SMS', 'E-Mail', 'Website-Formular', 'Social Media', 'Empfehlung / Laufkundschaft'] },
         { name: 'Verpasste Anrufe', type: 'radio', hint: 'Gehen Anrufe verloren, wenn Sie unterwegs oder im Termin sind?', options: ['Ja, öfter', 'Manchmal', 'Combox, ich rufe zurück', 'Nein, jemand nimmt ab'] },
@@ -51,36 +57,58 @@ window.ErstanalyseData = (function () {
       ],
     },
     {
-      number: '05',
-      kicker: 'Ihr Team & Sie',
-      fields: [
-        { name: 'Team-Haltung', type: 'radio', hint: 'Wie steht Ihr Team Veränderungen und neuen Tools gegenüber?', options: ['Offen und neugierig', 'Gemischt', 'Eher zurückhaltend', 'Schwer zu sagen'] },
-        { name: 'KI-Schulung für', type: 'radio', hint: 'Wer soll bei Ihnen den Umgang mit KI lernen?', options: ['Das ganze Team', 'Einzelne Schlüsselpersonen', 'Erst einmal nur ich', 'Noch unklar'] },
-        { name: 'Coaching-Interesse', type: 'radio', hint: 'Wünschen Sie sich neben der Technik auch Begleitung für sich und Ihr Team — Führung, Veränderung, Entlastung?', options: ['Ja, das interessiert mich', 'Vielleicht, erzählen Sie mehr', 'Nein, im Moment nur Technik'] },
-      ],
-    },
-    {
       number: '06',
-      kicker: 'Zum Schluss',
+      kicker: 'Tools & Systeme',
       fields: [
-        { name: 'Papier oder digital', type: 'radio', options: ['Fast alles auf Papier', 'Gemischt, eher Papier', 'Gemischt, eher digital', 'Fast alles digital'] },
+        { name: 'Tools E-Mail und Office', type: 'check', hint: 'Mehrfachauswahl möglich.', options: ['Microsoft 365 / Outlook', 'Google (Gmail/Workspace)', 'Bluewin / GMX / Hostpoint o.ä.', 'Word/Excel lokal installiert', 'Weiss nicht genau'] },
+        { name: 'Branchensoftware', type: 'text', placeholder: 'Falls vorhanden: Name Ihrer Branchensoftware' },
         { name: 'IT-Betreuung', type: 'radio', options: ['Niemand so richtig', 'Ich selbst', 'Externer IT-Dienstleister', 'Eigene IT-Person intern'] },
         { name: 'KI-Erfahrung', type: 'radio', options: ['Noch nie', 'Privat mal ausprobiert', 'Geschäftlich gelegentlich', 'Regelmässig im Einsatz'] },
-        { name: 'Erwartungen an den Termin', type: 'textarea', placeholder: 'Optional: Was möchten Sie aus dem Erstgespräch mitnehmen?' },
       ],
     },
     {
       number: '07',
-      kicker: 'So erreichen wir Sie',
+      kicker: 'Zeitfresser & Engpässe',
+      fields: [
+        { name: 'Wiederkehrende Aufgaben', type: 'check', hint: 'Was kommt bei Ihnen regelmässig vor? Mehrfachauswahl möglich.', options: ['Offerten schreiben', 'Rechnungen und Mahnungen', 'E-Mails beantworten', 'Terminkoordination', 'Dokumente suchen und ablegen', 'Rapporte und Arbeitszeiten erfassen', 'Belege für die Buchhaltung', 'Social Media und Werbung', 'Lohnadministration', 'Texte und Briefe formulieren'] },
+        { name: 'Bürostunden pro Woche', type: 'radio', options: ['Weniger als 5', '5–10', '10–20', 'Mehr als 20'] },
+        { name: 'Grösster Zeitfresser', type: 'textarea', required: true, placeholder: 'Was frisst in Ihrem Büroalltag am meisten Zeit?', hint: 'Das einzige Feld, das wir nicht zum Ankreuzen anbieten — ein Satz genügt.' },
+      ],
+    },
+    {
+      number: '08',
+      kicker: 'Kontakt & Erwartungen',
       fields: [
         { name: 'E-Mail', type: 'text', inputType: 'email', required: true, placeholder: 'z.B. peter.muster@muster-gmbh.ch', hint: 'Für Ihre Ersteinschätzung und die Terminvereinbarung.' },
         { name: 'Telefon', type: 'text', inputType: 'tel', placeholder: 'z.B. 079 123 45 67', hint: 'Optional — falls Sie lieber angerufen werden.' },
         { name: 'Zeithorizont', type: 'radio', hint: 'Wann möchten Sie etwas verändern?', options: ['So bald wie möglich', 'In den nächsten 3–6 Monaten', 'Ich möchte mich erst informieren'] },
+        { name: 'Erwartungen an den Termin', type: 'textarea', placeholder: 'Optional: Was möchten Sie aus dem Erstgespräch mitnehmen?' },
       ],
     },
   ];
 
   const ALL_FIELDS = SECTIONS.flatMap((s) => s.fields);
+
+  /* Ein Feld zählt für den Fortschritt, wenn es Pflicht ist oder zum Ankreuzen. */
+  const countsForProgress = (f) => Boolean(f.required) || f.type === 'radio' || f.type === 'check';
+  const hasValue = (v) => Array.isArray(v) ? v.length > 0 : Boolean((v || '').trim());
+
+  function progressOf(answers) {
+    let done = 0, total = 0, blocksDone = 0;
+    SECTIONS.forEach((s) => {
+      const countable = s.fields.filter(countsForProgress);
+      const filled = countable.filter((f) => hasValue(answers[f.name]));
+      done += filled.length;
+      total += countable.length;
+      if (countable.length && filled.length === countable.length) blocksDone += 1;
+    });
+    return { done, total, blocksDone, blocks: SECTIONS.length, percent: total ? Math.round((done / total) * 100) : 0 };
+  }
+
+  function blockComplete(section, answers) {
+    const countable = section.fields.filter(countsForProgress);
+    return countable.length > 0 && countable.every((f) => hasValue(answers[f.name]));
+  }
 
   /* ---- Formatierung ---- */
   const fmtCHF = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "'");
@@ -108,5 +136,5 @@ window.ErstanalyseData = (function () {
     };
   }
 
-  return { WORKER_URL, FORMSPREE_URL, PROD_HOSTS, SECTIONS, ALL_FIELDS, fmtCHF, fmtHours, fallbackAssessment };
+  return { WORKER_URL, FORMSPREE_URL, PROD_HOSTS, SECTIONS, ALL_FIELDS, fmtCHF, fmtHours, fallbackAssessment, progressOf, blockComplete };
 })();
