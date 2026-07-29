@@ -179,7 +179,7 @@ function Learning() {
     className: "mock-actions"
   }, /*#__PURE__*/React.createElement("a", {
     className: "mock-button mock-button--terra",
-    href: "#kontakt"
+    href: "academy/"
   }, "Zur SimplaroAcademy ", /*#__PURE__*/React.createElement(Arrow, null)), /*#__PURE__*/React.createElement("a", {
     className: "mock-button mock-button--terra",
     href: "#kontakt"
@@ -292,19 +292,40 @@ function Service() {
     className: "mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
     number: "03"
-  }, "Betrieb und Weiterentwicklung"), /*#__PURE__*/React.createElement("h2", {
+  }, "Begleitung und Betrieb"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
-  }, /*#__PURE__*/React.createElement(ProductName, {
-    name: "Service"
-  })), /*#__PURE__*/React.createElement("p", {
+  }, "Wir begleiten Sie vor Ort."), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead",
     style: {
       maxWidth: 860
     }
-  }, "Der SimplaroBot braucht Pflege und regelm\xE4ssige Updates. Mit ", /*#__PURE__*/React.createElement(ProductName, {
+  }, "Der ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Bot",
+    className: "mock-inline-product"
+  }), " ist unsere Begleitung bei Ihnen im Betrieb: Wir setzen die Automatisierung gemeinsam mit Ihnen um — pers\xF6nlich und auf Augenh\xF6he. F\xFCr den laufenden Betrieb w\xE4hlen Sie danach bei Bedarf ein ", /*#__PURE__*/React.createElement(ProductName, {
     name: "Service",
     className: "mock-inline-product"
-  }), " m\xFCssen Sie sich um den laufenden Betrieb nicht allein k\xFCmmern: Wir pr\xFCfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.")), /*#__PURE__*/React.createElement("div", {
+  }), "-Paket als Zusatzprodukt.")), /*#__PURE__*/React.createElement("article", {
+    className: "mock-bot-tile"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-bot-tile__copy"
+  }, /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Bot"
+  }), " — Begleitung vor Ort"), /*#__PURE__*/React.createElement("p", null, "Wir kommen zu Ihnen, richten Ihre Automatisierungen ein und bef\xE4higen Ihr Team direkt im Betrieb. Sie zahlen nur die Stunden, die wir bei Ihnen im Einsatz sind."), /*#__PURE__*/React.createElement("a", {
+    className: "mock-button",
+    href: "#kontakt"
+  }, "Gespr\xE4ch buchen ", /*#__PURE__*/React.createElement(Arrow, null))), /*#__PURE__*/React.createElement("div", {
+    className: "mock-bot-tile__price"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-bot-tile__amount"
+  }, "CHF 190"), /*#__PURE__*/React.createElement("span", {
+    className: "mock-bot-tile__unit"
+  }, "pro Stunde"))), /*#__PURE__*/React.createElement("p", {
+    className: "mock-service-note"
+  }, "Zusatzprodukt nach Wahl: ", /*#__PURE__*/React.createElement(ProductName, {
+    name: "Service",
+    className: "mock-inline-product"
+  }), " f\xFCr Pflege und Weiterentwicklung."), /*#__PURE__*/React.createElement("div", {
     className: "mock-service-grid"
   }, SERVICE_PLANS.map(plan => /*#__PURE__*/React.createElement(ServiceCard, _extends({
     key: plan.title
