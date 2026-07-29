@@ -118,6 +118,7 @@ function Hero() {
         <div className="mock-hero__actions">
           <a className="mock-button" href="#learning">SimplaroLearning starten <Arrow /></a>
           <a className="mock-button" href="#bot">SimplaroBot kennenlernen <Arrow /></a>
+          <a className="mock-button" href="erstanalyse.html" aria-label="Kostenlose Online-Erstanalyse öffnen">Kostenlose Erstanalyse <Arrow /></a>
         </div>
       </div>
       <div className="mock-hero__robot" aria-hidden="true">
