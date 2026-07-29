@@ -139,7 +139,7 @@ function Learning() {
           <p className="mock-lead">In der <ProductName name="Academy" className="mock-inline-product" /> finden Sie Online-Lernprogramme, die Schritt für Schritt in künstliche Intelligenz einführen. Mit einem Firmenkonto können Sie Lernprogramme auch Ihren Mitarbeitenden zugänglich machen.</p>
           <p className="mock-lead">Für Unternehmer, Führungskräfte und Teams bieten wir ergänzend <ProductName name="Coaching" className="mock-inline-product" />: persönliche Coachings oder kleine Workshops bei Ihnen in der Firma.</p>
           <div className="mock-actions">
-            <a className="mock-button mock-button--terra" href="#kontakt">Zur SimplaroAcademy <Arrow /></a>
+            <a className="mock-button mock-button--terra" href="academy/">Zur SimplaroAcademy <Arrow /></a>
             <a className="mock-button mock-button--terra" href="#kontakt">SimplaroCoaching anfragen <Arrow /></a>
           </div>
         </div>
@@ -252,10 +252,22 @@ function Service() {
     <section id="service" className="mock-section">
       <div className="mock-wrap">
         <div className="mock-center">
-          <Kicker number="03">Betrieb und Weiterentwicklung</Kicker>
-          <h2 className="mock-title"><ProductName name="Service" /></h2>
-          <p className="mock-lead" style={{ maxWidth: 860 }}>Der SimplaroBot braucht Pflege und regelmässige Updates. Mit <ProductName name="Service" className="mock-inline-product" /> müssen Sie sich um den laufenden Betrieb nicht allein kümmern: Wir prüfen, optimieren und entwickeln Ihre Automatisierungen nach Bedarf weiter.</p>
+          <Kicker number="03">Begleitung und Betrieb</Kicker>
+          <h2 className="mock-title">Wir begleiten Sie vor Ort.</h2>
+          <p className="mock-lead" style={{ maxWidth: 860 }}>Der <ProductName name="Bot" className="mock-inline-product" /> ist unsere Begleitung bei Ihnen im Betrieb: Wir setzen die Automatisierung gemeinsam mit Ihnen um — persönlich und auf Augenhöhe. Für den laufenden Betrieb wählen Sie danach bei Bedarf ein <ProductName name="Service" className="mock-inline-product" />-Paket als Zusatzprodukt.</p>
         </div>
+        <article className="mock-bot-tile">
+          <div className="mock-bot-tile__copy">
+            <h3><ProductName name="Bot" /> — Begleitung vor Ort</h3>
+            <p>Wir kommen zu Ihnen, richten Ihre Automatisierungen ein und befähigen Ihr Team direkt im Betrieb. Sie zahlen nur die Stunden, die wir bei Ihnen im Einsatz sind.</p>
+            <a className="mock-button" href="#kontakt">Gespräch buchen <Arrow /></a>
+          </div>
+          <div className="mock-bot-tile__price">
+            <span className="mock-bot-tile__amount">CHF 190</span>
+            <span className="mock-bot-tile__unit">pro Stunde</span>
+          </div>
+        </article>
+        <p className="mock-service-note">Zusatzprodukt nach Wahl: <ProductName name="Service" className="mock-inline-product" /> für Pflege und Weiterentwicklung.</p>
         <div className="mock-service-grid">
           {SERVICE_PLANS.map((plan) => <ServiceCard key={plan.title} {...plan} />)}
         </div>
