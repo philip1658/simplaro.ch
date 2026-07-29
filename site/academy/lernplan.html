@@ -8,14 +8,15 @@
 <body>
 <x-dc>
 <helmet>
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/fonts.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/colors.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/typography.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/spacing.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/effects.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/tokens/base.css">
-  <link rel="stylesheet" href="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/styles.css">
-  <script src="_ds/simplaro-design-system-5f353fc4-bd23-4859-a47c-466b9fe42cfc/_ds_bundle.js"></script>
+  <link rel="stylesheet" href="../tokens/fonts.css">
+  <link rel="stylesheet" href="../tokens/colors.css">
+  <link rel="stylesheet" href="../tokens/typography.css">
+  <link rel="stylesheet" href="../tokens/spacing.css">
+  <link rel="stylesheet" href="../tokens/effects.css">
+  <link rel="stylesheet" href="../tokens/base.css">
+  <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="mobile.css?v=20260729-mobile-86">
+  <script src="../_ds_bundle.js?v=20260729-mobile-86"></script>
   <script src="./academy-daten.js"></script>
   <script src="./image-slot.js"></script>
   <style>
@@ -37,8 +38,9 @@
         </a>
         <nav aria-label="Hauptnavigation" style="display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; font-size:17px; font-weight:600">
           <a href="index.html#lernplaene" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Lernpläne</a>
-          <a href="index.html#vorschau" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Vorschau</a>
+          <a href="index.html#vor-ort" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Vor Ort</a>
           <a href="index.html#zugang" style-hover="color:var(--terra-500)" style="color:var(--text-strong); text-decoration:none; transition:color 0.3s ease">Zugang</a>
+          <a href="../index.html" style-hover="color:var(--terra-500)" style="display:inline-flex; align-items:center; gap:7px; color:var(--brown-400); text-decoration:none; transition:color 0.3s ease">← Simplaro</a>
           <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Button" arrow="{{ true }}" href="index.html#zugang" hint-size="auto,48px">Gratis starten</x-import>
         </nav>
       </div>
@@ -52,7 +54,7 @@
 
       <a href="index.html#lernplaene" style="display:inline-flex; align-items:center; gap:10px; font-size:14.5px; font-weight:700; color:var(--terra-500)"><i style="font-style:normal">←</i>Alle Lernpläne</a>
 
-      <div style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.82fr); gap:52px; align-items:center">
+      <div data-m="split" style="display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.82fr); gap:52px; align-items:center">
         <div style="display:flex; flex-direction:column; align-items:flex-start; gap:22px">
           <div style="display:flex; flex-wrap:wrap; align-items:center; gap:14px">
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="{{ plan.n }}" hint-size="auto,20px">LERNPLAN</x-import>
@@ -80,7 +82,7 @@
 
   <!-- ═══ LEKTIONEN ═══ -->
   <section id="lektionen" style="background:var(--sand-200); padding:80px 32px 92px">
-    <div style="max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,330px); gap:32px; align-items:start">
+    <div data-m="split" style="max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,330px); gap:32px; align-items:start">
 
       <div style="display:flex; flex-direction:column; gap:22px">
         <div style="display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:18px">
@@ -166,7 +168,7 @@
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Vorlage zum Mitnehmen</x-import>
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" hint-size="100%,26px">Kontroll-Check vor dem Einsatz</x-import>
           </ul>
-          <a href="index.html#vorschau" style="font-size:15px; font-weight:700">Beispiel-Lektion ansehen →</a>
+          <a href="index.html#vor-ort" style="font-size:15px; font-weight:700">Lieber vor Ort lernen? →</a>
         </div>
       </aside>
     </div>

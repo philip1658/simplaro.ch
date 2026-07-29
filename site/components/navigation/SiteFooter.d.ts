@@ -4,7 +4,7 @@ export interface SiteFooterProps {
   logoSrc?: string;
   /** Logo-Höhe in px, Standard 24 */
   logoHeight?: number;
-  /** Standard «Simplaro GmbH · Lehenstrasse 74» plus «8037 Zürich» auf eigener Zeile. */
+  /** Standard «Simplaro GmbH · Lehenstrasse 74, 8037 Zürich» */
   address?: string;
   email?: string;
   copyright?: string;

@@ -16,6 +16,7 @@
         "patterns": [
           {
             "group": [
+              "academy/**",
               "components/cards/**",
               "components/chat/**",
               "components/content/**",
@@ -104,8 +105,8 @@
         "message": "<PackageCard> doesn't accept that prop. Declared props: variant, badge, title, subtitle, features, price, style."
       },
       {
-        "selector": "JSXOpeningElement[name.name='PackageCard'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:terra|dark)$/]",
-        "message": "<PackageCard> variant must be one of 'terra' | 'dark'."
+        "selector": "JSXOpeningElement[name.name='PackageCard'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:terra|dark|sand)$/]",
+        "message": "<PackageCard> variant must be one of 'terra' | 'dark' | 'sand'."
       },
       {
         "selector": "JSXOpeningElement[name.name='QuoteCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:logoSrc|quote|attribution|style|key|ref|className|style|children)$/]",
@@ -305,6 +306,7 @@
       "--text-on-terra-soft",
       "--text-overline",
       "--text-quote",
+      "--text-size-body",
       "--text-statement",
       "--text-strong",
       "--text-ui",
@@ -373,6 +375,7 @@
       "--text-h3": "font",
       "--text-h4": "font",
       "--text-lead": "font",
+      "--text-size-body": "font",
       "--text-body-sm": "font",
       "--text-ui": "font",
       "--text-kicker": "font",

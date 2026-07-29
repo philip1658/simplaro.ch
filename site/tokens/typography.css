@@ -12,7 +12,7 @@
   --text-h3: 21px;                              /* Listen-/Kartentitel, w600, ls -0.015em */
   --text-h4: 19px;                              /* kleine Kartentitel */
   --text-lead: 17.5px;                          /* Intro-Absätze, lh 1.7 */
-  --text-body: 16.5px;                          /* Fliesstext, lh 1.65–1.7 */
+  --text-size-body: 16.5px;                     /* Fliesstext, lh 1.65–1.7 (Farbe: --text-body in colors.css) */
   --text-body-sm: 15px;                         /* Karten-Fliesstext, lh 1.6–1.65 */
   --text-ui: 14.5px;                            /* Chips, Meta, w600 */
   --text-kicker: 13.5px;                        /* Kicker, w700, ls 0.14em, UPPERCASE */
