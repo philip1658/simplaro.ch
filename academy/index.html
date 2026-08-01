@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="mobile.css?v=20260729-mobile-86">
   <script src="../_ds_bundle.js?v=20260729-mobile-86"></script>
-  <script src="./academy-daten.js"></script>
+  <script src="./academy-daten.js?v=20260801-advanced-12"></script>
   <script src="./image-slot.js"></script>
   <style>
     html, body { margin: 0; padding: 0; background: #F4EDE1; }
@@ -54,12 +54,12 @@
       <div style="display:flex; flex-direction:column; gap:16px">
         <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.Kicker" number="01" hint-size="auto,20px">DIE LERNPLÄNE</x-import>
         <h1 style="margin:0; font-size:var(--text-h2); font-weight:600; letter-spacing:-0.03em; line-height:1.06; max-width:24ch; text-wrap:pretty">KI im Alltag. Für Schweizer KMU.</h1>
-        <p style="margin:0; max-width:56ch; font-size:17px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Elf Lernpläne, 55 Lektionen. Jeder Lernplan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
+        <p style="margin:0; max-width:56ch; font-size:17px; line-height:1.65; color:var(--text-body); text-wrap:pretty">Zwölf Lernpfade, 66 Lektionen. Jeder Lernplan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt. Neu: der Advanced-Pfad für alle, die tiefer einsteigen wollen.</p>
         <span style="font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--brown-400)">Kachel anklicken für alle Lektionen</span>
       </div>
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr)); gap:24px">
-        <sc-for list="{{ tiles }}" as="p" hint-placeholder-count="11">
+        <sc-for list="{{ tiles }}" as="p" hint-placeholder-count="12">
           <a href="{{ p.href }}" style-hover="transform:translateY(-6px)" style="display:flex; flex-direction:column; background:var(--cream-card); border:1px solid var(--border-strong); border-radius:24px; overflow:hidden; text-decoration:none; color:inherit; transition:transform 0.4s var(--ease-spring)">
             <div onClick="{{ stopLink }}" style="aspect-ratio:4/3; background:var(--sand-200); border-bottom:1px solid var(--border-strong)">
               <image-slot id="{{ p.slotId }}" src="{{ p.img }}" shape="rect" fit="cover" placeholder="{{ p.bild }}"></image-slot>
@@ -274,13 +274,15 @@ class Component extends DCLogic {
         bild: pl.bild,
         img: pl.img,
         slotId: 'lernplan-' + pl.n,
-        href: 'lernplan.html#plan=' + pl.n,
-        meta: pl.lessons.length + ' LEKTIONEN · ' + pl.hours + (free > 0 ? ' · ' + Math.min(free, pl.lessons.length) + ' GRATIS' : ''),
+        href: pl.href || ('lernplan.html#plan=' + pl.n),
+        meta: pl.href
+          ? pl.lessons.length + ' MODULE · ' + pl.hours
+          : pl.lessons.length + ' LEKTIONEN · ' + pl.hours + (free > 0 ? ' · ' + Math.min(free, pl.lessons.length) + ' GRATIS' : ''),
       })),
 
       freeTierLine: free === 0 ? 'Keine Gratis-Lektionen' : 'Lektion 01–' + String(free).padStart(2, '0') + ' in jedem Lernplan',
       proFeatures: [
-        'Alle 11 Lernpläne, alle 55 Lektionen',
+        'Alle 12 Lernpfade, alle 66 Lektionen',
         'Sämtliche Vorlagen, Prompt-Karten und Checklisten',
         'Neue Lektionen jeden Monat — ohne Aufpreis',
         'Frage-Ecke zu jeder Lektion',

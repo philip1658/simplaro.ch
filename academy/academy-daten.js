@@ -176,4 +176,27 @@ window.ACADEMY_PLANS = [
       ['KI-Kompetenz messen: der kleine Check', 'ÜBUNG', '15 Min'],
     ],
   },
+  {
+    n: '12', title: 'Advanced: Wie KI wirklich funktioniert', level: 'ADVANCED', hours: '5 Std 30',
+    href: 'kurs/index.html', // eigenständiger interaktiver Kurs statt Lernplan-Seite
+    nutzen: 'Sie reden mit Anbietern, Entwicklern und Kunden auf Augenhöhe — weil Sie verstehen, was unter der Haube passiert, von Token bis EU AI Act.',
+    tile: 'Der Technik-Pfad: LLMs, RAG, Agenten, Diffusion — elf interaktive Module für alle, die es genau wissen wollen.',
+    lead: 'Für alle, denen die Lernpläne 01–11 nicht tief genug gehen: elf interaktive Module mit Quiz erklären die Technik hinter den Werkzeugen — von der Next-Token-Vorhersage bis zu Recht und Sicherheit.',
+    bild: 'Bild: Simplaro-Roboter in der Werkstatt',
+    img: 'assets/lernplan-12.png',
+    takeaways: ['11 interaktive Module mit Quiz', 'Fortschrittsanzeige im Browser', 'Von Token bis EU AI Act'],
+    lessons: [
+      ['Wie LLMs funktionieren', 'MODUL', '30 Min'],
+      ['Die Training-Pipeline', 'MODUL', '30 Min'],
+      ['API-Konzepte', 'MODUL', '30 Min'],
+      ['Embeddings & RAG', 'MODUL', '30 Min'],
+      ['Agenten & MCP', 'MODUL', '30 Min'],
+      ['Diffusion verstehen', 'MODUL', '30 Min'],
+      ['Lokale Modelle vertieft', 'MODUL', '30 Min'],
+      ['Evaluierung & Grenzen', 'MODUL', '30 Min'],
+      ['KI-Sicherheit & Alignment', 'MODUL', '30 Min'],
+      ['Recht & Datenschutz', 'MODUL', '30 Min'],
+      ['SEO & GEO', 'MODUL', '30 Min'],
+    ],
+  },
 ];
