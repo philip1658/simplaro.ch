@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="mobile.css?v=20260729-mobile-86">
   <script src="../_ds_bundle.js?v=20260729-mobile-86"></script>
-  <script src="./academy-daten.js"></script>
+  <script src="./academy-daten.js?v=20260801-advanced-12"></script>
   <script src="./image-slot.js"></script>
   <style>
     html, body { margin: 0; padding: 0; background: #F4EDE1; }
@@ -146,7 +146,7 @@
           <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.LabelBadge" tone="onTerra" hint-size="auto,26px">ACADEMY PRO</x-import>
           <div style="display:flex; flex-direction:column; gap:8px">
             <strong style="font-size:26px; font-weight:600; letter-spacing:-0.02em; color:#FFFFFF">Alles freischalten</strong>
-            <span style="font-size:15px; line-height:1.55; color:rgba(255,240,230,0.9)">Alle 11 Lernpläne, 55 Lektionen und sämtliche Vorlagen — monatlich kündbar.</span>
+            <span style="font-size:15px; line-height:1.55; color:rgba(255,240,230,0.9)">Alle 12 Lernpfade, 66 Lektionen und sämtliche Vorlagen — monatlich kündbar.</span>
           </div>
           <ul style="display:flex; flex-direction:column; gap:12px; list-style:none; margin:2px 0; padding:0">
             <x-import component-from-global-scope="SimplaroDesignSystem_5f353f.CheckItem" tone="onTerra" hint-size="100%,26px">Alle Lektionen dieses Lernplans</x-import>
@@ -212,6 +212,7 @@ class Component extends DCLogic {
     if (i < 0) i = 0;
     const p = list[i];
     if (!p) return { proPrice: showPrice ? 'CHF ' + price + ' / MONAT' : 'PREIS IN ABKLÄRUNG' };
+    if (p.href) { location.replace(p.href); return {}; } // Advanced-Pfad hat eine eigene Kursseite
 
     const href = (pl) => 'lernplan.html#plan=' + pl.n;
     const prev = list[(i - 1 + list.length) % list.length];

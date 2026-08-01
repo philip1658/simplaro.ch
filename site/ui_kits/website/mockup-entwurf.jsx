@@ -18,7 +18,7 @@ const NAV_LINKS = [
 const FAQS = [
   ['Was macht Simplaro?', 'Simplaro befähigt Schweizer KMU, KI verständlich, persönlich und wirksam im Unternehmen einzusetzen. Wir verbinden Lernen, Automatisierung und langfristige Begleitung.'],
   ['Ist Simplaro eine klassische KI-Agentur?', 'Nein. KI ist für uns ein Werkzeug. Im Zentrum stehen verständliche Einführung, konkrete Abläufe und eine Umsetzung, die im Alltag funktioniert.'],
-  ['Was ist SimplaroAcademy?', 'Die SimplaroAcademy ist unsere Selbstlern-Plattform: elf Lernpläne mit 55 kurzen Lektionen zu KI im KMU-Alltag. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.'],
+  ['Was ist SimplaroAcademy?', 'Die SimplaroAcademy ist unsere Selbstlern-Plattform: zwölf Lernpfade mit 66 kurzen Lektionen zu KI im KMU-Alltag — inklusive Advanced-Pfad für Fortgeschrittene. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.'],
   ['Was ist SimplaroLearning?', 'SimplaroLearning bündelt Online-Lernprogramme, Bibliotheken und persönliche Coachings, damit Unternehmer und Teams KI sicher anwenden können.'],
   ['Was ist SimplaroBot?', 'SimplaroBot ist der Ansatz für wiederkehrende Büro- und Administrationsprozesse: Wir analysieren Abläufe, priorisieren Hebel und setzen passende Automatisierungen um.'],
   ['Was ist SimplaroService?', 'SimplaroService begleitet bestehende Automatisierungen im Betrieb. Dazu gehören Pflege, Updates, Kontrolle und Weiterentwicklung nach Bedarf.'],
@@ -154,7 +154,7 @@ function Learning() {
             <article className="mock-learning-track">
               <span className="mock-learning-track__label">Online · im eigenen Tempo</span>
               <h3><ProductName name="Academy" /></h3>
-              <p>Unsere Selbstlern-Plattform: E-Learnings zu KI für KMU — elf Lernpläne mit 55 kurzen Lektionen, im eigenen Tempo. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.</p>
+              <p>Unsere Selbstlern-Plattform: E-Learnings zu KI für KMU — zwölf Lernpfade mit 66 kurzen Lektionen, im eigenen Tempo. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.</p>
               <DsButton variant="cta" size="sm" arrow href="#academy" style={{ marginTop: 'auto', minHeight: 44 }}>Zu den E-Learnings</DsButton>
             </article>
             <article className="mock-learning-track">
@@ -261,7 +261,7 @@ function Academy() {
         <div className="mock-center">
           <Kicker number="03">E-Learnings</Kicker>
           <h2 className="mock-title">Mehr als ein Chatbot: Lernen Sie, Ihre Büroarbeit mit KI zu automatisieren.</h2>
-          <p className="mock-lead" style={{ maxWidth: 760 }}>Die <ProductName name="Academy" /> ist unsere Selbstlern-Plattform: 55 kurze Lektionen in elf Lernplänen. Jeder Plan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
+          <p className="mock-lead" style={{ maxWidth: 760 }}>Die <ProductName name="Academy" /> ist unsere Selbstlern-Plattform: 66 kurze Lektionen in zwölf Lernpfaden. Jeder Plan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
         </div>
         <ul className="mock-academy-grid">
           {ACADEMY_TEASER.map(([no, title, meta, text]) => (
