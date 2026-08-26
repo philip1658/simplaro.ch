@@ -114,7 +114,7 @@ function Hero() {
       <Twinkle bottom="24%" left="21%" size={9} delay={2.4} duration={6} />
       <div className="mock-hero__content">
         <div className="mock-hero__text">
-          <h1>Mit KI einfacher arbeiten, Zeit sparen und Kosten senken <span>– für Schweizer KMU.</span></h1>
+          <h1>Digitale Sichtbarkeit und KI-Kompetenz <span>für Schweizer KMU.</span></h1>
         </div>
         <div className="mock-hero__doors">
           <a className="mock-hero__door" href="#service">
