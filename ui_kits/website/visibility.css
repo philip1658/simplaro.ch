@@ -271,14 +271,18 @@ body {
   pointer-events: none;
 }
 
-.sv-hero__robot img {
+.sv-hero__robot img,
+.sv-hero__robot-art {
   display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  object-position: center bottom;
   animation: breathe 6.5s ease-in-out infinite;
   filter: drop-shadow(var(--shadow-soft));
+}
+
+.sv-hero__robot img {
+  object-fit: contain;
+  object-position: center bottom;
   -webkit-mask-image:
     linear-gradient(90deg, transparent 1%, var(--ink-900) 18%, var(--ink-900) 82%, transparent 99%),
     linear-gradient(180deg, transparent 0%, var(--ink-900) 8%, var(--ink-900) 91%, transparent 100%);
@@ -287,6 +291,65 @@ body {
     linear-gradient(180deg, transparent 0%, var(--ink-900) 8%, var(--ink-900) 91%, transparent 100%);
   -webkit-mask-composite: destination-in;
   mask-composite: intersect;
+}
+
+.sv-hero__robot-art {
+  overflow: visible;
+}
+
+.sv-robot-shell,
+.sv-robot-hand,
+.sv-robot-foot,
+.sv-robot-lens {
+  fill: var(--surface-card);
+  stroke: var(--border-ink);
+  stroke-width: 4;
+}
+
+.sv-robot-face {
+  fill: var(--ink-950);
+  stroke: var(--accent);
+  stroke-width: 4;
+}
+
+.sv-robot-eye,
+.sv-robot-glint {
+  fill: var(--cream-50);
+}
+
+.sv-robot-pupil {
+  fill: var(--ink-950);
+}
+
+.sv-robot-line,
+.sv-robot-arm,
+.sv-robot-leg,
+.sv-robot-mouth {
+  fill: none;
+  stroke: var(--border-ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 5;
+}
+
+.sv-robot-line--wide {
+  stroke-width: 12;
+}
+
+.sv-robot-arm {
+  stroke-width: 16;
+}
+
+.sv-robot-mark {
+  fill: var(--accent);
+  font-family: var(--font-sans);
+  font-size: var(--text-title);
+  font-weight: var(--weight-bold);
+}
+
+.sv-robot-shadow {
+  fill: var(--ink-950);
+  opacity: 0.16;
 }
 
 .sv-section {
