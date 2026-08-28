@@ -16,24 +16,6 @@ body {
   background: var(--bg-page);
 }
 
-.sv-header .mock-header__inner {
-  width: min(100%, var(--header-max));
-  padding: var(--space-3) var(--section-pad-x);
-}
-
-.sv-nav a {
-  text-transform: none;
-}
-
-.sv-nav-cta {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--space-11);
-  padding: 0 var(--space-5);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-pill);
-}
-
 .sv-hero {
   position: relative;
   min-height: max(740px, 88svh);
@@ -625,7 +607,6 @@ body {
     scroll-padding-top: calc(var(--space-16) + var(--space-2));
   }
 
-  .sv-header .mock-header__inner,
   .sv-wrap,
   .sv-hero__inner,
   .sv-footer__inner {
