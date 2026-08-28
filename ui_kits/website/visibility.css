@@ -52,21 +52,7 @@ body {
 }
 
 .sv-twinkle {
-  position: absolute;
-  z-index: 1;
-  color: var(--peach-200);
-  font-size: var(--text-quote);
-  animation: twinkle var(--duration-slow) var(--ease-reveal) infinite;
-}
-
-.sv-twinkle--one {
-  top: 18%;
-  left: 8%;
-}
-
-.sv-twinkle--two {
-  right: 12%;
-  bottom: 18%;
+  display: none !important;
 }
 
 .sv-hero__inner {
