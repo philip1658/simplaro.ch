@@ -489,8 +489,8 @@ body {
   margin-top: calc(var(--space-2) * -1);
   filter: drop-shadow(0 18px 26px rgba(64, 31, 8, 0.12));
   mix-blend-mode: multiply;
-  -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 48%, #000 58%, rgba(0, 0, 0, 0.88) 73%, transparent 100%);
-  mask-image: radial-gradient(ellipse 78% 82% at 50% 48%, #000 58%, rgba(0, 0, 0, 0.88) 73%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 62% 70% at 50% 48%, #000 38%, rgba(0, 0, 0, 0.92) 55%, rgba(0, 0, 0, 0.52) 74%, transparent 100%);
+  mask-image: radial-gradient(ellipse 62% 70% at 50% 48%, #000 38%, rgba(0, 0, 0, 0.92) 55%, rgba(0, 0, 0, 0.52) 74%, transparent 100%);
 }
 
 .sv-faq-list {
