@@ -3,6 +3,14 @@ html {
   scroll-padding-top: 98px;
 }
 
+.mock-hero > span[aria-hidden="true"],
+#buerobot > span[aria-hidden="true"],
+#datenschutz > span[aria-hidden="true"],
+#kontakt > span[aria-hidden="true"],
+.sv-twinkle {
+  display: none !important;
+}
+
 body {
   margin: 0;
   background: var(--bg-page);
@@ -192,15 +200,14 @@ body {
 }
 
 .mock-stamp {
-  position: absolute;
-  z-index: 7;
-  left: 50%;
-  bottom: 26px;
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
-  padding: 13px 28px;
+  margin: 4px auto 0;
+  padding: 11px 24px;
   box-sizing: border-box;
   background: var(--cream-card);
   border: 2px solid var(--border-ink);
@@ -209,14 +216,14 @@ body {
   color: var(--ink-900);
   text-decoration: none;
   text-shadow: none;
-  transform: translateX(-50%) rotate(-2deg);
+  transform: rotate(-2deg);
   transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
 }
 
 .mock-stamp:hover,
 .mock-stamp:focus-visible {
   color: var(--ink-900);
-  transform: translateX(-50%) rotate(0deg) translateY(-4px);
+  transform: rotate(0deg) translateY(-4px);
   box-shadow: 8px 11px 0 rgba(28, 22, 19, 0.85);
 }
 
@@ -751,11 +758,13 @@ body {
   }
 
   .mock-stamp {
-    padding: 11px 22px;
+    width: min(100%, 300px);
+    margin-top: 4px;
+    padding: 10px 16px;
   }
 
   .mock-stamp__label {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .mock-hero__robot {
@@ -763,10 +772,6 @@ body {
     top: auto;
     max-width: 92vw;
     height: clamp(190px, 28svh, 320px);
-  }
-
-  .mock-stamp {
-    bottom: 20px;
   }
 
   .mock-wrap {
