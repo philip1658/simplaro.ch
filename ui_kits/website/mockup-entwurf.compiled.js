@@ -1,4 +1,3 @@
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 const {
   Kicker,
   FaqItem,
@@ -11,23 +10,41 @@ const ASSET_BASE = window.SIMPLARO_ASSET_BASE || '../../assets/';
 function asset(path) {
   return ASSET_BASE + path;
 }
-const NAV_LINKS = [{
-  label: 'SimplaroBot',
-  href: '#service',
-  product: 'Bot'
+const NAV_GROUPS = [{
+  label: 'Gefunden werden',
+  links: [{
+    label: 'SimplaroVisibility',
+    href: 'visibility.html',
+    product: 'Visibility'
+  }, {
+    label: 'SimplaroService',
+    href: '#service-pakete',
+    product: 'Service'
+  }]
 }, {
-  label: 'SimplaroAcademy',
-  href: '#academy',
-  product: 'Academy'
+  label: 'Lernen',
+  links: [{
+    label: 'SimplaroAcademy',
+    href: '#academy',
+    product: 'Academy'
+  }, {
+    label: 'SimplaroLearning',
+    href: '#learning',
+    product: 'Learning'
+  }]
 }, {
-  label: 'SimplaroLearning',
-  href: '#learning',
-  product: 'Learning'
-}, {
-  label: 'SimplaroService',
-  href: '#service-pakete',
-  product: 'Service'
-}, {
+  label: 'Automatisieren',
+  links: [{
+    label: 'SimplaroBot',
+    href: '#service',
+    product: 'Bot'
+  }, {
+    label: 'SimplaroService',
+    href: '#service-pakete',
+    product: 'Service'
+  }]
+}];
+const NAV_AUX_LINKS = [{
   label: 'Über uns',
   href: 'ueber-uns.html'
 }, {
@@ -42,12 +59,12 @@ const FAQS = [['Was macht Simplaro?', 'Simplaro befähigt Schweizer KMU, KI vers
 const SERVICE_PLANS = [{
   number: '01',
   title: 'SimplaroService BASIC',
-  text: 'Regelm\xE4ssige Funktionspr\xFCfung, kleine Anpassungen und E-Mail-Support.',
+  text: 'Regelmässige Funktionsprüfung, kleine Anpassungen und E-Mail-Support.',
   price: 'ab CHF 90 / Monat'
 }, {
   number: '02',
   title: 'SimplaroService STANDARD',
-  text: 'Laufende Pflege und Updates, Optimierung bestehender Abl\xE4ufe, Support f\xFCr Ihr Team und ein periodischer Review-Termin.',
+  text: 'Laufende Pflege und Updates, Optimierung bestehender Abläufe, Support für Ihr Team und ein periodischer Review-Termin.',
   price: 'ab CHF 190 / Monat'
 }, {
   number: '03',
@@ -55,7 +72,6 @@ const SERVICE_PLANS = [{
   text: 'Proaktive Weiterentwicklung, priorisierte Betreuung, Erweiterungen und Integrationen.',
   price: 'ab CHF 390 / Monat'
 }];
-
 function Arrow() {
   return /*#__PURE__*/React.createElement("span", {
     "aria-hidden": "true"
@@ -85,8 +101,12 @@ function NavLabel({
 }
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [openGroup, setOpenGroup] = React.useState(null);
   const [solid, setSolid] = React.useState(false);
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setOpenGroup(null);
+  };
   React.useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24);
     onScroll();
@@ -109,14 +129,35 @@ function Header() {
   })), /*#__PURE__*/React.createElement("button", {
     className: "mock-menu-toggle",
     type: "button",
-    "aria-label": menuOpen ? 'Men\xFC schliessen' : 'Men\xFC \xF6ffnen',
+    "aria-label": menuOpen ? 'Menü schliessen' : 'Menü öffnen',
     "aria-controls": "mock-mobile-menu",
     "aria-expanded": menuOpen,
     onClick: () => setMenuOpen(open => !open)
   }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("nav", {
     className: "mock-header__nav",
     "aria-label": "Hauptnavigation"
-  }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+  }, NAV_GROUPS.map(group => /*#__PURE__*/React.createElement("div", {
+    className: "mock-nav-group",
+    key: group.label
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "mock-nav-group__toggle",
+    type: "button",
+    "aria-expanded": openGroup === group.label,
+    "aria-controls": `mock-nav-group-${group.label}`,
+    onClick: () => setOpenGroup(open => open === group.label ? null : group.label)
+  }, group.label, /*#__PURE__*/React.createElement("span", {
+    className: "mock-nav-group__indicator",
+    "aria-hidden": "true"
+  })), /*#__PURE__*/React.createElement("div", {
+    id: `mock-nav-group-${group.label}`,
+    className: `mock-nav-group__menu${openGroup === group.label ? ' is-open' : ''}`
+  }, group.links.map(link => /*#__PURE__*/React.createElement("a", {
+    key: link.label,
+    href: link.href,
+    onClick: () => setOpenGroup(null)
+  }, /*#__PURE__*/React.createElement(NavLabel, {
+    link: link
+  })))))), NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.label,
     className: link.contact ? 'mock-header__contact' : '',
     href: link.href,
@@ -127,7 +168,19 @@ function Header() {
     id: "mock-mobile-menu",
     className: `mock-mobile-nav${menuOpen ? ' is-open' : ''}`,
     "aria-label": "Mobile Navigation"
-  }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+  }, NAV_GROUPS.map(group => /*#__PURE__*/React.createElement("div", {
+    className: "mock-mobile-nav__group",
+    key: group.label
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-mobile-nav__group-title"
+  }, group.label), group.links.map(link => /*#__PURE__*/React.createElement("a", {
+    key: link.label,
+    href: link.href,
+    "aria-label": link.label,
+    onClick: closeMenu
+  }, /*#__PURE__*/React.createElement(NavLabel, {
+    link: link
+  }))))), NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.label,
     className: link.contact ? 'mock-header__contact' : '',
     href: link.href,
@@ -150,14 +203,14 @@ function Hero() {
     className: "mock-hero__doors"
   }, /*#__PURE__*/React.createElement("a", {
     className: "mock-hero__door",
-    href: "#service"
+    href: "visibility.html"
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-title"
   }, /*#__PURE__*/React.createElement(ProductName, {
-    name: "Bot"
+    name: "Visibility"
   })), /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-text"
-  }, "Automationen f\xFCr Ihren Betrieb ", /*#__PURE__*/React.createElement("span", {
+  }, "Sichtbarkeit f\xFCr Ihren Betrieb ", /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-arrow",
     "aria-hidden": "true"
   }, "\u2192"))), /*#__PURE__*/React.createElement("a", {
@@ -184,6 +237,18 @@ function Hero() {
   }, "Trainings, Coachings, Workshops ", /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-arrow",
     "aria-hidden": "true"
+  }, "\u2192"))), /*#__PURE__*/React.createElement("a", {
+    className: "mock-hero__door",
+    href: "#service"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-hero__door-title"
+  }, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Bot"
+  })), /*#__PURE__*/React.createElement("span", {
+    className: "mock-hero__door-text"
+  }, "Automationen f\xFCr Ihren Betrieb ", /*#__PURE__*/React.createElement("span", {
+    className: "mock-hero__door-arrow",
+    "aria-hidden": "true"
   }, "\u2192")))), /*#__PURE__*/React.createElement("a", {
     className: "mock-stamp",
     href: "erstanalyse.html"
@@ -199,6 +264,37 @@ function Hero() {
     alt: ""
   })));
 }
+function Visibility() {
+  return /*#__PURE__*/React.createElement("section", {
+    id: "visibility",
+    className: "mock-section mock-section--alt"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-wrap mock-grid"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-copy"
+  }, /*#__PURE__*/React.createElement(Kicker, {
+    number: "01"
+  }, "Gefunden werden"), /*#__PURE__*/React.createElement("h2", {
+    className: "mock-title"
+  }, "Mit ", /*#__PURE__*/React.createElement("span", {
+    className: "mock-accent"
+  }, "SEO und GEO"), " sichtbar werden."), /*#__PURE__*/React.createElement("p", {
+    className: "mock-lead"
+  }, "Ihre Kundinnen und Kunden sollen Ihr Angebot finden - in Google und in den Antworten von KI-Systemen. SimplaroVisibility verbindet beide Wege in einer klaren, verst\xE4ndlichen Umsetzung."), /*#__PURE__*/React.createElement("div", {
+    className: "mock-visibility-points"
+  }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "SEO"), " ordnet Ihr Angebot f\xFCr die klassische Google-Suche ein."), /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("strong", null, "GEO"), " macht Ihre Inhalte f\xFCr generative KI-Suchen und Antworten nachvollziehbar.")), /*#__PURE__*/React.createElement(DsButton, {
+    variant: "cta",
+    size: "md",
+    arrow: true,
+    href: "visibility.html"
+  }, "Zur SimplaroVisibility")), /*#__PURE__*/React.createElement("div", {
+    className: "mock-visibility-visual"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "mock-visibility-image",
+    src: asset('simplarobot-lupe-visibility-source.png'),
+    alt: "SimplaroBot mit Lupe f\xFCr digitale Sichtbarkeit"
+  }))));
+}
 function Learning() {
   return /*#__PURE__*/React.createElement("section", {
     id: "learning",
@@ -208,37 +304,22 @@ function Learning() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-copy"
   }, /*#__PURE__*/React.createElement(Kicker, {
-    number: "02"
+    number: "03"
   }, "Lernen und bef\xE4higen"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-accent"
   }, "Lernen"), " mit Simplaro"), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead"
-  }, "Wie sattelfest sind Sie in der Anwendung von KI? Wir bef\xE4higen Sie und Ihre Mitarbeitenden im Zeitalter von KI — auf zwei Wegen, die sich erg\xE4nzen: selbst\xE4ndig online oder pers\xF6nlich begleitet."), /*#__PURE__*/React.createElement("div", {
+  }, "Wir bef\xE4higen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden - mit Trainings, Coachings und Workshops, die zu Ihren Abl\xE4ufen passen."), /*#__PURE__*/React.createElement("div", {
     className: "mock-learning-tracks"
   }, /*#__PURE__*/React.createElement("article", {
     className: "mock-learning-track"
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-learning-track__label"
-  }, "Online \xB7 im eigenen Tempo"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
-    name: "Academy"
-  })), /*#__PURE__*/React.createElement("p", null, "Unsere Selbstlern-Plattform: E-Learnings zu KI f\xFCr KMU — zw\xF6lf Lernpfade mit 66 kurzen Lektionen, im eigenen Tempo. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat."), /*#__PURE__*/React.createElement(DsButton, {
-    variant: "cta",
-    size: "sm",
-    arrow: true,
-    href: "#academy",
-    style: {
-      marginTop: 'auto',
-      minHeight: 44
-    }
-  }, "Zur SimplaroAcademy")), /*#__PURE__*/React.createElement("article", {
-    className: "mock-learning-track"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "mock-learning-track__label"
   }, "Pers\xF6nlich \xB7 bei Ihnen vor Ort"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
     name: "Learning"
-  })), /*#__PURE__*/React.createElement("p", null, "Trainings, Coachings und Workshops in Ihrer Firma — f\xFCr Unternehmer, F\xFChrungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen."), /*#__PURE__*/React.createElement(DsButton, {
+  })), /*#__PURE__*/React.createElement("p", null, "Trainings, Coachings und Workshops in Ihrer Firma \u2014 f\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams, zugeschnitten auf Ihre Abl\xE4ufe und Fragen."), /*#__PURE__*/React.createElement(DsButton, {
     variant: "cta",
     size: "sm",
     arrow: true,
@@ -247,13 +328,13 @@ function Learning() {
       marginTop: 'auto',
       minHeight: 44
     }
-  }, "SimplaroLearning anfragen")))), /*#__PURE__*/React.createElement("div", {
+  }, "SimplaroLearning anfragen"), /*#__PURE__*/React.createElement("img", {
+    className: "mock-learning-track__image",
+    src: asset('simplaro-robot-teacher.png'),
+    alt: "SimplaroBot als Lehrer vor einem Whiteboard"
+  })))), /*#__PURE__*/React.createElement("div", {
     className: "mock-learning-visual"
   }, /*#__PURE__*/React.createElement("img", {
-    className: "mock-learning-image",
-    src: asset('simplaro-academy-desk.png'),
-    alt: "SimplaroBot am Schreibtisch beim Erstellen eines Lernmoduls"
-  }), /*#__PURE__*/React.createElement("img", {
     className: "mock-learning-image mock-learning-image--bot",
     src: asset('simplaro-robot-teacher.png'),
     alt: "SimplaroBot als Lehrer vor einem Whiteboard"
@@ -268,7 +349,7 @@ function Service() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
-    number: "01"
+    number: "04"
   }, "Automatisieren"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
   }, "Wir automatisieren Ihren Betrieb."), /*#__PURE__*/React.createElement("p", {
@@ -276,7 +357,7 @@ function Service() {
     style: {
       maxWidth: 720
     }
-  }, "Wir \xFCbernehmen, was regelm\xE4ssig Zeit kostet — Schritt f\xFCr Schritt, bei Ihnen im Betrieb.")), /*#__PURE__*/React.createElement("article", {
+  }, "Wir \xFCbernehmen, was regelm\xE4ssig Zeit kostet \u2014 Schritt f\xFCr Schritt, bei Ihnen im Betrieb.")), /*#__PURE__*/React.createElement("article", {
     className: "mock-bot-tile"
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-bot-tile__head"
@@ -288,7 +369,7 @@ function Service() {
     name: "Bot"
   })), /*#__PURE__*/React.createElement("p", {
     className: "mock-bot-tile__sub"
-  }, "Wir richten Ihre Automationen bei Ihnen im Betrieb ein und bef\xE4higen Ihr Team — persönlich und auf Augenhöhe.")), /*#__PURE__*/React.createElement("div", {
+  }, "Wir richten Ihre Automationen bei Ihnen im Betrieb ein und bef\xE4higen Ihr Team \u2014 pers\xF6nlich und auf Augenh\xF6he.")), /*#__PURE__*/React.createElement("div", {
     className: "mock-bot-tile__offer"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mock-bot-tile__price-line"
@@ -298,18 +379,18 @@ function Service() {
     className: "mock-bot-tile__unit"
   }, "pro Automation")), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__note"
-  }, "Fixpreis nach der Erstanalyse \xB7 meist in wenigen Wochen zurückverdient"), /*#__PURE__*/React.createElement(DsButton, {
+  }, "Fixpreis nach der Erstanalyse \xB7 meist in wenigen Wochen zur\xFCckverdient"), /*#__PURE__*/React.createElement(DsButton, {
     variant: "light",
     size: "sm",
     arrow: true,
     href: "#kontakt"
-  }, "Gespräch buchen"))), /*#__PURE__*/React.createElement("ol", {
+  }, "Gespr\xE4ch buchen"))), /*#__PURE__*/React.createElement("ol", {
     className: "mock-bot-tile__steps"
   }, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-no"
   }, "01"), /*#__PURE__*/React.createElement("strong", null, "Empfehlung"), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-text"
-  }, "Prozesse mit dem grössten Entlastungspotenzial, mit Offerte")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
+  }, "Prozesse mit dem gr\xF6ssten Entlastungspotenzial, mit Offerte")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-no"
   }, "02"), /*#__PURE__*/React.createElement("strong", null, "Priorisierung"), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-text"
@@ -317,25 +398,42 @@ function Service() {
     className: "mock-bot-tile__step-no"
   }, "03"), /*#__PURE__*/React.createElement("strong", null, "Planung"), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-text"
-  }, "Umsetzung Schritt für Schritt vorbereitet")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
+  }, "Umsetzung Schritt f\xFCr Schritt vorbereitet")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-no"
   }, "04"), /*#__PURE__*/React.createElement("strong", null, "Umsetzung"), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-text"
-  }, "Automationen eingerichtet, Team befähigt")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
+  }, "Automationen eingerichtet, Team bef\xE4higt")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-no"
   }, "05"), /*#__PURE__*/React.createElement("strong", null, "Kontrolle"), /*#__PURE__*/React.createElement("span", {
     className: "mock-bot-tile__step-text"
-  }, "regelmässige Prüfung mit SimplaroService")))), /*#__PURE__*/React.createElement("div", {
-    className: "mock-addons",
-    id: "service-pakete"
+  }, "regelm\xE4ssige Pr\xFCfung mit SimplaroService"))))));
+}
+function SimplaroService() {
+  return /*#__PURE__*/React.createElement("section", {
+    id: "service-pakete",
+    className: "mock-section mock-section--alt"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-wrap"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-center"
+  }, /*#__PURE__*/React.createElement(Kicker, {
+    number: "05"
+  }, "Begleiten und weiterentwickeln"), /*#__PURE__*/React.createElement("h2", {
+    className: "mock-title"
+  }, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Service"
+  }), ": Wir begleiten Ihre digitale Transformation."), /*#__PURE__*/React.createElement("p", {
+    className: "mock-lead",
+    style: {
+      maxWidth: 720
+    }
+  }, "Nach der Umsetzung bleiben wir an Ihrer Seite: mit Pflege, Updates und Weiterentwicklung - passend zu Ihren Abl\xE4ufen und Ihrem Tempo.")), /*#__PURE__*/React.createElement("div", {
+    className: "mock-addons"
   }, /*#__PURE__*/React.createElement("p", {
     className: "mock-addons__note"
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-addons__label"
-  }, "Zusatzprodukte"), /*#__PURE__*/React.createElement("span", null, "Pflege und Weiterentwicklung im Abo — optional zum ", /*#__PURE__*/React.createElement(ProductName, {
-    name: "Bot",
-    className: "mock-inline-product"
-  }), ".")), /*#__PURE__*/React.createElement("div", {
+  }, "Servicepakete"), /*#__PURE__*/React.createElement("span", null, "Pflege und Weiterentwicklung im Abo - f\xFCr bestehende Automationen und gemeinsam aufgebaute L\xF6sungen.")), /*#__PURE__*/React.createElement("div", {
     className: "mock-service-rows"
   }, SERVICE_PLANS.map((plan, i) => /*#__PURE__*/React.createElement(ServiceRow, {
     key: plan.title,
@@ -346,7 +444,6 @@ function Service() {
     className: "mock-service-price"
   }, plan.price)))))));
 }
-const ACADEMY_TEASER = [['01', 'Grundlagen: KI einordnen', 'Einstieg \xB7 1 Std 05', 'Der Einstieg ohne Fachchinesisch \u2014 was die Werkzeuge k\xF6nnen und wie Sie sie ansprechen.'], ['02', 'Datenschutz & Sicherheit', 'Grundlage \xB7 1 Std 15', 'Was rein darf und was nie: revDSG, Anonymisieren, Cloud-Standort.'], ['03', 'Korrespondenz & E-Mail', 'Praxis \xB7 1 Std 22', 'Der Posteingang zuerst \u2014 Antworten, die nach Ihnen klingen.'], ['04', 'Offerten & Auftr\xE4ge', 'Praxis \xB7 1 Std 28', 'Aus f\xFCnf Stichworten eine Offerte in Ihrer Struktur.'], ['05', 'Buchhaltung & Belege', 'Praxis \xB7 1 Std 23', 'Belegstapel, Spesen, Mahnwesen \u2014 bis zur \xDCbergabe ans Treuhandbüro.'], ['09', 'Abl\xE4ufe automatisieren', 'Fortgeschritten \xB7 2 Std 03', 'Vom einzelnen Handgriff zum verlässlichen Ablauf.']];
 function Academy() {
   return /*#__PURE__*/React.createElement("section", {
     id: "academy",
@@ -356,35 +453,36 @@ function Academy() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
-    number: "03"
+    number: "02"
   }, "E-Learnings"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
-  }, "Mehr als ein Chatbot: Lernen Sie, Ihre Büroarbeit mit KI zu automatisieren."), /*#__PURE__*/React.createElement("p", {
+  }, "Mehr als ein Chatbot: Lernen Sie, Ihre B\xFCroarbeit mit KI zu automatisieren."), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead",
     style: {
       maxWidth: 760
     }
   }, "Die ", /*#__PURE__*/React.createElement(ProductName, {
     name: "Academy"
-  }), " ist unsere Selbstlern-Plattform: 66 kurze Lektionen in zwölf Lernpfaden. Jeder Plan ist für sich abgeschlossen und dauert rund eine Stunde \u2014 Sie starten dort, wo es bei Ihnen brennt.")), /*#__PURE__*/React.createElement("ul", {
-    className: "mock-academy-grid"
-  }, ACADEMY_TEASER.map(([no, title, meta, text]) => /*#__PURE__*/React.createElement("li", {
-    className: "mock-academy-plan",
-    key: no
+  }), " ist unsere Selbstlern-Plattform: 66 kurze Lektionen in zw\xF6lf Lernpfaden. Jeder Plan ist f\xFCr sich abgeschlossen und dauert rund eine Stunde \u2014 Sie starten dort, wo es bei Ihnen brennt.")), /*#__PURE__*/React.createElement("div", {
+    className: "mock-academy-feature"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-academy-feature__copy"
   }, /*#__PURE__*/React.createElement("span", {
-    className: "mock-academy-plan__no"
-  }, no), /*#__PURE__*/React.createElement("h3", null, title), /*#__PURE__*/React.createElement("span", {
-    className: "mock-academy-plan__meta"
-  }, meta), /*#__PURE__*/React.createElement("p", null, text)))), /*#__PURE__*/React.createElement("div", {
-    className: "mock-academy-foot"
-  }, /*#__PURE__*/React.createElement("p", {
-    className: "mock-academy-foot__note"
-  }, "Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat \u2014 jederzeit kündbar."), /*#__PURE__*/React.createElement(DsButton, {
+    className: "mock-learning-track__label"
+  }, "Online \xB7 im eigenen Tempo"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
+    name: "Academy"
+  })), /*#__PURE__*/React.createElement("p", null, "66 kurze Lektionen in zw\xF6lf Lernpfaden: Sie lernen genau das, was in Ihrem KMU gerade weiterhilft - verst\xE4ndlich, praxisnah und in Ihrem Tempo."), /*#__PURE__*/React.createElement("p", {
+    className: "mock-academy-feature__note"
+  }, "Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat - jederzeit k\xFCndbar."), /*#__PURE__*/React.createElement(DsButton, {
     variant: "cta",
     size: "md",
     arrow: true,
     href: "academy/index.html"
-  }, "Zur SimplaroAcademy"))));
+  }, "Zur SimplaroAcademy")), /*#__PURE__*/React.createElement("img", {
+    className: "mock-academy-feature__image",
+    src: asset('simplaro-academy-desk.png'),
+    alt: "SimplaroBot am Schreibtisch beim Erstellen eines Lernmoduls"
+  }))));
 }
 function Faq() {
   return /*#__PURE__*/React.createElement("section", {
@@ -395,7 +493,7 @@ function Faq() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
-    number: "04"
+    number: "06"
   }, "FAQ"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
   }, "Die wichtigsten Fragen und Antworten zu Simplaro."), /*#__PURE__*/React.createElement("img", {
@@ -418,19 +516,19 @@ function Kontakt() {
     className: "mock-wrap mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
     tone: "onTerra",
-    number: "05"
+    number: "07"
   }, "Kontakt"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title",
     style: {
       color: '#fff',
       maxWidth: 840
     }
-  }, "Welche Simplaro-Lösung passt zu Ihrem Unternehmen?"), /*#__PURE__*/React.createElement("p", {
+  }, "Welche Simplaro-L\xF6sung passt zu Ihrem Unternehmen?"), /*#__PURE__*/React.createElement("p", {
     className: "mock-lead",
     style: {
       maxWidth: 720
     }
-  }, "Im unverbindlichen Gespräch klären wir, ob für Sie Learning, Bot, Service oder eine Kombination der richtige nächste Schritt ist."), /*#__PURE__*/React.createElement("div", {
+  }, "Im unverbindlichen Gespr\xE4ch kl\xE4ren wir, ob f\xFCr Sie Learning, Bot, Service oder eine Kombination der richtige n\xE4chste Schritt ist."), /*#__PURE__*/React.createElement("div", {
     className: "mock-actions"
   }, /*#__PURE__*/React.createElement(DsButton, {
     variant: "light",
@@ -447,13 +545,13 @@ function Kontakt() {
       fontWeight: 700,
       color: 'rgba(255,236,222,0.9)'
     }
-  }, "Simpel \xB7 Klar \xB7 Persönlich")));
+  }, "Simpel \xB7 Klar \xB7 Pers\xF6nlich")));
 }
 function App() {
   const [chatOpen, setChatOpen] = React.useState(false);
   return /*#__PURE__*/React.createElement("div", {
     className: "mock-page"
-  }, /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Service, null), /*#__PURE__*/React.createElement(Learning, null), /*#__PURE__*/React.createElement(Academy, null), /*#__PURE__*/React.createElement(Faq, null), /*#__PURE__*/React.createElement(Kontakt, null)), /*#__PURE__*/React.createElement(SiteFooter, {
+  }, /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement("main", null, /*#__PURE__*/React.createElement(Visibility, null), /*#__PURE__*/React.createElement(Academy, null), /*#__PURE__*/React.createElement(Learning, null), /*#__PURE__*/React.createElement(Service, null), /*#__PURE__*/React.createElement(SimplaroService, null), /*#__PURE__*/React.createElement(Faq, null), /*#__PURE__*/React.createElement(Kontakt, null)), /*#__PURE__*/React.createElement(SiteFooter, {
     logoSrc: asset('logo-lockup-white.png')
   }), /*#__PURE__*/React.createElement(ChatWidget, {
     open: chatOpen,
