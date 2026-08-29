@@ -768,10 +768,11 @@ body {
   }
 
   .mock-hero__robot {
+    left: 45%;
     bottom: 92px;
     top: auto;
     max-width: 92vw;
-    height: clamp(190px, 28svh, 320px);
+    height: clamp(215px, 32svh, 350px);
   }
 
   .mock-wrap {
