@@ -160,7 +160,7 @@ function Hero() {
   }, "Automationen f\xFCr Ihren Betrieb ", /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-arrow",
     "aria-hidden": "true"
-  }, "\u2192")))), /*#__PURE__*/React.createElement("a", {
+  }, "\u2192"))), /*#__PURE__*/React.createElement("a", {
     className: "mock-hero__door",
     href: "#academy"
   }, /*#__PURE__*/React.createElement("span", {
@@ -184,7 +184,7 @@ function Hero() {
   }, "Trainings, Coachings, Workshops ", /*#__PURE__*/React.createElement("span", {
     className: "mock-hero__door-arrow",
     "aria-hidden": "true"
-  }, "\u2192"))), /*#__PURE__*/React.createElement("a", {
+  }, "\u2192")))), /*#__PURE__*/React.createElement("a", {
     className: "mock-stamp",
     href: "erstanalyse.html"
   }, /*#__PURE__*/React.createElement("span", {
