@@ -1,4 +1,4 @@
-const { Kicker, FaqItem, SiteFooter, Button: DsButton, ServiceRow, LabelBadge, Twinkle } = window.SimplaroDesignSystem_5f353f;
+const { Kicker, FaqItem, SiteFooter, Button: DsButton, ServiceRow, LabelBadge } = window.SimplaroDesignSystem_5f353f;
 const ASSET_BASE = window.SIMPLARO_ASSET_BASE || '../../assets/';
 
 function asset(path) {
@@ -109,12 +109,9 @@ function Header() {
 function Hero() {
   return (
     <section id="top" className="mock-hero" aria-label="Start">
-      <Twinkle top="17%" left="11%" size={13} duration={6.5} />
-      <Twinkle top="28%" right="14%" size={10} delay={1.2} duration={5.5} />
-      <Twinkle bottom="24%" left="21%" size={9} delay={2.4} duration={6} />
       <div className="mock-hero__content">
         <div className="mock-hero__text">
-          <h1>Mit KI einfacher arbeiten, Zeit sparen und Kosten senken <span>– für Schweizer KMU.</span></h1>
+          <h1>Digitale Sichtbarkeit und <span>KI-Kompetenz</span><span>für Schweizer KMU.</span></h1>
         </div>
         <div className="mock-hero__doors">
           <a className="mock-hero__door" href="#service">
@@ -130,14 +127,14 @@ function Hero() {
             <span className="mock-hero__door-text">Trainings, Coachings, Workshops <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
           </a>
         </div>
+        <a className="mock-stamp" href="erstanalyse.html">
+          <span className="mock-stamp__over">Kostenlos &amp; unverbindlich</span>
+          <span className="mock-stamp__label">Jetzt Erstanalyse starten →</span>
+        </a>
       </div>
       <div className="mock-hero__robot" aria-hidden="true">
         <img src={asset('buerobot-poster-hand-sharp.jpg')} alt="" />
       </div>
-      <a className="mock-stamp" href="erstanalyse.html">
-        <span className="mock-stamp__over">Kostenlos &amp; unverbindlich</span>
-        <span className="mock-stamp__label">Jetzt Erstanalyse starten →</span>
-      </a>
     </section>
   );
 }
