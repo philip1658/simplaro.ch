@@ -164,7 +164,7 @@ function Hero() {
     className: "mock-hero__content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "mock-hero__text"
-  }, /*#__PURE__*/React.createElement("h1", null, "Digitale Sichtbarkeit ", /*#__PURE__*/React.createElement("span", null, "KI-Kompetenz"), /*#__PURE__*/React.createElement("span", null, "f\xFCr Schweizer KMU."))), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Digitale Sichtbarkeit und ", /*#__PURE__*/React.createElement("span", null, "KI-Kompetenz"), /*#__PURE__*/React.createElement("span", null, "f\xFCr Schweizer KMU."))), /*#__PURE__*/React.createElement("div", {
     className: "mock-hero__doors"
   }, /*#__PURE__*/React.createElement("a", {
     className: "mock-hero__door",
