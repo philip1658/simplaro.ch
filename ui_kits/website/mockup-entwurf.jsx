@@ -5,11 +5,31 @@ function asset(path) {
   return ASSET_BASE + path;
 }
 
-const NAV_LINKS = [
-  { label: 'SimplaroBot', href: '#service', product: 'Bot' },
-  { label: 'SimplaroAcademy', href: '#academy', product: 'Academy' },
-  { label: 'SimplaroLearning', href: '#learning', product: 'Learning' },
-  { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
+const NAV_GROUPS = [
+  {
+    label: 'Gefunden werden',
+    links: [
+      { label: 'SimplaroVisibility', href: 'visibility.html', product: 'Visibility' },
+      { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
+    ],
+  },
+  {
+    label: 'Lernen',
+    links: [
+      { label: 'SimplaroAcademy', href: '#academy', product: 'Academy' },
+      { label: 'SimplaroLearning', href: '#learning', product: 'Learning' },
+    ],
+  },
+  {
+    label: 'Automatisieren',
+    links: [
+      { label: 'SimplaroBot', href: '#service', product: 'Bot' },
+      { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
+    ],
+  },
+];
+
+const NAV_AUX_LINKS = [
   { label: 'Über uns', href: 'ueber-uns.html' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Kontakt', href: '#kontakt', contact: true },
@@ -59,8 +79,12 @@ function NavLabel({ link }) {
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [openGroup, setOpenGroup] = React.useState(null);
   const [solid, setSolid] = React.useState(false);
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setOpenGroup(null);
+  };
 
   React.useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 24);
@@ -88,7 +112,30 @@ function Header() {
           <span></span>
         </button>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
-          {NAV_LINKS.map((link) => (
+          {NAV_GROUPS.map((group) => (
+            <div
+              className="mock-nav-group"
+              key={group.label}
+            >
+              <button
+                className="mock-nav-group__toggle"
+                type="button"
+                aria-expanded={openGroup === group.label}
+                aria-controls={`mock-nav-group-${group.label}`}
+                onClick={() => setOpenGroup((open) => open === group.label ? null : group.label)}
+              >
+                {group.label}<span className="mock-nav-group__indicator" aria-hidden="true"></span>
+              </button>
+              <div id={`mock-nav-group-${group.label}`} className={`mock-nav-group__menu${openGroup === group.label ? ' is-open' : ''}`}>
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.href} onClick={() => setOpenGroup(null)}>
+                    <NavLabel link={link} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+          {NAV_AUX_LINKS.map((link) => (
             <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
               <NavLabel link={link} />
             </a>
@@ -96,7 +143,17 @@ function Header() {
         </nav>
       </div>
       <nav id="mock-mobile-menu" className={`mock-mobile-nav${menuOpen ? ' is-open' : ''}`} aria-label="Mobile Navigation">
-        {NAV_LINKS.map((link) => (
+        {NAV_GROUPS.map((group) => (
+          <div className="mock-mobile-nav__group" key={group.label}>
+            <span className="mock-mobile-nav__group-title">{group.label}</span>
+            {group.links.map((link) => (
+              <a key={link.label} href={link.href} aria-label={link.label} onClick={closeMenu}>
+                <NavLabel link={link} />
+              </a>
+            ))}
+          </div>
+        ))}
+        {NAV_AUX_LINKS.map((link) => (
           <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
             <NavLabel link={link} />
           </a>
@@ -114,9 +171,9 @@ function Hero() {
           <h1>Digitale Sichtbarkeit und <span>KI-Kompetenz</span><span>für Schweizer KMU.</span></h1>
         </div>
         <div className="mock-hero__doors">
-          <a className="mock-hero__door" href="#service">
-            <span className="mock-hero__door-title"><ProductName name="Bot" /></span>
-            <span className="mock-hero__door-text">Automationen für Ihren Betrieb <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
+          <a className="mock-hero__door" href="visibility.html">
+            <span className="mock-hero__door-title"><ProductName name="Visibility" /></span>
+            <span className="mock-hero__door-text">Sichtbarkeit für Ihren Betrieb <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
           </a>
           <a className="mock-hero__door" href="#academy">
             <span className="mock-hero__door-title"><ProductName name="Academy" /></span>
@@ -125,6 +182,10 @@ function Hero() {
           <a className="mock-hero__door" href="#learning">
             <span className="mock-hero__door-title"><ProductName name="Learning" /></span>
             <span className="mock-hero__door-text">Trainings, Coachings, Workshops <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
+          </a>
+          <a className="mock-hero__door" href="#service">
+            <span className="mock-hero__door-title"><ProductName name="Bot" /></span>
+            <span className="mock-hero__door-text">Automationen für Ihren Betrieb <span className="mock-hero__door-arrow" aria-hidden="true">→</span></span>
           </a>
         </div>
         <a className="mock-stamp" href="erstanalyse.html">
@@ -139,31 +200,47 @@ function Hero() {
   );
 }
 
+function Visibility() {
+  return (
+    <section id="visibility" className="mock-section mock-section--alt">
+      <div className="mock-wrap mock-grid">
+        <div className="mock-copy">
+          <Kicker number="01">Gefunden werden</Kicker>
+          <h2 className="mock-title">Mit <span className="mock-accent">SEO und GEO</span> sichtbar werden.</h2>
+          <p className="mock-lead">Ihre Kundinnen und Kunden sollen Ihr Angebot finden - in Google und in den Antworten von KI-Systemen. SimplaroVisibility verbindet beide Wege in einer klaren, verständlichen Umsetzung.</p>
+          <div className="mock-visibility-points">
+            <p><strong>SEO</strong> ordnet Ihr Angebot für die klassische Google-Suche ein.</p>
+            <p><strong>GEO</strong> macht Ihre Inhalte für generative KI-Suchen und Antworten nachvollziehbar.</p>
+          </div>
+          <DsButton variant="cta" size="md" arrow href="visibility.html">Zur SimplaroVisibility</DsButton>
+        </div>
+        <div className="mock-visibility-visual">
+          <img className="mock-visibility-image" src={asset('simplarobot-lupe-visibility-hq.jpg')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Learning() {
   return (
     <section id="learning" className="mock-section mock-section--alt">
       <div className="mock-wrap mock-grid">
         <div className="mock-copy">
-          <Kicker number="02">Lernen und befähigen</Kicker>
+          <Kicker number="03">Lernen und befähigen</Kicker>
           <h2 className="mock-title"><span className="mock-accent">Lernen</span> mit Simplaro</h2>
-          <p className="mock-lead">Wie sattelfest sind Sie in der Anwendung von KI? Wir befähigen Sie und Ihre Mitarbeitenden im Zeitalter von KI — auf zwei Wegen, die sich ergänzen: selbständig online oder persönlich begleitet.</p>
+          <p className="mock-lead">Wir befähigen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden - mit Trainings, Coachings und Workshops, die zu Ihren Abläufen passen.</p>
           <div className="mock-learning-tracks">
-            <article className="mock-learning-track">
-              <span className="mock-learning-track__label">Online · im eigenen Tempo</span>
-              <h3><ProductName name="Academy" /></h3>
-              <p>Unsere Selbstlern-Plattform: E-Learnings zu KI für KMU — zwölf Lernpfade mit 66 kurzen Lektionen, im eigenen Tempo. Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat.</p>
-              <DsButton variant="cta" size="sm" arrow href="#academy" style={{ marginTop: 'auto', minHeight: 44 }}>Zu den E-Learnings</DsButton>
-            </article>
             <article className="mock-learning-track">
               <span className="mock-learning-track__label">Persönlich · bei Ihnen vor Ort</span>
               <h3><ProductName name="Learning" /></h3>
               <p>Trainings, Coachings und Workshops in Ihrer Firma — für Unternehmer, Führungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen.</p>
               <DsButton variant="cta" size="sm" arrow href="#kontakt" style={{ marginTop: 'auto', minHeight: 44 }}>SimplaroLearning anfragen</DsButton>
+              <img className="mock-learning-track__image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
             </article>
           </div>
         </div>
         <div className="mock-learning-visual">
-          <img className="mock-learning-image" src={asset('simplaro-academy-desk.png')} alt="SimplaroBot am Schreibtisch beim Erstellen eines Lernmoduls" />
           <img className="mock-learning-image mock-learning-image--bot" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
@@ -176,7 +253,7 @@ function Service() {
     <section id="service" className="mock-section">
       <div className="mock-wrap">
         <div className="mock-center">
-          <Kicker number="01">Automatisieren</Kicker>
+          <Kicker number="04">Automatisieren</Kicker>
           <h2 className="mock-title">Wir automatisieren Ihren Betrieb.</h2>
           <p className="mock-lead" style={{ maxWidth: 720 }}>Wir übernehmen, was regelmässig Zeit kostet — Schritt für Schritt, bei Ihnen im Betrieb.</p>
         </div>
@@ -224,10 +301,24 @@ function Service() {
             </li>
           </ol>
         </article>
-        <div className="mock-addons" id="service-pakete">
+      </div>
+    </section>
+  );
+}
+
+function SimplaroService() {
+  return (
+    <section id="service-pakete" className="mock-section mock-section--alt">
+      <div className="mock-wrap">
+        <div className="mock-center">
+          <Kicker number="05">Begleiten und weiterentwickeln</Kicker>
+          <h2 className="mock-title"><ProductName name="Service" />: Wir begleiten Ihre digitale Transformation.</h2>
+          <p className="mock-lead" style={{ maxWidth: 720 }}>Nach der Umsetzung bleiben wir an Ihrer Seite: mit Pflege, Updates und Weiterentwicklung - passend zu Ihren Abläufen und Ihrem Tempo.</p>
+        </div>
+        <div className="mock-addons">
           <p className="mock-addons__note">
-            <span className="mock-addons__label">Zusatzprodukte</span>
-            <span>Pflege und Weiterentwicklung im Abo — optional zum <ProductName name="Bot" className="mock-inline-product" />.</span>
+            <span className="mock-addons__label">Servicepakete</span>
+            <span>Pflege und Weiterentwicklung im Abo - für bestehende Automationen und gemeinsam aufgebaute Lösungen.</span>
           </p>
           <div className="mock-service-rows">
             {SERVICE_PLANS.map((plan, i) => (
@@ -242,37 +333,24 @@ function Service() {
   );
 }
 
-const ACADEMY_TEASER = [
-  ['01', 'Grundlagen: KI einordnen', 'Einstieg · 1 Std 05', 'Der Einstieg ohne Fachchinesisch — was die Werkzeuge können und wie Sie sie ansprechen.'],
-  ['02', 'Datenschutz & Sicherheit', 'Grundlage · 1 Std 15', 'Was rein darf und was nie: revDSG, Anonymisieren, Cloud-Standort.'],
-  ['03', 'Korrespondenz & E-Mail', 'Praxis · 1 Std 22', 'Der Posteingang zuerst — Antworten, die nach Ihnen klingen.'],
-  ['04', 'Offerten & Aufträge', 'Praxis · 1 Std 28', 'Aus fünf Stichworten eine Offerte in Ihrer Struktur.'],
-  ['05', 'Buchhaltung & Belege', 'Praxis · 1 Std 23', 'Belegstapel, Spesen, Mahnwesen — bis zur Übergabe ans Treuhandbüro.'],
-  ['09', 'Abläufe automatisieren', 'Fortgeschritten · 2 Std 03', 'Vom einzelnen Handgriff zum verlässlichen Ablauf.'],
-];
-
 function Academy() {
   return (
     <section id="academy" className="mock-section">
       <div className="mock-wrap">
         <div className="mock-center">
-          <Kicker number="03">E-Learnings</Kicker>
+          <Kicker number="02">E-Learnings</Kicker>
           <h2 className="mock-title">Mehr als ein Chatbot: Lernen Sie, Ihre Büroarbeit mit KI zu automatisieren.</h2>
           <p className="mock-lead" style={{ maxWidth: 760 }}>Die <ProductName name="Academy" /> ist unsere Selbstlern-Plattform: 66 kurze Lektionen in zwölf Lernpfaden. Jeder Plan ist für sich abgeschlossen und dauert rund eine Stunde — Sie starten dort, wo es bei Ihnen brennt.</p>
         </div>
-        <ul className="mock-academy-grid">
-          {ACADEMY_TEASER.map(([no, title, meta, text]) => (
-            <li className="mock-academy-plan" key={no}>
-              <span className="mock-academy-plan__no">{no}</span>
-              <h3>{title}</h3>
-              <span className="mock-academy-plan__meta">{meta}</span>
-              <p>{text}</p>
-            </li>
-          ))}
-        </ul>
-        <div className="mock-academy-foot">
-          <p className="mock-academy-foot__note">Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat — jederzeit kündbar.</p>
-          <DsButton variant="cta" size="md" arrow href="academy/index.html">Zur SimplaroAcademy</DsButton>
+        <div className="mock-academy-feature">
+          <div className="mock-academy-feature__copy">
+            <span className="mock-learning-track__label">Online · im eigenen Tempo</span>
+            <h3><ProductName name="Academy" /></h3>
+            <p>66 kurze Lektionen in zwölf Lernpfaden: Sie lernen genau das, was in Ihrem KMU gerade weiterhilft - verständlich, praxisnah und in Ihrem Tempo.</p>
+            <p className="mock-academy-feature__note">Die ersten Lektionen sind gratis, danach ab CHF 39 pro Monat - jederzeit kündbar.</p>
+            <DsButton variant="cta" size="md" arrow href="academy/index.html">Zur SimplaroAcademy</DsButton>
+          </div>
+          <img className="mock-academy-feature__image" src={asset('simplaro-academy-desk.png')} alt="SimplaroBot am Schreibtisch beim Erstellen eines Lernmoduls" />
         </div>
       </div>
     </section>
@@ -284,7 +362,7 @@ function Faq() {
     <section id="faq" className="mock-section">
       <div className="mock-wrap mock-faq-layout">
         <div className="mock-center">
-          <Kicker number="04">FAQ</Kicker>
+          <Kicker number="06">FAQ</Kicker>
           <h2 className="mock-title">Die wichtigsten Fragen und Antworten zu Simplaro.</h2>
           <img className="mock-faq-robot" src={asset('buerobot-faq-simplaro.png?v=20260725-17')} alt="SimplaroBot beantwortet Fragen" />
         </div>
@@ -302,7 +380,7 @@ function Kontakt() {
   return (
     <section id="kontakt" className="mock-contact">
       <div className="mock-wrap mock-center">
-        <Kicker tone="onTerra" number="05">Kontakt</Kicker>
+          <Kicker tone="onTerra" number="07">Kontakt</Kicker>
         <h2 className="mock-title" style={{ color: '#fff', maxWidth: 840 }}>Welche Simplaro-Lösung passt zu Ihrem Unternehmen?</h2>
         <p className="mock-lead" style={{ maxWidth: 720 }}>Im unverbindlichen Gespräch klären wir, ob für Sie Learning, Bot, Service oder eine Kombination der richtige nächste Schritt ist.</p>
         <div className="mock-actions">
@@ -323,9 +401,11 @@ function App() {
       <Header />
       <Hero />
       <main>
-        <Service />
-        <Learning />
+        <Visibility />
         <Academy />
+        <Learning />
+        <Service />
+        <SimplaroService />
         <Faq />
         <Kontakt />
       </main>
