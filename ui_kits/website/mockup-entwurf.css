@@ -44,12 +44,12 @@ body {
   width: min(100%, 1320px);
   min-height: 82px;
   margin: 0 auto;
-  padding: 14px 30px;
+  padding: 14px 24px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 20px;
 }
 
 .mock-header__logo {
@@ -68,8 +68,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: clamp(16px, 2.2vw, 32px);
-  font-size: clamp(16px, 1.15vw, 18px);
+  gap: clamp(12px, 1.5vw, 22px);
+  font-size: clamp(14px, 1.05vw, 17px);
   font-weight: 700;
 }
 
