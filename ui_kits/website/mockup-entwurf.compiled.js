@@ -311,16 +311,16 @@ function Learning() {
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-accent"
   }, "Lernen"), " mit Simplaro")), /*#__PURE__*/React.createElement("div", {
-    className: "mock-academy-feature mock-learning-feature"
+    className: "mock-learning-feature"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mock-academy-feature__copy"
+    className: "mock-learning-feature__copy"
   }, /*#__PURE__*/React.createElement("p", null, "Wir bef\xE4higen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden. Trainings, Coachings und Workshops bei Ihnen in Ihrem Betrieb - f\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams. Zugeschnitten auf Ihre Abl\xE4ufe und Fragen."), /*#__PURE__*/React.createElement(DsButton, {
     variant: "cta",
     size: "md",
     arrow: true,
     href: "#kontakt"
   }, "SimplaroLearning anfragen")), /*#__PURE__*/React.createElement("img", {
-    className: "mock-academy-feature__image",
+    className: "mock-learning-feature__image",
     src: asset('simplaro-robot-teacher.png'),
     alt: "SimplaroBot als Lehrer vor einem Whiteboard"
   }))));
