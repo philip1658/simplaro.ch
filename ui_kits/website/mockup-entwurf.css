@@ -1000,6 +1000,16 @@ body {
 
   .mock-visibility-image {
     width: min(100%, 340px);
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #visibility .mock-visibility-visual {
+    display: flex !important;
+    order: 2;
+    min-height: 0;
+    margin-top: 2px;
   }
 
   #learning .mock-learning-visual {
