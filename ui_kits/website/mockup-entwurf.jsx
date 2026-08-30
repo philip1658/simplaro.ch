@@ -215,10 +215,9 @@ function Visibility() {
           <DsButton variant="cta" size="md" arrow href="visibility.html">Zur SimplaroVisibility</DsButton>
         </div>
         <div className="mock-visibility-visual">
-          <img className="mock-visibility-image" src={asset('simplarobot-lupe-visibility-hq.jpg')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
+          <img className="mock-visibility-image" src={asset('simplarobot-lupe-visibility-hq.jpg?v=20260830-mobile-v3')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
         </div>
       </div>
-      <img className="mock-visibility-image mock-visibility-image--mobile" src={asset('simplarobot-lupe-visibility-hq.jpg')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
     </section>
   );
 }
