@@ -1344,6 +1344,18 @@ body {
   display: none;
 }
 
+@media (max-width: 760px) {
+  #learning .mock-learning-track__image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    margin-top: 4px;
+    object-fit: cover;
+    display: block;
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+  }
+}
+
 .mock-academy-feature {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
