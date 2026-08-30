@@ -179,7 +179,9 @@ function Header() {
     onClick: closeMenu
   }, /*#__PURE__*/React.createElement(NavLabel, {
     link: link
-  }))))), NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "mock-mobile-nav__aux"
+  }, NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.label,
     className: link.contact ? 'mock-header__contact' : '',
     href: link.href,
@@ -187,7 +189,7 @@ function Header() {
     onClick: closeMenu
   }, /*#__PURE__*/React.createElement(NavLabel, {
     link: link
-  })))));
+  }))))));
 }
 function Hero() {
   return /*#__PURE__*/React.createElement("section", {
