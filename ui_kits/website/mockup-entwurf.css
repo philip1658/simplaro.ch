@@ -1286,10 +1286,42 @@ body {
   }
 }
 
+@media (max-width: 760px) {
+  .mock-bot-tile__steps {
+    text-align: center;
+    justify-items: center;
+  }
+
+  .mock-bot-tile__steps li {
+    align-items: center;
+    text-align: center;
+  }
+}
+
 @media (max-width: 640px) {
   .mock-bot-tile__steps {
     grid-template-columns: 1fr;
     gap: 16px;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .mock-bot-tile__steps li {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mock-bot-tile__steps li::before {
+    left: 50%;
+    right: auto;
+    width: min(100%, 280px);
+    transform: translateX(-50%);
+  }
+
+  .mock-bot-tile__steps li::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
