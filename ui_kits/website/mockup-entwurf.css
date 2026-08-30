@@ -551,7 +551,7 @@ body {
 }
 
 .mock-learning-image {
-  width: min(400px, 100%);
+  width: 94.7368%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: center;
