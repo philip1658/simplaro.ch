@@ -1393,15 +1393,35 @@ body {
   }
 
   #learning .mock-wrap {
-    overflow-x: hidden;
+    overflow: clip;
+  }
+
+  #learning .mock-learning-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: calc(100vw - 40px);
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #learning .mock-academy-feature__copy {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
 
   .mock-academy-feature__copy {
     align-items: center;
   }
 
-  .mock-academy-feature__image {
+  .mock-academy-feature__image,
+  #learning .mock-academy-feature__image {
     width: min(100%, 340px);
+    max-width: calc(100vw - 40px);
     margin: 0 auto;
   }
 }
