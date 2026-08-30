@@ -236,12 +236,12 @@ function Learning() {
           <Kicker number="03">Lernen und befähigen</Kicker>
           <h2 className="mock-title"><span className="mock-accent">Lernen</span> mit Simplaro</h2>
         </div>
-        <div className="mock-academy-feature mock-learning-feature">
-          <div className="mock-academy-feature__copy">
+        <div className="mock-learning-feature">
+          <div className="mock-learning-feature__copy">
             <p>Wir befähigen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden. Trainings, Coachings und Workshops bei Ihnen in Ihrem Betrieb - für Unternehmer, Führungskräfte und Teams. Zugeschnitten auf Ihre Abläufe und Fragen.</p>
             <DsButton variant="cta" size="md" arrow href="#kontakt">SimplaroLearning anfragen</DsButton>
           </div>
-          <img className="mock-academy-feature__image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
+          <img className="mock-learning-feature__image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
     </section>
