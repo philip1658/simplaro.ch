@@ -576,6 +576,10 @@ body {
   border-radius: var(--radius-lg);
 }
 
+.mock-visibility-image--mobile {
+  display: none;
+}
+
 .mock-visibility-points {
   display: grid;
   gap: 8px;
@@ -1006,10 +1010,16 @@ body {
   }
 
   #visibility .mock-visibility-visual {
-    display: flex !important;
-    order: 2;
-    min-height: 0;
-    margin-top: 2px;
+    display: none !important;
+  }
+
+  #visibility .mock-visibility-image--mobile {
+    width: min(calc(100% - 40px), 340px);
+    height: auto;
+    margin: 0 auto 64px;
+    display: block !important;
+    visibility: visible;
+    opacity: 1;
   }
 
   #learning .mock-learning-visual {
