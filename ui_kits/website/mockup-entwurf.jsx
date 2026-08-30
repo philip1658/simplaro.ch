@@ -10,7 +10,6 @@ const NAV_GROUPS = [
     label: 'Gefunden werden',
     links: [
       { label: 'SimplaroVisibility', href: 'visibility.html', product: 'Visibility' },
-      { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
     ],
   },
   {
@@ -24,6 +23,11 @@ const NAV_GROUPS = [
     label: 'Automatisieren',
     links: [
       { label: 'SimplaroBot', href: '#service', product: 'Bot' },
+    ],
+  },
+  {
+    label: 'Begleitung',
+    links: [
       { label: 'SimplaroService', href: '#service-pakete', product: 'Service' },
     ],
   },
