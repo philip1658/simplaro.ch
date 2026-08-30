@@ -5,10 +5,35 @@ function asset(path) {
   return ASSET_BASE + path;
 }
 
-const NAV_LINKS = [
-  { label: 'SimplaroLearning', href: 'index.html#learning', product: 'Learning' },
-  { label: 'SimplaroBot', href: 'index.html#service', product: 'Bot' },
-  { label: 'SimplaroService', href: 'index.html#service-pakete', product: 'Service' },
+const NAV_GROUPS = [
+  {
+    label: 'Gefunden werden',
+    links: [
+      { label: 'SimplaroVisibility', href: 'visibility.html', product: 'Visibility' },
+    ],
+  },
+  {
+    label: 'Lernen',
+    links: [
+      { label: 'SimplaroAcademy', href: 'index.html#academy', product: 'Academy' },
+      { label: 'SimplaroLearning', href: 'index.html#learning', product: 'Learning' },
+    ],
+  },
+  {
+    label: 'Automatisieren',
+    links: [
+      { label: 'SimplaroBot', href: 'index.html#service', product: 'Bot' },
+    ],
+  },
+  {
+    label: 'Begleitung',
+    links: [
+      { label: 'SimplaroService', href: 'index.html#service-pakete', product: 'Service' },
+    ],
+  },
+];
+
+const NAV_AUX_LINKS = [
   { label: 'Über uns', href: 'ueber-uns.html' },
   { label: 'FAQ', href: 'index.html#faq' },
   { label: 'Kontakt', href: 'index.html#kontakt', contact: true },
@@ -26,7 +51,11 @@ function NavLabel({ link }) {
 
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const closeMenu = () => setMenuOpen(false);
+  const [openGroup, setOpenGroup] = React.useState(null);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setOpenGroup(null);
+  };
 
   return (
     <header className="mock-header is-solid">
@@ -47,7 +76,27 @@ function Header() {
           <span></span>
         </button>
         <nav className="mock-header__nav" aria-label="Hauptnavigation">
-          {NAV_LINKS.map((link) => (
+          {NAV_GROUPS.map((group) => (
+            <div className="mock-nav-group" key={group.label}>
+              <button
+                className="mock-nav-group__toggle"
+                type="button"
+                aria-expanded={openGroup === group.label}
+                aria-controls={`mock-nav-group-${group.label}`}
+                onClick={() => setOpenGroup((open) => open === group.label ? null : group.label)}
+              >
+                {group.label}<span className="mock-nav-group__indicator" aria-hidden="true"></span>
+              </button>
+              <div id={`mock-nav-group-${group.label}`} className={`mock-nav-group__menu${openGroup === group.label ? ' is-open' : ''}`}>
+                {group.links.map((link) => (
+                  <a key={link.label} href={link.href} onClick={() => setOpenGroup(null)}>
+                    <NavLabel link={link} />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+          {NAV_AUX_LINKS.map((link) => (
             <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label}>
               <NavLabel link={link} />
             </a>
@@ -55,11 +104,23 @@ function Header() {
         </nav>
       </div>
       <nav id="mock-mobile-menu" className={`mock-mobile-nav${menuOpen ? ' is-open' : ''}`} aria-label="Mobile Navigation">
-        {NAV_LINKS.map((link) => (
-          <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
-            <NavLabel link={link} />
-          </a>
+        {NAV_GROUPS.map((group) => (
+          <div className="mock-mobile-nav__group" key={group.label}>
+            <span className="mock-mobile-nav__group-title">{group.label}</span>
+            {group.links.map((link) => (
+              <a key={link.label} href={link.href} aria-label={link.label} onClick={closeMenu}>
+                <NavLabel link={link} />
+              </a>
+            ))}
+          </div>
         ))}
+        <div className="mock-mobile-nav__aux">
+          {NAV_AUX_LINKS.map((link) => (
+            <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
+              <NavLabel link={link} />
+            </a>
+          ))}
+        </div>
       </nav>
     </header>
   );
