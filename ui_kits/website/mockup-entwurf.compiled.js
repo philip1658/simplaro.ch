@@ -291,7 +291,7 @@ function Visibility() {
     className: "mock-visibility-visual"
   }, /*#__PURE__*/React.createElement("img", {
     className: "mock-visibility-image",
-    src: asset('simplarobot-lupe-visibility-hq.jpg'),
+    src: asset('simplarobot-lupe-visibility-hq.jpg?v=20260830-mobile-v3'),
     alt: "SimplaroBot mit Lupe f\xFCr digitale Sichtbarkeit"
   }))));
 }
