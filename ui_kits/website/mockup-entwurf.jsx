@@ -231,22 +231,17 @@ function Visibility() {
 function Learning() {
   return (
     <section id="learning" className="mock-section mock-section--alt">
-      <div className="mock-wrap mock-grid">
-        <div className="mock-copy">
+      <div className="mock-wrap">
+        <div className="mock-center">
           <Kicker number="03">Lernen und befähigen</Kicker>
           <h2 className="mock-title"><span className="mock-accent">Lernen</span> mit Simplaro</h2>
-          <p className="mock-lead">Wir befähigen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden - mit Trainings, Coachings und Workshops, die zu Ihren Abläufen passen.</p>
-          <div className="mock-learning-tracks">
-            <article className="mock-learning-track">
-              <span className="mock-learning-track__label">Persönlich · bei Ihnen vor Ort</span>
-              <h3><ProductName name="Learning" /></h3>
-              <p>Trainings, Coachings und Workshops in Ihrer Firma — für Unternehmer, Führungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen.</p>
-              <DsButton variant="cta" size="sm" arrow href="#kontakt" style={{ marginTop: 'auto', minHeight: 44 }}>SimplaroLearning anfragen</DsButton>
-            </article>
-          </div>
         </div>
-        <div className="mock-learning-visual">
-          <img className="mock-learning-image mock-learning-image--bot" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
+        <div className="mock-academy-feature mock-learning-feature">
+          <div className="mock-academy-feature__copy">
+            <p>Wir befähigen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden. Trainings, Coachings und Workshops bei Ihnen in Ihrem Betrieb - für Unternehmer, Führungskräfte und Teams. Zugeschnitten auf Ihre Abläufe und Fragen.</p>
+            <DsButton variant="cta" size="md" arrow href="#kontakt">SimplaroLearning anfragen</DsButton>
+          </div>
+          <img className="mock-academy-feature__image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
         </div>
       </div>
     </section>
