@@ -7,19 +7,40 @@ const ASSET_BASE = window.SIMPLARO_ASSET_BASE || '../../assets/';
 function asset(path) {
   return ASSET_BASE + path;
 }
-const NAV_LINKS = [{
-  label: 'SimplaroLearning',
-  href: 'index.html#learning',
-  product: 'Learning'
+const NAV_GROUPS = [{
+  label: 'Gefunden werden',
+  links: [{
+    label: 'SimplaroVisibility',
+    href: 'visibility.html',
+    product: 'Visibility'
+  }]
 }, {
-  label: 'SimplaroBot',
-  href: 'index.html#service',
-  product: 'Bot'
+  label: 'Lernen',
+  links: [{
+    label: 'SimplaroAcademy',
+    href: 'index.html#academy',
+    product: 'Academy'
+  }, {
+    label: 'SimplaroLearning',
+    href: 'index.html#learning',
+    product: 'Learning'
+  }]
 }, {
-  label: 'SimplaroService',
-  href: 'index.html#service-pakete',
-  product: 'Service'
+  label: 'Automatisieren',
+  links: [{
+    label: 'SimplaroBot',
+    href: 'index.html#service',
+    product: 'Bot'
+  }]
 }, {
+  label: 'Begleitung',
+  links: [{
+    label: 'SimplaroService',
+    href: 'index.html#service-pakete',
+    product: 'Service'
+  }]
+}];
+const NAV_AUX_LINKS = [{
   label: 'Über uns',
   href: 'ueber-uns.html'
 }, {
@@ -44,7 +65,11 @@ function NavLabel({
 }
 function Header() {
   const [menuOpen, setMenuOpen] = React.useState(false);
-  const closeMenu = () => setMenuOpen(false);
+  const [openGroup, setOpenGroup] = React.useState(null);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setOpenGroup(null);
+  };
   return /*#__PURE__*/React.createElement("header", {
     className: "mock-header is-solid"
   }, /*#__PURE__*/React.createElement("div", {
@@ -66,7 +91,28 @@ function Header() {
   }, /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null), /*#__PURE__*/React.createElement("span", null)), /*#__PURE__*/React.createElement("nav", {
     className: "mock-header__nav",
     "aria-label": "Hauptnavigation"
-  }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+  }, NAV_GROUPS.map(group => /*#__PURE__*/React.createElement("div", {
+    className: "mock-nav-group",
+    key: group.label
+  }, /*#__PURE__*/React.createElement("button", {
+    className: "mock-nav-group__toggle",
+    type: "button",
+    "aria-expanded": openGroup === group.label,
+    "aria-controls": `mock-nav-group-${group.label}`,
+    onClick: () => setOpenGroup(open => open === group.label ? null : group.label)
+  }, group.label, /*#__PURE__*/React.createElement("span", {
+    className: "mock-nav-group__indicator",
+    "aria-hidden": "true"
+  })), /*#__PURE__*/React.createElement("div", {
+    id: `mock-nav-group-${group.label}`,
+    className: `mock-nav-group__menu${openGroup === group.label ? ' is-open' : ''}`
+  }, group.links.map(link => /*#__PURE__*/React.createElement("a", {
+    key: link.label,
+    href: link.href,
+    onClick: () => setOpenGroup(null)
+  }, /*#__PURE__*/React.createElement(NavLabel, {
+    link: link
+  })))))), NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.label,
     className: link.contact ? 'mock-header__contact' : '',
     href: link.href,
@@ -77,7 +123,21 @@ function Header() {
     id: "mock-mobile-menu",
     className: `mock-mobile-nav${menuOpen ? ' is-open' : ''}`,
     "aria-label": "Mobile Navigation"
-  }, NAV_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
+  }, NAV_GROUPS.map(group => /*#__PURE__*/React.createElement("div", {
+    className: "mock-mobile-nav__group",
+    key: group.label
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "mock-mobile-nav__group-title"
+  }, group.label), group.links.map(link => /*#__PURE__*/React.createElement("a", {
+    key: link.label,
+    href: link.href,
+    "aria-label": link.label,
+    onClick: closeMenu
+  }, /*#__PURE__*/React.createElement(NavLabel, {
+    link: link
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "mock-mobile-nav__aux"
+  }, NAV_AUX_LINKS.map(link => /*#__PURE__*/React.createElement("a", {
     key: link.label,
     className: link.contact ? 'mock-header__contact' : '',
     href: link.href,
@@ -85,7 +145,7 @@ function Header() {
     onClick: closeMenu
   }, /*#__PURE__*/React.createElement(NavLabel, {
     link: link
-  })))));
+  }))))));
 }
 function UeberUns() {
   return /*#__PURE__*/React.createElement("section", {
