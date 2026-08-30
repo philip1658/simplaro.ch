@@ -1337,8 +1337,10 @@ body {
   grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
   align-items: center;
   gap: 48px;
+  width: 100%;
   margin-top: 38px;
   padding-top: 30px;
+  box-sizing: border-box;
   border-top: 1px solid var(--border-soft);
 }
 
@@ -1347,6 +1349,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  min-width: 0;
 }
 
 .mock-academy-feature__copy h3,
@@ -1373,9 +1376,11 @@ body {
 
 .mock-academy-feature__image {
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+  box-sizing: border-box;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
 }
@@ -1385,6 +1390,10 @@ body {
     grid-template-columns: 1fr;
     gap: 22px;
     text-align: center;
+  }
+
+  #learning .mock-wrap {
+    overflow-x: hidden;
   }
 
   .mock-academy-feature__copy {
