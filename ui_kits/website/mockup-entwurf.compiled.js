@@ -301,38 +301,26 @@ function Learning() {
     id: "learning",
     className: "mock-section mock-section--alt"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mock-wrap mock-grid"
+    className: "mock-wrap"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "mock-copy"
+    className: "mock-center"
   }, /*#__PURE__*/React.createElement(Kicker, {
     number: "03"
   }, "Lernen und bef\xE4higen"), /*#__PURE__*/React.createElement("h2", {
     className: "mock-title"
   }, /*#__PURE__*/React.createElement("span", {
     className: "mock-accent"
-  }, "Lernen"), " mit Simplaro"), /*#__PURE__*/React.createElement("p", {
-    className: "mock-lead"
-  }, "Wir bef\xE4higen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden - mit Trainings, Coachings und Workshops, die zu Ihren Abl\xE4ufen passen."), /*#__PURE__*/React.createElement("div", {
-    className: "mock-learning-tracks"
-  }, /*#__PURE__*/React.createElement("article", {
-    className: "mock-learning-track"
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "mock-learning-track__label"
-  }, "Pers\xF6nlich \xB7 bei Ihnen vor Ort"), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement(ProductName, {
-    name: "Learning"
-  })), /*#__PURE__*/React.createElement("p", null, "Trainings, Coachings und Workshops in Ihrer Firma \u2014 f\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams, zugeschnitten auf Ihre Abl\xE4ufe und Fragen."), /*#__PURE__*/React.createElement(DsButton, {
+  }, "Lernen"), " mit Simplaro")), /*#__PURE__*/React.createElement("div", {
+    className: "mock-academy-feature mock-learning-feature"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mock-academy-feature__copy"
+  }, /*#__PURE__*/React.createElement("p", null, "Wir bef\xE4higen Sie und Ihre Mitarbeitenden, KI im Arbeitsalltag sicher anzuwenden. Trainings, Coachings und Workshops bei Ihnen in Ihrem Betrieb - f\xFCr Unternehmer, F\xFChrungskr\xE4fte und Teams. Zugeschnitten auf Ihre Abl\xE4ufe und Fragen."), /*#__PURE__*/React.createElement(DsButton, {
     variant: "cta",
-    size: "sm",
+    size: "md",
     arrow: true,
-    href: "#kontakt",
-    style: {
-      marginTop: 'auto',
-      minHeight: 44
-    }
-  }, "SimplaroLearning anfragen")))), /*#__PURE__*/React.createElement("div", {
-    className: "mock-learning-visual"
-  }, /*#__PURE__*/React.createElement("img", {
-    className: "mock-learning-image mock-learning-image--bot",
+    href: "#kontakt"
+  }, "SimplaroLearning anfragen")), /*#__PURE__*/React.createElement("img", {
+    className: "mock-academy-feature__image",
     src: asset('simplaro-robot-teacher.png'),
     alt: "SimplaroBot als Lehrer vor einem Whiteboard"
   }))));
