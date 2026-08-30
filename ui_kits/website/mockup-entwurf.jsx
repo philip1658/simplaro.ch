@@ -242,7 +242,6 @@ function Learning() {
               <h3><ProductName name="Learning" /></h3>
               <p>Trainings, Coachings und Workshops in Ihrer Firma — für Unternehmer, Führungskräfte und Teams, zugeschnitten auf Ihre Abläufe und Fragen.</p>
               <DsButton variant="cta" size="sm" arrow href="#kontakt" style={{ marginTop: 'auto', minHeight: 44 }}>SimplaroLearning anfragen</DsButton>
-              <img className="mock-learning-track__image" src={asset('simplaro-robot-teacher.png')} alt="SimplaroBot als Lehrer vor einem Whiteboard" />
             </article>
           </div>
         </div>
