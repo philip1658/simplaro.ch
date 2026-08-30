@@ -1392,26 +1392,22 @@ body {
     text-align: center;
   }
 
-  #learning .mock-wrap {
-    overflow: clip;
-  }
-
   #learning .mock-learning-feature {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: calc(100vw - 40px);
     min-width: 0;
     margin-left: auto;
     margin-right: auto;
   }
 
-  #learning .mock-academy-feature__copy {
+  #learning .mock-learning-feature__copy {
     width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
+    align-items: center;
   }
 
   .mock-academy-feature__copy {
@@ -1419,9 +1415,74 @@ body {
   }
 
   .mock-academy-feature__image,
-  #learning .mock-academy-feature__image {
+  #learning .mock-academy-feature__image,
+  #learning .mock-learning-feature__image {
     width: min(100%, 340px);
-    max-width: calc(100vw - 40px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.mock-learning-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  margin-top: 38px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  border-top: 1px solid var(--border-soft);
+}
+
+.mock-learning-feature__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+
+.mock-learning-feature__copy p {
+  max-width: 54ch;
+  margin: 0;
+  color: var(--text-body);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.mock-learning-feature__image {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 760px) {
+  #learning .mock-learning-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  #learning .mock-learning-feature__copy {
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  #learning .mock-learning-feature__image {
+    width: min(100%, 340px);
+    max-width: 100%;
     margin: 0 auto;
   }
 }
