@@ -157,11 +157,13 @@ function Header() {
             ))}
           </div>
         ))}
-        {NAV_AUX_LINKS.map((link) => (
-          <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
-            <NavLabel link={link} />
-          </a>
-        ))}
+        <div className="mock-mobile-nav__aux">
+          {NAV_AUX_LINKS.map((link) => (
+            <a key={link.label} className={link.contact ? 'mock-header__contact' : ''} href={link.href} aria-label={link.label} onClick={closeMenu}>
+              <NavLabel link={link} />
+            </a>
+          ))}
+        </div>
       </nav>
     </header>
   );
