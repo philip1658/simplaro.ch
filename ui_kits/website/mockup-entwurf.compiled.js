@@ -329,11 +329,7 @@ function Learning() {
       marginTop: 'auto',
       minHeight: 44
     }
-  }, "SimplaroLearning anfragen"), /*#__PURE__*/React.createElement("img", {
-    className: "mock-learning-track__image",
-    src: asset('simplaro-robot-teacher.png'),
-    alt: "SimplaroBot als Lehrer vor einem Whiteboard"
-  })))), /*#__PURE__*/React.createElement("div", {
+  }, "SimplaroLearning anfragen")))), /*#__PURE__*/React.createElement("div", {
     className: "mock-learning-visual"
   }, /*#__PURE__*/React.createElement("img", {
     className: "mock-learning-image mock-learning-image--bot",
