@@ -218,6 +218,7 @@ function Visibility() {
           <img className="mock-visibility-image" src={asset('simplarobot-lupe-visibility-hq.jpg')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
         </div>
       </div>
+      <img className="mock-visibility-image mock-visibility-image--mobile" src={asset('simplarobot-lupe-visibility-hq.jpg')} alt="SimplaroBot mit Lupe für digitale Sichtbarkeit" />
     </section>
   );
 }
