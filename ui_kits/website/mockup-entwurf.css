@@ -1008,6 +1008,7 @@ body {
   #visibility .mock-visibility-visual {
     display: flex !important;
     width: 100%;
+    min-height: 272px;
     margin: 0 auto 64px;
   }
 
