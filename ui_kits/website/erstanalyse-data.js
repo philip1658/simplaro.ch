@@ -2,7 +2,7 @@
    Feldnamen sind EXAKT die Mail-Labels (identisch mit buero-bot.ch/erstanalyse).
    Gliederung: 8 Blöcke gemäss Konzept — Feldnamen unverändert, nur neu gruppiert. */
 window.ErstanalyseData = (function () {
-  const WORKER_URL = 'https://simplaro-erstanalyse.philkrieger4.workers.dev';
+  const WORKER_URL = 'https://vaiacon.ch/api/erstanalyse';
   const FORMSPREE_URL = 'https://formspree.io/f/xvzjnjnv';
   const PROD_HOSTS = ['philip1658.github.io', 'simplaro.ch', 'www.simplaro.ch', 'buero-bot.ch', 'www.buero-bot.ch', 'localhost', '127.0.0.1'];
 
